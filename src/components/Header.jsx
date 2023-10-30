@@ -1,13 +1,10 @@
 import { useEffect } from "react"
+import Logo from "./elements/Logo.jsx";
 
 export default function Header() {
     
     useEffect(() => {
         document.querySelector('.themes button').addEventListener('click', onclickShowThemes)
-    })
-
-    useEffect(() => {
-        document.querySelector(".homeNavIcon").addEventListener("click", onClickHomePageRedirect);
     })
 
     useEffect(() => {
@@ -25,17 +22,12 @@ export default function Header() {
     
     return (
         <header id="header">
-            <img
-                className="homeNavIcon"
-                id="homeNavIcon"
-                src="images/logoTblue.png"
-                alt="logo" />
-
+            <Logo></Logo>
             <nav id="navBar">
                 <ul className="nav_links">
                     <div id="userNavLinks">
                         <li><a href="/reviews">Reviews</a></li>
-                        <li className="welcome"><p >Welcome, guest</p></li>
+                        <li className="welcome"><p>Welcome, guest</p></li>
                         <li><a href="javascript:void(0)">Logout</a></li>
                     </div>
                     <div id="guestNavLinks">
@@ -96,9 +88,7 @@ function onclickShowThemes(e) {
     }
 }
 
-function onClickHomePageRedirect() {
-    window.location.href = "/";
-}
+
 
 //////////////////////////////////////////////////
 
