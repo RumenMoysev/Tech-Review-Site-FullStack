@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+@keyframes slideIn {
+	0% {
+		opacity: 0;
+		transform: translatex(-400px);
+	}
+    /* 50% {
+        opacity: 0.5;
+        transform: translatex(150px);
+    } */
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+#loginPage {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+    animation: slideIn 700ms ease;
+}
+.form-container{
+    border:solid var(--theme-color) 1px;
+    border-radius: 13%;
+    background-color: #121213fa;
+    padding: 2% 0% 2% 0%;
+    margin: 2% 0 2% 0;
+    width: 30%;
+    box-shadow: 0 0 35px var(--theme-color);
+    transition: all 300ms ease-in-out;
+}
+.formHeaders {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid var(--theme-color);
+    flex-wrap: wrap;
+    transition: all 300ms ease-in-out;
+}
+.formHeaders h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 28px;
+    color: #edf0f1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 3%;
+    margin: 0;
+    cursor:default;
+}
+
+.formHeaders h4 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 20px;
+    color: red;
+    margin-bottom: 2%;
+    text-shadow: 3px 3px 8px red;
+    cursor: default;
+}
+#loginForm{
+    padding: 8% 1rem 3% 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.form-container input {
+    font-family: "Montserrat", sans-serif;;
+    display: block;
+    width: 100%;
+    height: 2.2rem;
+    /* border: solid var(--theme-color) 3px; */
+    border-radius: 0.6rem;
+    margin-bottom: 5%;
+    padding-left: 3px;
+    outline: none;
+}
+
+.form-container #emailInput {
+    background:url(../images/mail-outline.svg); 
+    background-repeat: no-repeat; 
+    background-size: 28px;
+    background-position: 98.5%; 
+    background-color: white;
+}
+
+.form-container #passwordInput, .form-container #repeatPassword {
+    background: url(../images/lock-closed-outline.svg);
+    background-repeat: no-repeat;
+    background-size: 28px;
+    background-position: 98.5%;
+    background-color: white;
+}
+
+.form-container #usernameInput {
+    background: url(../images/person-outline.svg);
+    background-repeat: no-repeat;
+    background-size: 28px;
+    background-position: 98.4%;
+    background-color: white;
+}
+
+.form-container button {
+    font-family: "Montserrat", sans-serif;;
+    font-size: 16px;
+    display: block;
+    margin-top: 1%;
+    height: 33px;
+    width:17%;
+    border-radius: 0.7rem;
+    border: none;
+    color:#edf0f1;
+    background-color: var(--button-color);
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+}
+.form-container button:hover{
+    background-color:var(--button-hover-color);
+    font-size: 20px;
+    width: 20%;
+    height: 38px;
+    border-radius: 0.8rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 20px var(--theme-color);
+}
+.form-container button:active {
+    background-color: var(--button-active-color);
+}
+
+.form-container label {
+    font-family: "Montserrat", sans-serif;;
+    color: #edf0f1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3%;
+    font-size: 17.5px;
+}
+
+.rememberMe-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1em 0px 0px 0px;
+}
+
+#logRegCheckbox {
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+    margin-top: 3px;
+}
+
+.rememberMe-container label {
+    font-size: 15px;
+}
+
+.logRegCheckbox:hover {
+    transition: all 0.4s ease 0s;
+    text-shadow: 0px 0px 20px var(--theme-color);
+    cursor: pointer;
+}
+
+#logRegCheckbox:hover {
+    transition: all 0.4s ease 0s;
+    box-shadow: 0px 0px 20px var(--theme-color);
+    cursor: pointer;
+}
+
+#logRegCheckbox1 {
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+    margin-top: 3px;
+}
+
+#logRegCheckbox1:hover {
+    transition: all 0.4s ease 0s;
+    box-shadow: 0px 0px 20px var(--theme-color);
+    cursor: pointer;
+}
+
+#registerPage {
+    display: flex;
+    justify-content: center;
+    animation: slideIn 700ms ease;
+}
+
+#registerForm {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 8% 1rem 3% 1rem;
+}
+
+#registerForm button {
+    height: 33px;
+    width:21%;
+    border-radius: 0.7rem;
+}
+
+#registerForm button:hover {
+    font-size: 20px;
+    width: 25%;
+    height: 40px;
+    border-radius: 0.8rem;
+}
+
+.good {
+    border: solid var(--theme-color) 3px;
+    transition: 300ms ease-in-out all;
+}
+
+.warning {
+    border: 3px dashed red;
+    transition: 300ms ease-in-out all;
+}

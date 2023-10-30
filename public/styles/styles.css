@@ -1,0 +1,34 @@
+@import "header.css";
+@import "home.css";
+@import "login&register.css";
+@import "articles.css";
+@import "details.css";
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-50%);
+    transition: all 1s ease;
+    
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+@keyframes drop {
+	0% {
+		opacity: 0;
+		transform: translateY(-80px);
+	}
+    50% {
+        opacity: 0.5;
+        transform: translateY(15px);
+    }
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
