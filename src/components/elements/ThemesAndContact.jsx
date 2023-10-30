@@ -19,6 +19,7 @@ export default function ThemesAndContact() {
             el.addEventListener("click", onclickChangeTheme);
         }
     });
+
     return (
         <div id="themesAndContact">
             <div className="themes">
@@ -76,8 +77,6 @@ function onclickShowThemes(e) {
     }
 }
 
-//////////////////////////////////////////////////
-
 const themeLogos = {
     red: "images/logoTred.png",
     green: "images/logoTgreen.png",
@@ -89,21 +88,9 @@ let defaultTheme = "#1e9bff";
 
 const themeButtonColors = {
     red: ["rgba(175, 0, 0, 1)", "rgba(175, 0, 0, 0.7)", "rgba(175, 0, 0, 0.4)"],
-    green: [
-        "rgba(11, 116, 1, 1)",
-        "rgba(11, 116, 1, 0.7)",
-        "rgba(11, 116, 1, 0.4)",
-    ],
-    blue: [
-        "rgba(0, 136, 169, 1)",
-        "rgba(0, 136, 169, 0.7)",
-        "rgba(0, 136, 169, 0.4)",
-    ],
-    yellow: [
-        "rgba(199, 186, 10, 1)",
-        "rgba(199, 186, 10, 0.7)",
-        "rgba(199, 186, 10, 0.4)",
-    ],
+    green: ["rgba(11, 116, 1, 1)", "rgba(11, 116, 1, 0.7)", "rgba(11, 116, 1, 0.4)"],
+    blue: ["rgba(0, 136, 169, 1)", "rgba(0, 136, 169, 0.7)", "rgba(0, 136, 169, 0.4)"],
+    yellow: ["rgba(199, 186, 10, 1)", "rgba(199, 186, 10, 0.7)", "rgba(199, 186, 10, 0.4)"],
 };
 
 const themeColors = {
