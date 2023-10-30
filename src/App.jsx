@@ -3,93 +3,16 @@
 // import viteLogo from '/vite.svg'
 // import './App.css'
 
+import Header from "./components/Header.jsx"
+import Home from "./components/Home.jsx"
+
 function App() {
   return (
     <>
-      <header id="header">
-            <img
-                className="homeNavIcon"
-                id="homeNavIcon"
-                src="images/logoTblue.png"
-                alt="logo" />
+        <Header></Header>
+        <Home></Home>
 
-            <nav id="navBar">
-                <ul className="nav_links">
-                    <div id="userNavLinks">
-                      <li><a href="/reviews">Reviews</a></li>
-                    <li className="welcome"><p>Welcome, guest</p></li>
-                    <li><a href="javascript:void(0)">Logout</a></li>
-                    </div>
-                <div id="guestNavLinks">
-                        <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
-                    </div>
-                </ul>
-            </nav>
-
-            <div id="themesAndContact">
-                <div className="themes">
-                    <button>Themes</button>
-                    <div className="colorsContainer">
-                        <p>Choose a theme</p>
-                        <ul>
-                            <li className="themePreview">
-                                <img
-                                    id="green"
-                                    src="images/colors/Green.webp"
-                                    alt="green" />
-                            </li>
-                            <li className="themePreview">
-                                <img
-                                    id="blue"
-                                    src="images/colors/Solid_blue.svg.png"
-                                    alt="blue" />
-                            </li>
-                            <li className="themePreview">
-                                <img
-                                    id="yellow"
-                                    src="images/colors/naples-yellow-painted-swatch.jpg"
-                                    alt="yellow" />
-                            </li>
-                            <li className="themePreview">
-                                <img
-                                    id="red"
-                                    src="images/colors/red-color-solid-background-1920x1080.png"
-                                    alt="red" />
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <a href="/contact" className="cta"><button>Contact</button></a>
-            </div>
-        </header>
-
-        <section id="homePage">
-            <div className="row">
-                <div className="col hidden">
-                    <h1>Tech Review Site</h1>
-                    <p>This is the place where you can find all information
-                        you're looking for in the latest tech word!
-                    </p>
-                    <button>Reviews</button>
-                </div> 
-                <div className="col notTouching">
-                    <div className="card hidden" style={{backgroundImage: 'url(https://images.samsung.com/is/image/samsung/p6pim/uk/feature/164370272/uk-feature-galaxy-s-535141640?$FB_TYPE_I_JPG$)'}}>
-                        <h4>S23 Ultra Review</h4>
-                        <p>In this article we will look at some categories and see
-                        if the Galaxy S23 Ultra is worth buying.</p>
-                    </div>
-                    <div className="card hidden" style={{backgroundImage: 'url(https://www.digitaltrends.com/wp-content/uploads/2023/09/apple-iphone-15-pro-max-vs-samsung-galaxy-s23-ultra.jpg?fit=720%2C479&p=1)'}}>
-                        <h4>S23 Ultra Review</h4>
-                        <p>In this article we will look at some categories and see
-                        if the Galaxy S23 Ultra is worth buying.</p>
-                    </div>
-                    <h2>No reviews yet!</h2>
-                </div>
-            </div>
-        </section>
-
-        <section id="loginPage" className="hidden">
+        <section id="loginPage" className="">
             <div className="form-container">
                 <div className="formHeaders">
                     <h2>Login</h2>
@@ -121,7 +44,7 @@ function App() {
             </div>
         </section>
 
-        <section id="registerPage" className="hidden">
+        <section id="registerPage" className="">
             <div className="form-container">
                 <div className="formHeaders">
                     <h2>Register</h2>
@@ -168,8 +91,8 @@ function App() {
             </div>
         </section>
 
-        <section id="articles" className="hidden">
-            <article className="hidden">
+        <section id="articles" className="">
+            <article className="">
                 <h2>Should you buy the Galaxy S23 Ultra?</h2>
                 <div className="pImgContainer">
                     <p>
@@ -182,7 +105,7 @@ function App() {
                     src="https://images.samsung.com/is/image/samsung/p6pim/uk/feature/164370272/uk-feature-galaxy-s-535141640?$FB_TYPE_I_JPG$"
                     alt="picture" />
             </article>
-            <article className="hidden">
+            <article className="">
                 <h2>Should you buy the Iphone 14 Pro Max?</h2>
                 <div className="pImgContainer">
                     <p>
@@ -195,7 +118,7 @@ function App() {
                     src="https://cdn11.bigcommerce.com/s-53cwszo4/images/stencil/2048x2048/products/1098/7283/14_pro_black_front__59165.1663003197.jpg?c=2"
                     alt="picture" />
             </article>
-            <article className="hidden">
+            <article className="">
                 <h2>Iphone 14 Pro Max vs Galaxy S23 Ultra</h2>
                 <div className="pImgContainer">
                     <p>
@@ -209,7 +132,7 @@ function App() {
                     src="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Samsung_Galaxy_S23_Ultra_vs_Apple_iPhone_14_Pro_Max_drdNBC.jpg"
                     alt="picture" />
             </article>
-            <article className="hidden">
+            <article className="">
                 <h2>Iphone 14 Pro Max vs Galaxy S23 Ultra</h2>
                 <div className="pImgContainer">
                     <p>
@@ -225,7 +148,7 @@ function App() {
             </article>
         </section>
 
-        <section id="details" className="hidden">
+        <section id="details" className="">
             <div className="detailsContainer">
                 <h2>Should you buy the Galaxy S23 Ultra?</h2>
                 <img
