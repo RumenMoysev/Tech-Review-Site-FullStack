@@ -1,6 +1,6 @@
 export default function Login() {
     return (
-        <section id="loginPage" className="">
+        <section id="loginPage" className="hidden">
             <div className="form-container">
                 <div className="formHeaders">
                     <h2>Login</h2>

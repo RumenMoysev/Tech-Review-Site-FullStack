@@ -1,6 +1,6 @@
 export default function Register() {
     return (
-        <section id="registerPage" className="">
+        <section id="registerPage" className="hidden">
             <div className="form-container">
                 <div className="formHeaders">
                     <h2>Register</h2>

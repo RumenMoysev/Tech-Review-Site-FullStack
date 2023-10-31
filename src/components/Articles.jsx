@@ -1,7 +1,7 @@
 export default function Articles() {
     return (
-        <section id="articles" className="">
-            <article className="">
+        <section id="articles" className="hidden">
+            <article className="hidden">
                 <h2>Should you buy the Galaxy S23 Ultra?</h2>
                 <div className="pImgContainer">
                     <p>
@@ -17,7 +17,7 @@ export default function Articles() {
                     alt="picture"
                 />
             </article>
-            <article className="">
+            <article className="hidden">
                 <h2>Should you buy the Iphone 14 Pro Max?</h2>
                 <div className="pImgContainer">
                     <p>
@@ -33,7 +33,7 @@ export default function Articles() {
                     alt="picture"
                 />
             </article>
-            <article className="">
+            <article className="hidden">
                 <h2>Iphone 14 Pro Max vs Galaxy S23 Ultra</h2>
                 <div className="pImgContainer">
                     <p>
@@ -50,7 +50,7 @@ export default function Articles() {
                     alt="picture"
                 />
             </article>
-            <article className="">
+            <article className="hidden">
                 <h2>Iphone 14 Pro Max vs Galaxy S23 Ultra</h2>
                 <div className="pImgContainer">
                     <p>

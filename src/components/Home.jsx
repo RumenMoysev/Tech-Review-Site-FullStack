@@ -2,7 +2,7 @@ export default function Home() {
     return (
         <section id="homePage">
             <div className="row">
-                <div className="col ">
+                <div className="col hidden">
                     <h1>Tech Review Site</h1>
                     <p>
                         This is the place where you can find all information
@@ -12,7 +12,7 @@ export default function Home() {
                 </div>
                 <div className="col notTouching">
                     <div
-                        className="card "
+                        className="card hidden"
                         style={{
                             backgroundImage:
                                 "url(https://images.samsung.com/is/image/samsung/p6pim/uk/feature/164370272/uk-feature-galaxy-s-535141640?$FB_TYPE_I_JPG$)",
@@ -24,7 +24,7 @@ export default function Home() {
                         </p>
                     </div>
                     <div
-                        className="card "
+                        className="card hidden"
                         style={{
                             backgroundImage:
                                 "url(https://www.digitaltrends.com/wp-content/uploads/2023/09/apple-iphone-15-pro-max-vs-samsung-galaxy-s23-ultra.jpg?fit=720%2C479&p=1)",

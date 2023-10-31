@@ -1,6 +1,6 @@
 export default function Details() {
     return (
-        <section id="details" className="">
+        <section id="details" className="hidden">
             <div className="detailsContainer">
                 <h2>Should you buy the Galaxy S23 Ultra?</h2>
                 <img
