@@ -22,7 +22,7 @@ export default function ThemesAndContact() {
     }
 
     return (
-        <div id="themesAndContact">
+        <div className="themesAndContactContainer">
             <div className="themes">
                 <button onClick={onclickShowThemes}>Themes</button>
                 <div className="colorsContainer">
