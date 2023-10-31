@@ -81,21 +81,22 @@ function onclickShowThemes(e) {
     }
 }
 
+let defaultTheme = "#1e9bff";
+
 const chosenTheme = JSON.parse(localStorage.getItem('themes'))
 
 function setTheme() {
+
     if(chosenTheme) {
+        defaultTheme = chosenTheme.theme
+
         body.style.setProperty("--theme-color", chosenTheme.theme);
         body.style.setProperty("--button-color", chosenTheme.buttonColor);
         body.style.setProperty("--button-hover-color", chosenTheme.buttonHoverColor);
         body.style.setProperty("--button-active-color", chosenTheme.buttonActiveColor);
         homeNavIcon.src = chosenTheme.logo;
     }
-    
 }
-
-let defaultTheme = "#1e9bff";
-
 
 const themeLogos = {
     red: "images/logoTred.png",
@@ -131,7 +132,7 @@ function unHoverTheme() {
 }
 
 function onclickChangeTheme(e) {
-    let id = e.target.id;
+    const id = e.target.id;
     let theme = themeColors[id];
     defaultTheme = theme;
     body.style.setProperty("--theme-color", defaultTheme);
