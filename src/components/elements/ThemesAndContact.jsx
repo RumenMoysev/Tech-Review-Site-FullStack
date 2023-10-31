@@ -84,11 +84,14 @@ function onclickShowThemes(e) {
 const chosenTheme = JSON.parse(localStorage.getItem('themes'))
 
 function setTheme() {
-    body.style.setProperty("--theme-color", chosenTheme.theme);
-    body.style.setProperty("--button-color", chosenTheme.buttonColor);
-    body.style.setProperty("--button-hover-color", chosenTheme.buttonHoverColor);
-    body.style.setProperty("--button-active-color", chosenTheme.buttonActiveColor);
-    homeNavIcon.src = chosenTheme.logo;
+    if(chosenTheme) {
+        body.style.setProperty("--theme-color", chosenTheme.theme);
+        body.style.setProperty("--button-color", chosenTheme.buttonColor);
+        body.style.setProperty("--button-hover-color", chosenTheme.buttonHoverColor);
+        body.style.setProperty("--button-active-color", chosenTheme.buttonActiveColor);
+        homeNavIcon.src = chosenTheme.logo;
+    }
+    
 }
 
 let defaultTheme = "#1e9bff";
