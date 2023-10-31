@@ -8,6 +8,10 @@ export default function ThemesAndContact() {
     });
 
     useEffect(() => {
+        setTheme()
+    })
+
+    useEffect(() => {
         let themeContainer = document.querySelector(".colorsContainer");
         themeContainer.style.setProperty("--theme-color", defaultTheme);
 
@@ -77,14 +81,25 @@ function onclickShowThemes(e) {
     }
 }
 
+const chosenTheme = JSON.parse(localStorage.getItem('themes'))
+
+function setTheme() {
+    body.style.setProperty("--theme-color", chosenTheme.theme);
+    body.style.setProperty("--button-color", chosenTheme.buttonColor);
+    body.style.setProperty("--button-hover-color", chosenTheme.buttonHoverColor);
+    body.style.setProperty("--button-active-color", chosenTheme.buttonActiveColor);
+    homeNavIcon.src = chosenTheme.logo;
+}
+
+let defaultTheme = "#1e9bff";
+
+
 const themeLogos = {
     red: "images/logoTred.png",
     green: "images/logoTgreen.png",
     blue: "images/logoTblue.png",
     yellow: "images/logoTyellow.png",
 };
-
-let defaultTheme = "#1e9bff";
 
 const themeButtonColors = {
     red: ["rgba(175, 0, 0, 1)", "rgba(175, 0, 0, 0.7)", "rgba(175, 0, 0, 0.4)"],
@@ -121,4 +136,14 @@ function onclickChangeTheme(e) {
     body.style.setProperty("--button-hover-color", themeButtonColors[id][1]);
     body.style.setProperty("--button-active-color", themeButtonColors[id][2]);
     homeNavIcon.src = themeLogos[id];
+
+    const themes = {
+        theme: defaultTheme,
+        buttonColor: themeButtonColors[id][0],
+        buttonHoverColor: themeButtonColors[id][1],
+        buttonActiveColor: themeButtonColors[id][2],
+        logo: themeLogos[id],
+    };
+
+    localStorage.setItem('themes', JSON.stringify(themes))
 }
