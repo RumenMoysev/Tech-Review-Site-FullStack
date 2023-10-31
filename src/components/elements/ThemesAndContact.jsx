@@ -4,30 +4,27 @@ import { useEffect } from "react";
 export default function ThemesAndContact() {
 
     useEffect(() => {
-        document.querySelector(".themes button").addEventListener("click", onclickShowThemes);
-    });
+        setTheme();
+    }, []);
 
-    useEffect(() => {
-        setTheme()
-    })
+    function setTheme() {
+        const chosenTheme = JSON.parse(localStorage.getItem("themes"));
+        
+        if(chosenTheme) {
+            defaultTheme = chosenTheme.selectedTheme
 
-    useEffect(() => {
-        let themeContainer = document.querySelector(".colorsContainer");
-        themeContainer.style.setProperty("--theme-color", defaultTheme);
-
-        let themes = document.querySelectorAll(".colorsContainer li img");
-
-        for (let el of themes) {
-            el.addEventListener("mouseenter", hoverOnTheme);
-            el.addEventListener("mouseleave", unHoverTheme);
-            el.addEventListener("click", onclickChangeTheme);
+            body.style.setProperty("--theme-color", chosenTheme.selectedTheme);
+            body.style.setProperty("--button-color", chosenTheme.buttonColor);
+            body.style.setProperty("--button-hover-color", chosenTheme.buttonHoverColor);
+            body.style.setProperty("--button-active-color", chosenTheme.buttonActiveColor);
+            homeNavIcon.src = chosenTheme.logo;
         }
-    });
+    }
 
     return (
         <div id="themesAndContact">
             <div className="themes">
-                <button>Themes</button>
+                <button onClick={onclickShowThemes}>Themes</button>
                 <div className="colorsContainer">
                     <p>Choose a theme</p>
                     <ul>
@@ -36,6 +33,9 @@ export default function ThemesAndContact() {
                                 id="green"
                                 src="images/colors/Green.webp"
                                 alt="green"
+                                onMouseEnter={hoverOnTheme}
+                                onMouseLeave={unHoverTheme}
+                                onClick={onclickChangeTheme}
                             />
                         </li>
                         <li className="themePreview">
@@ -43,6 +43,9 @@ export default function ThemesAndContact() {
                                 id="blue"
                                 src="images/colors/Solid_blue.svg.png"
                                 alt="blue"
+                                onMouseEnter={hoverOnTheme}
+                                onMouseLeave={unHoverTheme}
+                                onClick={onclickChangeTheme}
                             />
                         </li>
                         <li className="themePreview">
@@ -50,6 +53,9 @@ export default function ThemesAndContact() {
                                 id="yellow"
                                 src="images/colors/naples-yellow-painted-swatch.jpg"
                                 alt="yellow"
+                                onMouseEnter={hoverOnTheme}
+                                onMouseLeave={unHoverTheme}
+                                onClick={onclickChangeTheme}
                             />
                         </li>
                         <li className="themePreview">
@@ -57,6 +63,9 @@ export default function ThemesAndContact() {
                                 id="red"
                                 src="images/colors/red-color-solid-background-1920x1080.png"
                                 alt="red"
+                                onMouseEnter={hoverOnTheme}
+                                onMouseLeave={unHoverTheme}
+                                onClick={onclickChangeTheme}
                             />
                         </li>
                     </ul>
@@ -67,7 +76,7 @@ export default function ThemesAndContact() {
             </a>
         </div>
     );
-}
+};
 
 let themesShown = false;
 
@@ -83,71 +92,66 @@ function onclickShowThemes(e) {
 
 let defaultTheme = "#1e9bff";
 
-const chosenTheme = JSON.parse(localStorage.getItem('themes'))
-
-function setTheme() {
-
-    if(chosenTheme) {
-        defaultTheme = chosenTheme.theme
-
-        body.style.setProperty("--theme-color", chosenTheme.theme);
-        body.style.setProperty("--button-color", chosenTheme.buttonColor);
-        body.style.setProperty("--button-hover-color", chosenTheme.buttonHoverColor);
-        body.style.setProperty("--button-active-color", chosenTheme.buttonActiveColor);
-        homeNavIcon.src = chosenTheme.logo;
-    }
-}
-
-const themeLogos = {
-    red: "images/logoTred.png",
-    green: "images/logoTgreen.png",
-    blue: "images/logoTblue.png",
-    yellow: "images/logoTyellow.png",
+const allThemes = {
+    red: {
+        themeColor: "red",
+        buttonColor: "rgba(175, 0, 0, 1)",
+        buttonHoverColor: "rgba(175, 0, 0, 0.7)",
+        buttonActiveColor: "rgba(175, 0, 0, 0.4)",
+        logo: "images/logoTred.png",
+    },
+    green: {
+        themeColor: "green",
+        buttonColor: "rgba(11, 116, 1, 1)",
+        buttonHoverColor: "rgba(11, 116, 1, 0.7)",
+        buttonActiveColor: "rgba(11, 116, 1, 0.4)",
+        logo: "images/logoTgreen.png",
+    },
+    blue: {
+        themeColor: "#1e9bff",
+        buttonColor: "rgba(0, 136, 169, 1)",
+        buttonHoverColor: "rgba(0, 136, 169, 0.7)",
+        buttonActiveColor: "rgba(0, 136, 169, 0.4)",
+        logo: "images/logoTblue.png",
+    },
+    yellow: {
+        themeColor: "yellow",
+        buttonColor: "rgba(199, 186, 10, 1)",
+        buttonHoverColor: "rgba(199, 186, 10, 0.7)",
+        buttonActiveColor: "rgba(199, 186, 10, 0.4)",
+        logo: "images/logoTyellow.png",
+    },
 };
-
-const themeButtonColors = {
-    red: ["rgba(175, 0, 0, 1)", "rgba(175, 0, 0, 0.7)", "rgba(175, 0, 0, 0.4)"],
-    green: ["rgba(11, 116, 1, 1)", "rgba(11, 116, 1, 0.7)", "rgba(11, 116, 1, 0.4)"],
-    blue: ["rgba(0, 136, 169, 1)", "rgba(0, 136, 169, 0.7)", "rgba(0, 136, 169, 0.4)"],
-    yellow: ["rgba(199, 186, 10, 1)", "rgba(199, 186, 10, 0.7)", "rgba(199, 186, 10, 0.4)"],
-};
-
-const themeColors = {
-    red: "red",
-    green: "green",
-    blue: "#1e9bff",
-    yellow: "yellow",
-};
-
-// const body = document.querySelector('body')
 
 function hoverOnTheme(e) {
-    let changedShadow = document.querySelector(".colorsContainer");
-    changedShadow.style.setProperty("--theme-color", themeColors[e.target.id]);
+    const changedShadow = document.querySelector(".colorsContainer");
+    changedShadow.style.setProperty("--theme-color", allThemes[e.target.id].themeColor);
 }
 
 function unHoverTheme() {
-    let changedShadow = document.querySelector(".colorsContainer");
+    const changedShadow = document.querySelector(".colorsContainer");
     changedShadow.style.setProperty("--theme-color", defaultTheme);
 }
 
 function onclickChangeTheme(e) {
     const id = e.target.id;
-    let theme = themeColors[id];
-    defaultTheme = theme;
-    body.style.setProperty("--theme-color", defaultTheme);
-    body.style.setProperty("--button-color", themeButtonColors[id][0]);
-    body.style.setProperty("--button-hover-color", themeButtonColors[id][1]);
-    body.style.setProperty("--button-active-color", themeButtonColors[id][2]);
-    homeNavIcon.src = themeLogos[id];
+
+    const selectedTheme = allThemes[id].themeColor;
+    defaultTheme = selectedTheme;
 
     const themes = {
-        theme: defaultTheme,
-        buttonColor: themeButtonColors[id][0],
-        buttonHoverColor: themeButtonColors[id][1],
-        buttonActiveColor: themeButtonColors[id][2],
-        logo: themeLogos[id],
+        selectedTheme: defaultTheme,
+        buttonColor: allThemes[id].buttonColor,
+        buttonHoverColor: allThemes[id].buttonHoverColor,
+        buttonActiveColor: allThemes[id].buttonActiveColor,
+        logo: allThemes[id].logo,
     };
 
+    body.style.setProperty("--theme-color", themes.selectedTheme);
+    body.style.setProperty("--button-color", themes.buttonColor);
+    body.style.setProperty("--button-hover-color", themes.buttonHoverColor);
+    body.style.setProperty("--button-active-color", themes.buttonActiveColor);
+    homeNavIcon.src = themes.logo;
+
     localStorage.setItem('themes', JSON.stringify(themes))
-}
+};

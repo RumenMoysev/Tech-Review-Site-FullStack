@@ -46,7 +46,7 @@ header li:not(.themePreview), header a:not(.cta), header button {
     animation: drop 700ms ease;
 }
 
-#header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,7 +89,7 @@ header li:not(.themePreview), header a:not(.cta), header button {
     text-shadow: 0px 0px 5px;
 }
 
-#header button {
+header button {
     padding: 9px 25px;
     background-color: var(--button-color);
     border: none;
@@ -98,14 +98,14 @@ header li:not(.themePreview), header a:not(.cta), header button {
     transition: all 0.5s ease 0s;   
 }
 
-#header button:hover {
+header button:hover {
     background-color:var(--button-hover-color);
     font-size: 24px;
     padding:10px 28px;
     box-shadow: 0 0 20px var(--theme-color);
 }
 
-#header button:active {
+header button:active {
     background-color:var(--button-active-color);
 }
 
