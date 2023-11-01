@@ -11,13 +11,18 @@ export default function ThemesAndContact() {
         const chosenTheme = JSON.parse(localStorage.getItem("themes"));
         
         if(chosenTheme) {
-            defaultTheme = chosenTheme.selectedTheme
+            defaultTheme = chosenTheme.selectedTheme;
 
             body.style.setProperty("--theme-color", chosenTheme.selectedTheme);
             body.style.setProperty("--button-color", chosenTheme.buttonColor);
             body.style.setProperty("--button-hover-color", chosenTheme.buttonHoverColor);
             body.style.setProperty("--button-active-color", chosenTheme.buttonActiveColor);
             homeNavIcon.src = chosenTheme.logo;
+        } else {
+            body.style.setProperty("--theme-color", allThemes.blue.themeColor);
+            body.style.setProperty("--button-color", allThemes.blue.buttonColor);
+            body.style.setProperty("--button-hover-color", allThemes.blue.buttonHoverColor);
+            body.style.setProperty("--button-active-color", allThemes.blue.buttonActiveColor);
         }
     }
 
@@ -88,7 +93,7 @@ function onclickShowThemes(e) {
         e.target.parentElement.children[1].style.display = "none";
         themesShown = false;
     }
-}
+};
 
 let defaultTheme = "#1e9bff";
 
@@ -126,12 +131,12 @@ const allThemes = {
 function hoverOnTheme(e) {
     const changedShadow = document.querySelector(".colorsContainer");
     changedShadow.style.setProperty("--theme-color", allThemes[e.target.id].themeColor);
-}
+};
 
 function unHoverTheme() {
     const changedShadow = document.querySelector(".colorsContainer");
     changedShadow.style.setProperty("--theme-color", defaultTheme);
-}
+};
 
 function onclickChangeTheme(e) {
     const id = e.target.id;
@@ -153,5 +158,5 @@ function onclickChangeTheme(e) {
     body.style.setProperty("--button-active-color", themes.buttonActiveColor);
     homeNavIcon.src = themes.logo;
 
-    localStorage.setItem('themes', JSON.stringify(themes))
+    localStorage.setItem('themes', JSON.stringify(themes));
 };
