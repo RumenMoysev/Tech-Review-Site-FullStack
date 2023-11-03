@@ -7,7 +7,7 @@ import { useEffect } from "react"
 
 import Articles from "./components/Articles.jsx"
 import Details from "./components/Details.jsx"
-import Header from "./components/Header.jsx"
+import Header from "./components/Header/Header.jsx"
 import Home from "./components/Home.jsx"
 import Login from "./components/Login.jsx"
 import Register from "./components/Register.jsx"

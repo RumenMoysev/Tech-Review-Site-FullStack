@@ -1,14 +1,14 @@
 import { useEffect } from "react"
-import Logo from "./elements/Logo.jsx";
-import ThemesAndContact from "./elements/ThemesAndContact.jsx";
+import Logo from "./HeaderComponents/Logo.jsx";
+import ThemesAndContact from "./HeaderComponents/ThemesAndContact.jsx";
+import "./Header.css"
 
 export default function Header() {
-    
-    
-    
     return (
         <header id="header">
+
             <Logo></Logo>
+
             <nav id="navBar">
                 <ul className="nav_links">
                     <div id="userNavLinks">
@@ -24,7 +24,7 @@ export default function Header() {
             </nav>
 
             <ThemesAndContact></ThemesAndContact>
+
         </header>
     )
 }
-

@@ -120,7 +120,7 @@ header button:active {
 .colorsContainer {
     background-color: #19191bfa;
     position: absolute;
-    display: none;
+    display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     list-style: none;
