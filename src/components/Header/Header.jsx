@@ -23,7 +23,7 @@ export default function Header({isAuth, setIsAuth}) {
         <header id="header">
             <Logo></Logo>
 
-            <NavLinks isAuth={isAuth}></NavLinks>
+            <NavLinks isAuth={isAuth} setIsAuth={setIsAuth}></NavLinks>
 
             <ThemesAndContact></ThemesAndContact>
         </header>

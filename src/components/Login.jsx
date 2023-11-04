@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Login() {
+export default function Login({setIsAuth}) {
 
     const [error, setError] = useState(undefined)
 
@@ -31,6 +31,7 @@ export default function Login() {
         sessionStorage.setItem('email', json.email)
         sessionStorage.setItem('username', json.username)
         sessionStorage.setItem('userId', json.userId)
+        setIsAuth(true)
     }
 
     return (

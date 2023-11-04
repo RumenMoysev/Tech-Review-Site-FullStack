@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function NavLinks({isAuth}) {
+export default function NavLinks({isAuth, setIsAuth}) {
     const [username, setUsername] = useState('guest')
 
     useEffect(() => {
@@ -11,7 +11,16 @@ export default function NavLinks({isAuth}) {
         } else {
             setUsername('guest')
         }
-    })
+    }, [isAuth])
+
+    function logoutHandler() {
+        sessionStorage.removeItem('auth')
+        sessionStorage.removeItem('email')
+        sessionStorage.removeItem('username')
+        sessionStorage.removeItem('userId')
+
+        setIsAuth(false)
+    }
 
     return (
         <nav id="navBar">
@@ -21,7 +30,7 @@ export default function NavLinks({isAuth}) {
                     <div id="userNavLinks">
                         <li><a href="/reviews">Reviews</a></li>
                         <li className="welcome"><p>Welcome, {username}</p></li>
-                        <li><a href="javascript:void(0)">Logout</a></li>
+                        <li><a href="javascript:void(0)" onClick={logoutHandler}>Logout</a></li>
                     </div>
                 :
                     <div id="guestNavLinks">
