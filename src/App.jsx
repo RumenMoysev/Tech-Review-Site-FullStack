@@ -1,9 +1,4 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import Articles from "./components/Articles.jsx"
 import Details from "./components/Details.jsx"
@@ -13,6 +8,8 @@ import Login from "./components/Login.jsx"
 import Register from "./components/Register.jsx"
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false)
+
   useEffect(() => {
     const options = {
         rootMargin: "-35% 0px -8% 0px",
@@ -35,10 +32,10 @@ function App() {
 
   return (
     <>
-        <Header></Header>
+        <Header isAuth={isAuth} setIsAuth={setIsAuth}></Header>
         <Home></Home>
         <Login></Login>
-        <Register></Register>
+        <Register setIsAuth={setIsAuth}></Register>
         <Articles></Articles>
         <Details></Details>
     </>

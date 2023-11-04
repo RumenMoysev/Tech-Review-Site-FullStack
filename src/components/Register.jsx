@@ -4,8 +4,7 @@ const emailLength = 7
 const usernameLength = 5
 const passwordLength = 5
 
-export default function Register() {
-
+export default function Register({setIsAuth}) {
     const [error, setError] = useState(undefined)
 
     async function registerHandler(e) {
@@ -49,6 +48,7 @@ export default function Register() {
         sessionStorage.setItem('email', json.email)
         sessionStorage.setItem('username', json.username)
         sessionStorage.setItem('userId', json.userId)
+        setIsAuth(true)
     }
 
     return (
