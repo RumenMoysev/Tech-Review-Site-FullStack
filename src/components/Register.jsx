@@ -28,6 +28,8 @@ export default function Register() {
             return setError(`Password should be at least ${passwordLength} characters long!`)
         } else if(userData.password !== userData.repeatPassword) {
             return setError("Passwords do not match!")
+        } else {
+            setError(undefined)
         }
 
         const settings = {
@@ -36,7 +38,17 @@ export default function Register() {
             body: JSON.stringify(userData)
         }
 
-        await fetch('http://localhost:3030/users/register', settings)
+        const response = await fetch('http://localhost:3030/users/register', settings)
+        const json = await response.json()
+
+        if(!response.ok) {
+            return setError(json.message)
+        }
+        
+        sessionStorage.setItem('auth', json.authToken)
+        sessionStorage.setItem('email', json.email)
+        sessionStorage.setItem('username', json.username)
+        sessionStorage.setItem('userId', json.userId)
     }
 
     return (
