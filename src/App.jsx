@@ -32,12 +32,12 @@ function App() {
 
   return (
     <>
-        <Header isAuth={isAuth} setIsAuth={setIsAuth}></Header>
-        <Home></Home>
-        <Login></Login>
-        <Register setIsAuth={setIsAuth}></Register>
-        <Articles></Articles>
-        <Details></Details>
+      <Header isAuth={isAuth} setIsAuth={setIsAuth}></Header>
+      <Home></Home>
+      <Login setIsAuth={setIsAuth}></Login>
+      <Register setIsAuth={setIsAuth}></Register>
+      <Articles></Articles>
+      <Details></Details>
     </>
   )
 }
