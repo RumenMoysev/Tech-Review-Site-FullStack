@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { loginService } from "../services/userService.js";
 
 export default function Login({setIsAuth}) {
 
@@ -9,22 +10,13 @@ export default function Login({setIsAuth}) {
 
         const formData = new FormData(e.target.parentElement)
 
-        const userData = {
-            email: formData.get('email'),
-            password: formData.get('password')
-        }
-
-        const settings = {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify(userData)
-        }
-
-        const response = await fetch('http://localhost:3030/users/login', settings)
+        const response = await loginService(formData)
         const json = await response.json()
 
         if(!response.ok) {
             return setError(json.message)
+        } else {
+            setError(undefined)
         }
 
         sessionStorage.setItem('auth', json.authToken)

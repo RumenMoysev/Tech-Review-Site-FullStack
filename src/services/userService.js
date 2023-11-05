@@ -31,4 +31,19 @@ export function registerService(formData, setError) {
     }
 
     return fetch(`${baseUrl}/register`, settings)
-}   
+}
+
+export function loginService(formData) {
+    const userData = {
+        email: formData.get('email'),
+        password: formData.get('password')
+    }
+
+    const settings = {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(userData)
+    }
+
+    return fetch(`${baseUrl}/login`, settings)
+}
