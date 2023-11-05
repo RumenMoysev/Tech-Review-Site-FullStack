@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { removeUserData } from "../../../services/sessionStorageService.js"
+import { getUsername, removeUserData } from "../../../services/sessionStorageService.js"
 
 export default function NavLinks({isAuth, setIsAuth}) {
     const [username, setUsername] = useState('guest')
 
     useEffect(() => {
-        const username = sessionStorage.getItem('username')
+        const username = getUsername()
 
         if(username) {
             setUsername(username)
