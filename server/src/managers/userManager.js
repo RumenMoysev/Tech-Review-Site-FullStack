@@ -37,14 +37,7 @@ exports.register = async (userData, rePassword) => {
 
         const user = await User.create(userData)
 
-        const payload = {
-            _id: user._id,
-            email: user.email,
-            username: user.username
-        }
-
-        const token = await jwt.sign(payload, SECRET, {expiresIn: '2d'})
-        return [payload, token]
+        return getAuthResult(user)
     } catch (error) {
         throw new Error(error.message)
     }
@@ -63,19 +56,23 @@ exports.login = async (userData) => {
                 throw new Error('Email or password do not match!')
             }
 
-            const payload = {
-                _id: user._id,
-                email: user.email,
-                username: user.username
-            }
-
-            const token = await jwt.sign(payload, SECRET)
-
-            return [payload, token]
+            return getAuthResult(user)
         } else {
             throw new Error('Email or password do not match!')
         }
     } catch (error) {
         throw new Error(error.message)
     }
+}
+
+async function getAuthResult(user) {
+    const payload = {
+        _id: user._id,
+        email: user.email,
+        username: user.username
+    }
+
+    const token = await jwt.sign(payload, SECRET)
+
+    return [payload, token]
 }
