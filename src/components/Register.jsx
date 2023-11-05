@@ -1,8 +1,5 @@
 import { useState } from "react"
-
-const emailLength = 7
-const usernameLength = 5
-const passwordLength = 5
+import { registerService } from "../services/userService.js"
 
 export default function Register({setIsAuth}) {
     const [error, setError] = useState(undefined)
@@ -12,32 +9,8 @@ export default function Register({setIsAuth}) {
 
         const formData = new FormData(e.target.parentElement)
 
-        const userData = {
-            email: formData.get('email'),
-            username: formData.get('username'),
-            password: formData.get('password'),
-            repeatPassword: formData.get('repeatPassword')
-        }
-
-        if(userData.email.length < emailLength) {
-            return setError(`Email should be at least ${emailLength} characters long!`)
-        } else if(userData.username.length < usernameLength) {
-            return setError(`Username should be at least ${usernameLength} characters long!`)
-        } else if(userData.password.length < passwordLength) {
-            return setError(`Password should be at least ${passwordLength} characters long!`)
-        } else if(userData.password !== userData.repeatPassword) {
-            return setError("Passwords do not match!")
-        } else {
-            setError(undefined)
-        }
-
-        const settings = {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify(userData)
-        }
-
-        const response = await fetch('http://localhost:3030/users/register', settings)
+        const response = await registerService(formData, setError)
+        
         const json = await response.json()
 
         if(!response.ok) {
