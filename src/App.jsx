@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import Articles from "./components/Articles.jsx"
+import Articles from "./components/Articles/Articles.jsx"
 import Details from "./components/Details.jsx"
 import Header from "./components/Header/Header.jsx"
 import Home from "./components/Home.jsx"

@@ -1,6 +1,8 @@
+import './Articles.css'
+
 export default function Articles() {
     return (
-        <section id="articles" className="hidden">
+        <section id="articles" className="articles hidden">
             <article className="hidden">
                 <h2>Should you buy the Galaxy S23 Ultra?</h2>
                 <div className="pImgContainer">
@@ -67,6 +69,7 @@ export default function Articles() {
                     alt="picture"
                 />
             </article>
+            <h2>No reviews yet!</h2>
         </section>
     );
 }
