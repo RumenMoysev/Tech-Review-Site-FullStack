@@ -69,7 +69,7 @@ export default function Articles() {
                     alt="picture"
                 />
             </article>
-            <h2>No reviews yet!</h2>
+            <h2 className='hidden'>No reviews yet!</h2>
         </section>
     );
 }
