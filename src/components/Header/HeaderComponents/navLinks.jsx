@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { removeUserData } from "../../../services/sessionStorageService.js"
 
 export default function NavLinks({isAuth, setIsAuth}) {
     const [username, setUsername] = useState('guest')
@@ -16,10 +17,7 @@ export default function NavLinks({isAuth, setIsAuth}) {
     function logoutHandler(e) {
         e.preventDefault()
         
-        sessionStorage.removeItem('auth')
-        sessionStorage.removeItem('email')
-        sessionStorage.removeItem('username')
-        sessionStorage.removeItem('userId')
+        removeUserData()
 
         setIsAuth(false)
     }
