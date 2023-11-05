@@ -11,3 +11,7 @@ export function removeUserData() {
     sessionStorage.removeItem('username')
     sessionStorage.removeItem('userId')
 }
+
+export function getUsername() {
+    return sessionStorage.getItem('username')
+}
