@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { loginService } from "../services/userService.js";
+import { saveUserData } from "../services/sessionStorageService.js";
 
 export default function Login({setIsAuth}) {
 
@@ -19,10 +20,7 @@ export default function Login({setIsAuth}) {
             setError(undefined)
         }
 
-        sessionStorage.setItem('auth', json.authToken)
-        sessionStorage.setItem('email', json.email)
-        sessionStorage.setItem('username', json.username)
-        sessionStorage.setItem('userId', json.userId)
+        saveUserData(json)
         setIsAuth(true)
     }
 
