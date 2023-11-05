@@ -14,9 +14,10 @@ export default function NavLinks({isAuth, setIsAuth}) {
         }
     }, [isAuth])
 
-    function logoutHandler(e) {
+    async function logoutHandler(e) {
         e.preventDefault()
         
+        await fetch('http://localhost:3030/users/logout')
         removeUserData()
 
         setIsAuth(false)
