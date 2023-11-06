@@ -5,17 +5,13 @@
 		opacity: 0;
 		transform: translatex(-400px);
 	}
-    /* 50% {
-        opacity: 0.5;
-        transform: translatex(150px);
-    } */
 	100% {
 		opacity: 1;
 		transform: translateY(0px);
 	}
 }
 
-#loginPage {
+.loginPage {
     display: flex;
     justify-content: center;
     margin-top: 200px;
@@ -60,7 +56,7 @@
     text-shadow: 3px 3px 8px red;
     cursor: default;
 }
-#loginForm{
+.loginForm{
     padding: 8% 1rem 3% 1rem;
     display: flex;
     justify-content: center;
@@ -78,7 +74,7 @@
     outline: none;
 }
 
-.form-container #emailInput {
+.form-container .emailInput {
     background:url(../images/mail-outline.svg); 
     background-repeat: no-repeat; 
     background-size: 28px;
@@ -86,7 +82,7 @@
     background-color: white;
 }
 
-.form-container #passwordInput, .form-container #repeatPassword {
+.form-container .passwordInput, .form-container .repeatPassword {
     background: url(../images/lock-closed-outline.svg);
     background-repeat: no-repeat;
     background-size: 28px;
@@ -94,7 +90,7 @@
     background-color: white;
 }
 
-.form-container #usernameInput {
+.form-container .usernameInput {
     background: url(../images/person-outline.svg);
     background-repeat: no-repeat;
     background-size: 28px;
@@ -163,20 +159,7 @@
     cursor: pointer;
 }
 
-#logRegCheckbox:hover {
-    transition: all 0.4s ease 0s;
-    box-shadow: 0px 0px 20px var(--theme-color);
-    cursor: pointer;
-}
-
-#logRegCheckbox1 {
-    width: 14px;
-    height: 14px;
-    margin-left: 4px;
-    margin-top: 3px;
-}
-
-#logRegCheckbox1:hover {
+.logRegCheckbox:hover {
     transition: all 0.4s ease 0s;
     box-shadow: 0px 0px 20px var(--theme-color);
     cursor: pointer;
