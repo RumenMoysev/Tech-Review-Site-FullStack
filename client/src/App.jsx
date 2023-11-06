@@ -4,8 +4,9 @@ import Articles from "./components/Articles/Articles.jsx"
 import Details from "./components/Details.jsx"
 import Header from "./components/Header/Header.jsx"
 import Home from "./components/Home.jsx"
-import Login from "./components/Login.jsx"
-import Register from "./components/Register.jsx"
+import Login from "./components/Login/Login.jsx"
+import Register from "./components/Register/Register.jsx"
+import Edit from "./components/Edit/Edit.jsx"
 
 function App() {
   const [isAuth, setIsAuth] = useState(false)
@@ -38,6 +39,7 @@ function App() {
       <Register setIsAuth={setIsAuth}></Register>
       <Articles></Articles>
       <Details></Details>
+      <Edit></Edit>
     </>
   )
 }
