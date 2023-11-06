@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { loginService } from "../services/userService.js";
-import { saveUserData } from "../services/sessionStorageService.js";
+import { loginService } from "../../api/userService.js";
+import { saveUserData } from "../../api/sessionStorageService.js";
+
+import "./Login.css"
 
 export default function Login({setIsAuth}) {
 
@@ -25,17 +27,17 @@ export default function Login({setIsAuth}) {
     }
 
     return (
-        <section id="loginPage" className="hidden">
+        <section id="loginPage" className="hidden loginPage">
             <div className="form-container">
                 <div className="formHeaders">
                     <h2>Login</h2>
                     {error && <h4>{error}</h4>}
                 </div>
-                <form id="loginForm">
+                <form id="loginForm" className="loginForm">
                     <label htmlFor="emailInput">Email</label>
                     <input
                         id="emailInput"
-                        className="good"
+                        className="good emailInput"
                         placeholder="Example: monkey@banana.com"
                         name="email"
                         type="email"
@@ -44,7 +46,7 @@ export default function Login({setIsAuth}) {
                     <label htmlFor="passwordInput">Password</label>
                     <input
                         id="passwordInput"
-                        className="good"
+                        className="good passwordInput"
                         placeholder="Example: 123abc"
                         name="password"
                         type="password"
@@ -53,10 +55,10 @@ export default function Login({setIsAuth}) {
                     <div className="rememberMe-container">
                         <label
                             htmlFor="logRegCheckbox"
-                            className="logRegCheckbox">
+                            className="logRegCheckbox1">
                             Remember me?
                         </label>
-                        <input type="checkbox" id="logRegCheckbox" />
+                        <input type="checkbox" id="logRegCheckbox" className="logRegCheckbox"/>
                     </div>
                     <button type="submit" id="buttons" onClick={loginHandler}>
                         Login
