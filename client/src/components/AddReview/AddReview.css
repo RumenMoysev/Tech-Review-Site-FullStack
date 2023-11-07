@@ -148,14 +148,14 @@
 
 .addForm button {
     height: 35px;
-    width:24%;
+    width:21%;
     border-radius: 0.8rem;
     font-size: 17px;
 }
 
 .addForm button:hover {
     font-size: 20px;
-    width: 29%;
+    width: 26%;
     height: 40px;
     border-radius: 0.8rem;
 }
