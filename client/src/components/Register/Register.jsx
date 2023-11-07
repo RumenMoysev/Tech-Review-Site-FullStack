@@ -4,13 +4,23 @@ import { saveUserData } from "../../api/sessionStorageService.js"
 
 import "./Register.css"
 
+const initialRegisterState = {
+    email: '',
+    username: '',
+    password: '',
+    repeatPassword: ''
+}
+
+//MOVE HANDLER TO FORM AND USE e.currentTarget
+//USE ONBLUR EVENT FOR WARNING
 export default function Register({setIsAuth}) {
+    const [registerState, setRegisterState] = useState(initialRegisterState)
     const [error, setError] = useState(undefined)
 
     async function registerHandler(e) {
         e.preventDefault()
 
-        const formData = new FormData(e.target.parentElement)
+        const formData = registerState
 
         const response = await registerService(formData, setError)
         const json = await response.json()
@@ -25,6 +35,16 @@ export default function Register({setIsAuth}) {
         setIsAuth(true)
     }
 
+    function registerValueHandler(e) {
+        const name = e.target.name
+        const value = e.target.value
+
+        setRegisterState(state => ({
+            ...state,
+            [name]: value
+        }))
+    }
+
     return (
         <section id="registerPage" className="hidden registerPage">
             <div className="form-container">
@@ -32,7 +52,7 @@ export default function Register({setIsAuth}) {
                     <h2>Register</h2>
                     {error && <h4>{error}</h4>}
                 </div>
-                <form id="registerForm" className="registerForm">
+                <form id="registerForm" className="registerForm" onSubmit={registerHandler}>
                     <label htmlFor="emailInput">Email</label>
                     <input
                         id="emailInput"
@@ -40,6 +60,8 @@ export default function Register({setIsAuth}) {
                         placeholder="Example: monkey@banana.com"
                         name="email"
                         type="email"
+                        value={registerState.email}
+                        onChange={registerValueHandler}
                         required
                     />
                     <label htmlFor="usernameInput">Username</label>
@@ -48,6 +70,8 @@ export default function Register({setIsAuth}) {
                         className="good usernameInput"
                         placeholder="Example: KnightMaster4"
                         name="username"
+                        value={registerState.username}
+                        onChange={registerValueHandler}
                         required
                     />
                     <label htmlFor="passwordInput">Password</label>
@@ -57,6 +81,8 @@ export default function Register({setIsAuth}) {
                         placeholder="Example: 123abc"
                         name="password"
                         type="password"
+                        value={registerState.password}
+                        onChange={registerValueHandler}
                         required
                     />
                     <label htmlFor="repeatPassword">Repeat Password</label>
@@ -66,6 +92,8 @@ export default function Register({setIsAuth}) {
                         placeholder="Repeat Your Password"
                         name="repeatPassword"
                         type="password"
+                        value={registerState.repeatPassword}
+                        onChange={registerValueHandler}
                         required
                     />
                     <div className="rememberMe-container">
@@ -76,7 +104,7 @@ export default function Register({setIsAuth}) {
                         </label>
                         <input type="checkbox" id="logRegCheckbox" className="logRegCheckbox"/>
                     </div>
-                    <button type="submit" onClick={registerHandler} >Register</button>
+                    <button type="submit">Register</button>
                 </form>
             </div>
         </section>

@@ -92,8 +92,8 @@
     font-size: 16px;
     display: block;
     margin-top: 1%;
-    height: 33px;
-    width:17%;
+    /* height: 33px;
+    width:17%; */
     border-radius: 0.7rem;
     border: none;
     color:#edf0f1;
@@ -104,8 +104,8 @@
 .form-container button:hover{
     background-color:var(--button-hover-color);
     font-size: 20px;
-    width: 20%;
-    height: 38px;
+    /* width: 20%;
+    height: 38px; */
     border-radius: 0.8rem;
     letter-spacing: 0.05em;
     box-shadow: 0 0 20px var(--theme-color);
