@@ -6,7 +6,7 @@ import Header from "./components/Header/Header.jsx"
 import Home from "./components/Home/Home.jsx"
 import Login from "./components/Login/Login.jsx"
 import Register from "./components/Register/Register.jsx"
-import Edit from "./components/Edit/Edit.jsx"
+import Edit from "./components/EditReview/EditReview.jsx"
 import AddReview from "./components/AddReview/AddReview.jsx"
 
 function App() {
