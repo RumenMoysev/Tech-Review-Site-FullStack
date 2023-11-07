@@ -63,37 +63,45 @@
     outline: none;
 }
 
-/* .form-container .emailInput {
-    background:url(../images/mail-outline.svg); 
+.form-container .titleInput {
+    background:url(../images/information-outline.svg); 
     background-repeat: no-repeat; 
     background-size: 28px;
     background-position: 98.5%; 
     background-color: white;
 }
 
-.form-container .passwordInput, .form-container .repeatPassword {
-    background: url(../images/lock-closed-outline.svg);
+.form-container .imageInput {
+    background: url(../images/image-outline.svg);
     background-repeat: no-repeat;
     background-size: 28px;
     background-position: 98.5%;
     background-color: white;
 }
 
-.form-container .usernameInput {
-    background: url(../images/person-outline.svg);
+.form-container .summaryInput {
+    background: url(../images/summary.svg);
     background-repeat: no-repeat;
     background-size: 28px;
-    background-position: 98.4%;
+    background-position: 98.5%;
     background-color: white;
-} */
+}
+
+.form-container .detailsInput {
+    background: url(../images/details.svg);
+    background-repeat: no-repeat;
+    background-size: 28px;
+    background-position: 98.5%;
+    background-color: white;
+}
 
 .form-container button {
     font-family: "Montserrat", sans-serif;;
     font-size: 16px;
     display: block;
     margin-top: 1%;
-    height: 33px;
-    width:17%;
+    /* height: 33px;
+    width:17%; */
     border-radius: 0.7rem;
     border: none;
     color:#edf0f1;
@@ -104,8 +112,8 @@
 .form-container button:hover{
     background-color:var(--button-hover-color);
     font-size: 20px;
-    width: 20%;
-    height: 38px;
+    /* width: 20%;
+    height: 38px; */
     border-radius: 0.8rem;
     letter-spacing: 0.05em;
     box-shadow: 0 0 20px var(--theme-color);
@@ -141,7 +149,7 @@
 .editForm button {
     height: 35px;
     width:24%;
-    border-radius: 0.7rem;
+    border-radius: 0.8rem;
     font-size: 17px;
 }
 
