@@ -1,3 +1,5 @@
+import './Details.css'
+
 export default function Details() {
     return (
         <section id="details" className="hidden">
