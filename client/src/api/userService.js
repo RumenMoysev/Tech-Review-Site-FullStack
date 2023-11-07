@@ -4,14 +4,7 @@ const emailLength = 7
 const usernameLength = 5
 const passwordLength = 5
 
-export function registerService(formData, setError) {
-    const userData = {
-        email: formData.get('email'),
-        username: formData.get('username'),
-        password: formData.get('password'),
-        repeatPassword: formData.get('repeatPassword')
-    }
-
+export function registerService(userData, setError) {
     if (userData.email.length < emailLength) {
         return setError(`Email should be at least ${emailLength} characters long!`)
     } else if (userData.username.length < usernameLength) {
@@ -33,12 +26,7 @@ export function registerService(formData, setError) {
     return fetch(`${baseUrl}/register`, settings)
 }
 
-export function loginService(formData) {
-    const userData = {
-        email: formData.get('email'),
-        password: formData.get('password')
-    }
-
+export function loginService(userData) {
     const settings = {
         method: "POST",
         headers: { "Content-type": "application/json" },
