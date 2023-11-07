@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import './Edit.css'
+import './EditReview.css'
 
 const initialEditState = {
     title: '',
