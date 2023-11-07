@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 
 import Articles from "./components/Articles/Articles.jsx"
-import Details from "./components/Details.jsx"
+import Details from "./components/Details/Details.jsx"
 import Header from "./components/Header/Header.jsx"
-import Home from "./components/Home.jsx"
+import Home from "./components/Home/Home.jsx"
 import Login from "./components/Login/Login.jsx"
 import Register from "./components/Register/Register.jsx"
 import Edit from "./components/Edit/Edit.jsx"
+import AddReview from "./components/AddReview/AddReview.jsx"
 
 function App() {
   const [isAuth, setIsAuth] = useState(false)
@@ -39,6 +40,7 @@ function App() {
       <Register setIsAuth={setIsAuth}></Register>
       <Articles></Articles>
       <Details></Details>
+      <AddReview></AddReview>
       <Edit></Edit>
     </>
   )
