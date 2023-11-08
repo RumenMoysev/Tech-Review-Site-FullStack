@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { editReview } from '../../api/reviewsService.js';
 
 import './EditReview.css'
 
-const initialEditState = {
+const editFormState = {
     title: '',
     imageUrl: '',
     summary: '',
@@ -10,21 +11,27 @@ const initialEditState = {
 }
 
 export default function Edit() {
-    const [editState, setEditState] = useState(initialEditState)
+    const [editFormValue, setEditFormValue] = useState(editFormState)
     const [error, setError] = useState(undefined)
 
-    function editSubmitHandler(e) {
+    async function editSubmitHandler(e) {
         e.preventDefault()
 
-        const reviewData = editState
-        console.log(reviewData)
+        const response = await addReview(addFormValue, setError)
+        const json = await response.json()
+
+        if (!response.ok) {
+            setError(json.message)
+        } else {
+            setError(undefined)
+        }
     }
 
     function editValueHandler(e) {
         const name = e.target.name
         const value = e.target.value
 
-        setEditState(state => ({
+        setEditFormValue(state => ({
             ...state,
             [name]: value
         })) 
@@ -35,7 +42,7 @@ export default function Edit() {
             <div className="form-container">
                 <div className="formHeaders">
                     <h2>Edit</h2>
-                    {/* {error && <h4>{error}</h4>} */}
+                    {error && <h4>{error}</h4>}
                 </div>
                 <form id="editForm" className="editForm" onSubmit={editSubmitHandler}>
                     <label htmlFor="emailInput">Title</label>
@@ -45,7 +52,7 @@ export default function Edit() {
                         placeholder="Example: S23 Ultra vs 15 Pro Max"
                         name="title"
                         type="text"
-                        value={editState.title}
+                        value={editFormValue.title}
                         onChange={editValueHandler}
                         required
                     />
@@ -55,7 +62,7 @@ export default function Edit() {
                         className="good imageInput"
                         placeholder="Example: https://someLink/image.jpg"
                         name="imageUrl"
-                        value={editState.imageUrl}
+                        value={editFormValue.imageUrl}
                         onChange={editValueHandler}
                         required
                     />
@@ -66,7 +73,7 @@ export default function Edit() {
                         placeholder="Example: 123abc"
                         name="summary"
                         type="text"
-                        value={editState.summary}
+                        value={editFormValue.summary}
                         onChange={editValueHandler}
                         required
                     />
@@ -77,7 +84,7 @@ export default function Edit() {
                         placeholder="Details"
                         name="details"
                         type="text"
-                        value={editState.details}
+                        value={editFormValue.details}
                         onChange={editValueHandler}
                         required
                     />
