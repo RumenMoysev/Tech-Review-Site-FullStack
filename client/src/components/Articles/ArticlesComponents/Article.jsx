@@ -1,15 +1,16 @@
-export default function Article({_id, title, imageUrl, summary}) {
+export default function Article(reviewData) {
+
     return (
-        <article className="hidden">
-            <h2>{title}</h2>
+        <article className="">
+            <h2>{reviewData.article.title}</h2>
             <div className="pImgContainer">
-                <p>{summary}</p>
+                <p>{reviewData.article.summary}</p>
                 <button>
-                    <a href={`/details/${_id}`}>Details</a>
+                    <a href={`/details/${reviewData.article._id}`}>Details</a>
                 </button>
             </div>
             <img
-                src={imageUrl}
+                src={reviewData.article.imageUrl}
                 alt="picture"
             />
         </article>
