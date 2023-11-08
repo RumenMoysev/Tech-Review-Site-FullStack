@@ -25,15 +25,21 @@ exports.getAllWithoutDescription = () => Review.find({}, { title: 1, imageUrl: 1
 
 exports.getLast2 = async () => Review.find({}, { title: 1, imageUrl: 1, summary: 1 }).sort({$natural: -1}).limit(2)
 
-
-    return last2
-}
-
-exports.create = (reviewData) => {
+exports.createReview = (reviewData) => {
     try {
         validate(reviewData)
 
         return Review.create(reviewData)
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+exports.updateReview = (reviewData, reviewId) => {
+    try {
+        validate(reviewData)
+
+        return Review.findByIdAndUpdate(reviewId, reviewData)
     } catch (error) {
         throw new Error(error.message)
     }
