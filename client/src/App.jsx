@@ -23,7 +23,7 @@ function App() {
             if (el.isIntersecting) {
                 el.target.classList.add("show");
             } else {
-                el.target.classList.remove('show')
+                el.target.classList.remove('show');
             }
         });
     }, options);
