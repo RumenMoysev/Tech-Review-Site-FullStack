@@ -21,6 +21,7 @@ function validate(reviewData) {
 
 exports.getAll = () => Review.find()
 
+exports.getAllWithoutDescription = () => Review.find({}, { title: 1, imageUrl: 1, summary: 1})
 
 exports.getLast2 = async () => Review.find({}, { title: 1, imageUrl: 1, summary: 1 }).sort({$natural: -1}).limit(2)
 
