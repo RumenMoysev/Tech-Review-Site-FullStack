@@ -21,14 +21,9 @@ function validate(reviewData) {
 
 exports.getAll = () => Review.find()
 
-exports.getLast2 = () => {
-    const reviews = Review.find()
 
-    const last2 = []
+exports.getLast2 = async () => Review.find({}, { title: 1, imageUrl: 1, summary: 1 }).sort({$natural: -1}).limit(2)
 
-    for(let i = review.length; i > reviews.length-2; i--) {
-        last2.push(reviews[i])
-    }
 
     return last2
 }
