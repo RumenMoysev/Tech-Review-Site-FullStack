@@ -17,13 +17,17 @@ export default function AddReview() {
     async function addFormHandler(e) {
         e.preventDefault()
         
-        const response = await addReview(addFormValue, setError)
-        const json = await response.json()
+        let response = addReview(addFormValue, setError)
 
-        if(!response.ok) {
-            setError(json.message)
-        } else {
-            setError(undefined)
+        if(response instanceof Promise) {
+            response = await response
+            const json = await response.json()
+
+            if (!response.ok) {
+                setError(json.message)
+            } else {
+                setError(undefined)
+            }
         }
     }
 
