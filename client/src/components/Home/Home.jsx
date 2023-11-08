@@ -1,6 +1,21 @@
+import { useEffect, useState } from 'react';
+
 import './Home.css'
+import ReviewCard from './HomeComponents/ReviewCard.jsx';
 
 export default function Home() {
+    const [last2Reviews, setLast2Reviews] = useState(undefined)
+
+    useEffect(() => {
+        fetch('http://localhost:3030/data/reviews/last2')
+        .then(x => x.json())
+        .then(reviews => {
+            if(reviews.length > 0) {
+                setLast2Reviews(reviews)
+            }
+        })
+    }, [])
+
     return (
         <section id="homePage">
             <div className="row">
@@ -12,32 +27,15 @@ export default function Home() {
                     </p>
                     <button>Reviews</button>
                 </div>
-                <div className="col notTouching">
-                    <div
-                        className="card hidden"
-                        style={{
-                            backgroundImage:
-                                "url(https://images.samsung.com/is/image/samsung/p6pim/uk/feature/164370272/uk-feature-galaxy-s-535141640?$FB_TYPE_I_JPG$)",
-                        }}>
-                        <h4>S23 Ultra Review</h4>
-                        <p>
-                            In this article we will look at some categories and
-                            see if the Galaxy S23 Ultra is worth buying.
-                        </p>
-                    </div>
-                    <div
-                        className="card hidden"
-                        style={{
-                            backgroundImage:
-                                "url(https://www.digitaltrends.com/wp-content/uploads/2023/09/apple-iphone-15-pro-max-vs-samsung-galaxy-s23-ultra.jpg?fit=720%2C479&p=1)",
-                        }}>
-                        <h4>S23 Ultra Review</h4>
-                        <p>
-                            In this article we will look at some categories and
-                            see if the Galaxy S23 Ultra is worth buying.
-                        </p>
-                    </div>
-                    <h2>No reviews yet!</h2>
+                <div className="col notTouching ">
+                    {last2Reviews
+                        ?
+                            last2Reviews.map(review => (
+                                <ReviewCard key={review._id} reviewData={review}/>
+                            ))
+                        :   
+                            <h2 className='hidden'>No reviews yet!</h2>
+                    }
                 </div>
             </div>
         </section>
