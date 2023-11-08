@@ -34,4 +34,28 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.put('/:reviewId', async (req, res) => {
+    const reviewData = {
+        title: req.body.title,
+        imageUrl: req.body.imageUrl,
+        summary: req.body.summary,
+        description: req.body.description
+    }
+    const reviewId = req.params.reviewId
+
+    const userId = req.user._id
+
+    //Valide owner
+
+    try {
+        const updatedReview = await reviewManager.updateReview(reviewData, reviewId)
+
+        res.status(201).json(updatedReview)
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
 module.exports = router
