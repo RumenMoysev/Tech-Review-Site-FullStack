@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
     }
 
     try {
-        const review = await reviewManager.create(reviewData)
+        const review = await reviewManager.createReview(reviewData)
 
         res.status(201).json(review)
     } catch (err) {
