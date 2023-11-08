@@ -9,7 +9,7 @@ export default function Articles() {
         fetch('http://localhost:3030/data/reviews')
         .then(x => x.json())
         .then(data => {
-            if(data.length > 1) {
+            if(data.length > 0) {
                 setArticles(data)
             }
         })
@@ -17,7 +17,7 @@ export default function Articles() {
     }, [])
 
     return (
-        <section id="articles" className="articles hidden">
+        <section id="articles" className="articles ">
             {articles
             ?
                 articles.map(article => (
