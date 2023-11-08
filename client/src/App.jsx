@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Routes, Route } from "react-router-dom"
 
 import Articles from "./components/Articles/Articles.jsx"
 import Details from "./components/Details/Details.jsx"
@@ -10,40 +11,48 @@ import Edit from "./components/EditReview/EditReview.jsx"
 import AddReview from "./components/AddReview/AddReview.jsx"
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState(false)
 
-  useEffect(() => {
-    const options = {
-        rootMargin: "-35% 0px -8% 0px",
-          // threshold: 0.3
-    };
+    useEffect(() => {
+        const options = {
+            rootMargin: "-35% 0px -8% 0px",
+            // threshold: 0.3
+        };
 
-    const observer = new IntersectionObserver((e) => {
-        e.forEach((el) => {
-            if (el.isIntersecting) {
-                el.target.classList.add("show");
-            } else {
-                el.target.classList.remove('show');
-            }
-        });
-    }, options);
+        const observer = new IntersectionObserver((e) => {
+            e.forEach((el) => {
+                if (el.isIntersecting) {
+                    el.target.classList.add("show");
+                } else {
+                    el.target.classList.remove('show');
+                }
+            });
+        }, options);
 
-    const hiddenElems = document.querySelectorAll(".hidden");
-    hiddenElems.forEach((el) => observer.observe(el));
-  })
+        const hiddenElems = document.querySelectorAll(".hidden");
+        hiddenElems.forEach((el) => observer.observe(el));
+    })
 
-  return (
-    <>
-      <Header isAuth={isAuth} setIsAuth={setIsAuth}></Header>
-      <Home></Home>
-      <Login setIsAuth={setIsAuth}></Login>
-      <Register setIsAuth={setIsAuth}></Register>
-      <Articles></Articles>
-      <Details></Details>
-      <AddReview></AddReview>
-      <Edit></Edit>
-    </>
-  )
+    return (
+        <>
+            <Header isAuth={isAuth} setIsAuth={setIsAuth}></Header>
+            <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+                <Route path="/register" element={<Register setIsAuth={setIsAuth} />} />
+                <Route path="/reviews" element={<Articles/>} />
+            </Routes>
+            
+            {/* <Home></Home> */}
+            {/* <Login setIsAuth={setIsAuth}></Login> */}
+            {/* <Register setIsAuth={setIsAuth}></Register> */}
+            {/* <Articles></Articles> */}
+
+            {/* <Details></Details>
+            <AddReview></AddReview>
+            <Edit></Edit> */}
+        </>
+    )
 }
 
 export default App
