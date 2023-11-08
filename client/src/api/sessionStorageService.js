@@ -15,3 +15,7 @@ export function removeUserData() {
 export function getUsername() {
     return sessionStorage.getItem('username')
 }
+
+export function getAuth() {
+    return sessionStorage.getItem('auth')
+}
