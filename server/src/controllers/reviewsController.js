@@ -3,7 +3,7 @@ const router = require('express').Router()
 const reviewManager = require('../managers/reviewsManager.js')
 
 router.get('/', async (req, res) => {
-    const reviews = await reviewManager.getAll()
+    const reviews = await reviewManager.getAllWithoutDescription()
 
     res.json(reviews)
 })
