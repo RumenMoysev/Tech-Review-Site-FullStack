@@ -7,17 +7,10 @@ const summaryLength = 10
 const descriptionLength = 20
 
 export function addReview(reviewData, setError) {
-    if (reviewData.title.length < titleLength) {
-        return setError(`Title should be at least ${ titleLength } characters long`)
-    }
-    // if (!reviewData.imageUrl.startsWith('http://') && !reviewData.imageUrl.startsWith('https://')) {
-    //     return setError('Please provie a valid image URL')
-    // }
-    if (reviewData.summary.length < summaryLength) {
-        return setError(`Summary should be at least ${summaryLength} characters long`)
-    }
-    if (reviewData.description.length < descriptionLength) {
-        return setError(`Description should be at least ${descriptionLength} characters long`)
+    const error = validateData(reviewData)
+
+    if(error) {
+        return setError(error)
     } else {
         setError(undefined)
     }
@@ -30,8 +23,10 @@ export function addReview(reviewData, setError) {
 
     const settings = {
         method: "POST",
-        headers: { "Content-type": "application/json",
-                    "X-Authorization": authToken},
+        headers: {
+            "Content-type": "application/json",
+            "X-Authorization": authToken
+        },
         body: JSON.stringify(reviewData)
     }
 
@@ -58,7 +53,7 @@ export function editReview(reviewData, setError) {
 
     if (!authToken) {
         return setError('You need to be logged in to add a review')
-    }
+    } 
 
     // const settings = {
     //     method: "PUT",
@@ -70,4 +65,19 @@ export function editReview(reviewData, setError) {
     // }
 
     // return fetch(`${baseUrl}/data/reviews`, settings)
+}
+
+function validateData(reviewData) {
+    if (reviewData.title.length < titleLength) {
+        return `Title should be at least ${titleLength} characters long`
+    }
+    if (!reviewData.imageUrl.startsWith('http://') && !reviewData.imageUrl.startsWith('https://')) {
+        return 'Please provie a valid image URL'
+    }
+    if (reviewData.summary.length < summaryLength) {
+        return `Summary should be at least ${summaryLength} characters long`
+    }
+    if (reviewData.description.length < descriptionLength) {
+        return `Description should be at least ${descriptionLength} characters long`
+    }
 }
