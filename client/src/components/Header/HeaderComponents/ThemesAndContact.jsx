@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+
+import { Link } from "react-router-dom"
+
 import Themes from "./Themes.jsx";
 
 export default function ThemesAndContact() {
@@ -40,9 +43,10 @@ export default function ThemesAndContact() {
                     setDefaultTheme={setDefaultTheme} />
                 )}
             </div>
-            <a href="/contact" className="cta">
+            
+            <Link to="/contact">
                 <button>Contact</button>
-            </a>
+            </Link>   
         </div>
     );
 };
