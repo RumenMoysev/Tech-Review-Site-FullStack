@@ -38,6 +38,7 @@ export default function NavLinks({isAuth, setIsAuth}) {
                     </div>
                 :
                     <div id="guestNavLinks">
+                        <li><Link to="/reviews">Reviews</Link></li>
                         <li><Link to="/register">Register</Link></li>
                         <li><Link to="/login">Login</Link></li>
                     </div>
