@@ -27,18 +27,22 @@ export default function Register({setIsAuth}) {
 
         const formData = registerState
 
-        const response = await registerService(formData, setError)
-        const json = await response.json()
+        let response = registerService(formData, setError)
 
-        if(!response.ok) {
-            return setError(json.message)
-        } else {
-            setError(undefined)
+        if(response instanceof Promise) {
+            response = await response
+            const json = await response.json()
+
+            if (!response.ok) {
+                return setError(json.message)
+            } else {
+                setError(undefined)
+            }
+
+            saveUserData(json)
+            setIsAuth(true)
+            navigate('/')
         }
-        
-        saveUserData(json)
-        setIsAuth(true)
-        navigate('/')
     }
 
     function registerValueHandler(e) {
