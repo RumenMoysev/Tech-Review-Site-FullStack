@@ -17,7 +17,7 @@ export default function Home() {
     }, [])
 
     return (
-        <section id="homePage">
+        <section id="homePage" className='homePage'>
             <div className="row">
                 <div className="col hidden">
                     <h1>Tech Review Site</h1>

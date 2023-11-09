@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-#homePage {
+.homePage {
     /* margin-top: 300px; */
     margin: 200px 0 0 7vw;
 }
@@ -18,7 +18,7 @@
     flex-basis: 50%;
 }
 
-#homePage .row .col h2 {
+.homePage .row .col h2 {
     font-family: "Montserrat", sans-serif;
     color: #edf0f1;
     font-size: 50px;
@@ -26,21 +26,21 @@
     margin-left: 15%;
 }
 
-#homePage .row .col h1 {
+.homePage .row .col h1 {
     font-family: "Montserrat", sans-serif;
     color: #edf0f1;
     font-size: 100px;
     margin-bottom: 2%;
 }
 
-#homePage .row .col p {
+.homePage .row .col p {
     font-family: "Montserrat", sans-serif;
     color: #edf0f1;
     font-size: 1.2rem;
     line-height: 25px;
 }
 
-#homePage .row .col button {
+.homePage .row .col button {
     width: 10vw;
     height: 5vh;
     font-family: "Montserrat", sans-serif;
@@ -55,7 +55,7 @@
     transition: all 0.5s ease; 
 }
 
-#homePage .row .col button:hover {
+.homePage .row .col button:hover {
     background-color: var(--button-hover-color);
     box-shadow: 0 0 35px var(--theme-color);
     width: 12vw;
@@ -64,13 +64,13 @@
     letter-spacing: 0.5px;
 }
 
-#homePage .row .notTouching {
+.homePage .row .notTouching {
     margin-left: 4vw;
     /* margin-top: 10%; */
     transition-delay: 0.5s;
 }
 
-#homePage .row .col .card h4 {
+.homePage .row .col .card h4 {
     color: #edf0f1;
     font-family: "Montserrat", sans-serif;
     text-shadow: 0 0 5px #000000;
@@ -80,14 +80,14 @@
     /* border-bottom: 1px solid var(--theme-color); */
 }
 
-#homePage .row .col .card p {
+.homePage .row .col .card p {
     color: #edf0f1;
     font-family: "Montserrat", sans-serif; 
     font-size: 1rem;
     text-shadow: 0 0 5px #000000;
 }
 
-#homePage .row .col .card {
+.homePage .row .col .card {
     width: 30vw;
     /* height: 33vh; */
     min-height: 33vh;
@@ -107,16 +107,16 @@
     transition: all 1s ease;
 }
 
-#homePage .row .col .card:hover {
+.homePage .row .col .card:hover {
     transition: all 0.5s ease;
     transform: translateY(-10px);
 
 }
 
-/* #homePage .row .col .card:nth-child(1) {
+/* .homePage .row .col .card:nth-child(1) {
     transition-delay: 0.5s;
 }
 
-#homePage .row .col .card:nth-child(2) {
+.homePage .row .col .card:nth-child(2) {
     transition-delay: 0.8s;
 } */
