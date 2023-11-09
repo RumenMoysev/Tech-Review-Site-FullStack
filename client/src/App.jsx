@@ -42,6 +42,7 @@ function App() {
                 <Route path="/register" element={<Register setIsAuth={setIsAuth} />} />
                 <Route path="/reviews" element={<Articles/>} />
                 <Route path="/add-review" element={<AddReview/>} />
+                <Route path="/reviews/:reviewId" element={<Details/>} />
             </Routes>
 
             {/* <Details></Details>
