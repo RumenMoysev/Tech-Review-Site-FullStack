@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react"
+
+import { Link } from "react-router-dom"
+
 import { getUsername, removeUserData } from "../../../api/sessionStorageService.js"
 
 export default function NavLinks({isAuth, setIsAuth}) {
@@ -35,8 +38,8 @@ export default function NavLinks({isAuth, setIsAuth}) {
                     </div>
                 :
                     <div id="guestNavLinks">
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/register">Register</a></li>
+                        <li><Link to="/register">Register</Link></li>
+                        <li><Link to="/login">Login</Link></li>
                     </div>
                 }
             </ul>
