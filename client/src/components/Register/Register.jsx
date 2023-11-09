@@ -1,4 +1,7 @@
 import { useState } from "react"
+
+import { useNavigate } from "react-router-dom"
+
 import { registerService } from "../../api/userService.js"
 import { saveUserData } from "../../api/sessionStorageService.js"
 
@@ -17,6 +20,8 @@ export default function Register({setIsAuth}) {
     const [registerState, setRegisterState] = useState(initialRegisterState)
     const [error, setError] = useState(undefined)
 
+    const navigate = useNavigate()
+
     async function registerHandler(e) {
         e.preventDefault()
 
@@ -33,6 +38,7 @@ export default function Register({setIsAuth}) {
         
         saveUserData(json)
         setIsAuth(true)
+        navigate('/')
     }
 
     function registerValueHandler(e) {

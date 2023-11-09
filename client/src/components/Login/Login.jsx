@@ -1,13 +1,18 @@
 import { useState } from "react";
+
+import { useNavigate } from "react-router-dom"
+
 import { loginService } from "../../api/userService.js";
 import { saveUserData } from "../../api/sessionStorageService.js";
 
 import "./Login.css"
 
-export default function Login({setIsAuth}) {
+export default function Login({ setIsAuth }) {
     const [emailValue, setEmailValue] = useState('')
     const [passwordValue, setPasswordValue] = useState('')
     const [error, setError] = useState(undefined)
+
+    const navigate = useNavigate()
 
     async function loginHandler(e) {
         e.preventDefault()
@@ -20,7 +25,7 @@ export default function Login({setIsAuth}) {
         const response = await loginService(formData)
         const json = await response.json()
 
-        if(!response.ok) {
+        if (!response.ok) {
             return setError(json.message)
         } else {
             setError(undefined)
@@ -28,6 +33,7 @@ export default function Login({setIsAuth}) {
 
         saveUserData(json)
         setIsAuth(true)
+        navigate('/')
     }
 
     function emailValueHandler(e) {
@@ -74,7 +80,7 @@ export default function Login({setIsAuth}) {
                             className="logRegCheckbox1">
                             Remember me?
                         </label>
-                        <input type="checkbox" id="logRegCheckbox" className="logRegCheckbox"/>
+                        <input type="checkbox" id="logRegCheckbox" className="logRegCheckbox" />
                     </div>
                     <button type="submit" id="buttons" onClick={loginHandler}>
                         Login
