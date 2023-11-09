@@ -41,15 +41,10 @@ function App() {
                 <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
                 <Route path="/register" element={<Register setIsAuth={setIsAuth} />} />
                 <Route path="/reviews" element={<Articles/>} />
+                <Route path="/add-review" element={<AddReview/>} />
             </Routes>
-            
-            {/* <Home></Home> */}
-            {/* <Login setIsAuth={setIsAuth}></Login> */}
-            {/* <Register setIsAuth={setIsAuth}></Register> */}
-            {/* <Articles></Articles> */}
 
             {/* <Details></Details>
-            <AddReview></AddReview>
             <Edit></Edit> */}
         </>
     )
