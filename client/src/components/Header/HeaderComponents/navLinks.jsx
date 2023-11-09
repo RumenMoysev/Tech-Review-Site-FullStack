@@ -32,7 +32,7 @@ export default function NavLinks({isAuth, setIsAuth}) {
                 {isAuth
                 ?
                     <div id="userNavLinks">
-                        <li><a href="/reviews">Reviews</a></li>
+                        <li><Link to="/reviews">Reviews</Link></li>
                         <li className="welcome"><p>Welcome, {username}</p></li>
                         <li><a href="" onClick={logoutHandler}>Logout</a></li>
                     </div>
