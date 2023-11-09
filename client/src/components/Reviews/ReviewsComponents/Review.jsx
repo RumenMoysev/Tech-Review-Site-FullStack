@@ -1,12 +1,13 @@
-export default function Article(reviewData) {
+import { Link } from "react-router-dom"
 
+export default function Article(reviewData) {
     return (
         <article className="">
             <h2>{reviewData.article.title}</h2>
             <div className="pImgContainer">
                 <p>{reviewData.article.summary}</p>
                 <button>
-                    <a href={`/details/${reviewData.article._id}`}>Details</a>
+                    <Link to={`${reviewData.article._id}`}>Details</Link>
                 </button>
             </div>
             <img
