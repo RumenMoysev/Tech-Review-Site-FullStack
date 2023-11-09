@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import './Articles.css'
-import Article from './ArticlesComponents/Article.jsx';
+import './Reviews.css'
+import Article from './ReviewsComponents/Review.jsx';
 
 export default function Articles() {
     const [articles, setArticles] = useState(undefined)

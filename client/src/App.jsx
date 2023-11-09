@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Routes, Route } from "react-router-dom"
 
-import Articles from "./components/Articles/Articles.jsx"
+import Articles from "./components/Reviews/Reviews.jsx"
 import Details from "./components/Details/Details.jsx"
 import Header from "./components/Header/Header.jsx"
 import Home from "./components/Home/Home.jsx"
