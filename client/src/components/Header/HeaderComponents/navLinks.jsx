@@ -29,11 +29,13 @@ export default function NavLinks({isAuth, setIsAuth}) {
     return (
         <nav id="navBar">
             <ul className="nav_links">
+                <li className="welcome"><p>Welcome, {username}</p></li>
+
                 {isAuth
                 ?
                     <div id="userNavLinks">
                         <li><Link to="/reviews">Reviews</Link></li>
-                        <li className="welcome"><p>Welcome, {username}</p></li>
+                        <li><Link to="/add-review">Add Review</Link></li>
                         <li><a href="" onClick={logoutHandler}>Logout</a></li>
                     </div>
                 :
@@ -43,6 +45,7 @@ export default function NavLinks({isAuth, setIsAuth}) {
                         <li><Link to="/login">Login</Link></li>
                     </div>
                 }
+                
             </ul>
         </nav>
     )
