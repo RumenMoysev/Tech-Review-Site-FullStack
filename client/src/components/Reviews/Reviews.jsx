@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Reviews.css'
-import Article from './ReviewsComponents/Review.jsx';
+import Review from './ReviewsComponents/Review.jsx';
 
 export default function Articles() {
     const [articlesData, setArticlesData] = useState(undefined)
@@ -21,7 +21,7 @@ export default function Articles() {
             {articlesData
             ?
                 articlesData.map(article => (
-                    <Article key={article._id} article={article}/>
+                    <Review key={article._id} article={article}/>
                 ))
             :
                 <h2 className='hidden'>No reviews yet!</h2>
