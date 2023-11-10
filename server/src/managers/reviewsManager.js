@@ -35,6 +35,16 @@ exports.getOneDetails = (reviewId) => {
     return review
 }
 
+exports.getOneAllData = (reviewId) => {
+    const review = Review.findById(reviewId)
+
+    if (!review) {
+        throw new Error('Review not found')
+    }
+
+    return review
+}
+
 exports.createReview = (reviewData) => {
     try {
         validate(reviewData)
