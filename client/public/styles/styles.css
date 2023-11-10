@@ -12,17 +12,6 @@
     transform: translateX(0);
 }
 
-@keyframes drop {
-	0% {
-		opacity: 0;
-		transform: translateY(-80px);
-	}
-    50% {
-        opacity: 0.5;
-        transform: translateY(15px);
-    }
-	100% {
-		opacity: 1;
-		transform: translateY(0px);
-	}
+body {
+    background-color: #24252afa;
 }
