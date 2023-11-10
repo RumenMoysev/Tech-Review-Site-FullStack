@@ -11,7 +11,7 @@ export default function Logo() {
         <img
             className="homeNavIcon"
             id="homeNavIcon"
-            src="images/logoTblue.png"
+            src="/images/logoTblue.png"
             alt="logo"
             onClick={onClickHomePageRedirect}
         />
