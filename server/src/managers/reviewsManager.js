@@ -54,3 +54,13 @@ exports.updateReview = (reviewData, reviewId) => {
         throw new Error(error.message)
     }
 }
+
+exports.deleteReview = (reviewId) => {
+    const review = Review.findByIdAndDelete(reviewId)
+
+    if (!review) {
+        throw new Error('Review not found')
+    }
+
+    return review
+}
