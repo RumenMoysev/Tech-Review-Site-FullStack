@@ -48,6 +48,20 @@ router.get('/:reviewId', async (req, res) => {
     }
 })
 
+router.get('/:reviewId/all-data', async (req, res) => {
+    const reviewId = req.params.reviewId
+
+    try {
+        const review = await reviewManager.getOneAllData(reviewId)
+
+        res.status(201).json(review)
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
 router.put('/:reviewId', async (req, res) => {
     const reviewData = {
         title: req.body.title,
