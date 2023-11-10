@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { useNavigate, useParams } from "react-router-dom"
+
 import { editReview } from '../../api/reviewsService.js';
 
 import './EditReview.css'
@@ -7,23 +10,39 @@ const editFormState = {
     title: '',
     imageUrl: '',
     summary: '',
-    details: ''
+    description: ''
 }
 
 export default function Edit() {
     const [editFormValue, setEditFormValue] = useState(editFormState)
     const [error, setError] = useState(undefined)
 
+    const {reviewId} = useParams()
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        fetch(`http://localhost:3030/data/reviews/${reviewId}/all-data`)
+        .then(x => x.json())
+        .then(data => setEditFormValue(data))
+        .catch(err => console.log(err))
+    }, [])
+
     async function editSubmitHandler(e) {
         e.preventDefault()
 
-        const response = await addReview(addFormValue, setError)
-        const json = await response.json()
+        let response = editReview(editFormValue, setError, reviewId)
 
-        if (!response.ok) {
-            setError(json.message)
-        } else {
-            setError(undefined)
+        if(response instanceof Promise) {
+            response = await response
+            const json = await response.json()
+
+            if(response.ok) {
+                navigate(`/reviews/${reviewId}`)
+            } else {
+                setError(json.message)
+            }
+            
         }
     }
 
@@ -77,14 +96,14 @@ export default function Edit() {
                         onChange={editValueHandler}
                         required
                     />
-                    <label htmlFor="detailsInput">Details</label>
+                    <label htmlFor="detailsInput">Description</label>
                     <input
                         id="detailsInput"
                         className="good detailsInput"
-                        placeholder="Details"
-                        name="details"
+                        placeholder="Description"
+                        name="description"
                         type="text"
-                        value={editFormValue.details}
+                        value={editFormValue.description}
                         onChange={editValueHandler}
                         required
                     />
