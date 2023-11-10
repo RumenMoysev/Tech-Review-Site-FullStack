@@ -72,4 +72,18 @@ router.put('/:reviewId', async (req, res) => {
     }
 })
 
+router.delete('/:reviewId', async (req, res) => {
+    const reviewId = req.params.reviewId
+
+    try {
+        await reviewManager.deleteReview(reviewId)
+
+        res.status(200).end()
+    } catch (error) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
 module.exports = router
