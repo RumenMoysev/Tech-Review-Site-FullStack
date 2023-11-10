@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+@keyframes ring {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 1px 5px 2px #e65c00;
+    }
+    50% {
+        transform: rotate(180deg);
+        box-shadow: 1px 5px 2px #18b201;
+    }
+    80% {
+        transform: rotate(288deg);
+        box-shadow: 1px 5px 2px #0456c8;
+        
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 1px 5px 2px rgb(255, 94, 0);
+    }
+}
+
+@keyframes text {
+    70% {
+        color: #24252afa
+    }
+}
+
+.spinner {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.ring {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: ring 2s linear infinite;
+}
+
+.ring:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3)
+}
+
+.spinner span {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #edf0f1e1;
+    letter-spacing: 1px;
+    line-height: 200px;
+    animation: text 2s linear infinite;
+}
