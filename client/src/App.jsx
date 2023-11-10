@@ -9,6 +9,7 @@ import Login from "./components/Login/Login.jsx"
 import Register from "./components/Register/Register.jsx"
 import Edit from "./components/EditReview/EditReview.jsx"
 import AddReview from "./components/AddReview/AddReview.jsx"
+import Spinner from "./components/Spinner/Spinner.jsx"
 
 function App() {
     const [isAuth, setIsAuth] = useState(false)
@@ -36,6 +37,7 @@ function App() {
     return (
         <>
             <Header isAuth={isAuth} setIsAuth={setIsAuth}></Header>
+            
             <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
@@ -43,10 +45,10 @@ function App() {
                 <Route path="/reviews" element={<Articles/>} />
                 <Route path="/add-review" element={<AddReview/>} />
                 <Route path="/reviews/:reviewId" element={<Details/>} />
+                <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
             </Routes>
 
-            {/* <Details></Details>
-            <Edit></Edit> */}
+            <Spinner/>
         </>
     )
 }
