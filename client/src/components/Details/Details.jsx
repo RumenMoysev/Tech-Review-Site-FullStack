@@ -4,9 +4,11 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import { deleteReview } from '../../api/reviewsService.js';
 import './Details.css'
+import Spinner from '../Spinner/Spinner.jsx'
 
 export default function Details() {
     const [reviewDetails, setReviewDetails] = useState('')
+    const [isLoading, setIsLoading] = useState(true)
     const { reviewId } = useParams()
 
     const navigate = useNavigate()
@@ -14,17 +16,27 @@ export default function Details() {
     useEffect(() => {
         fetch(`http://localhost:3030/data/reviews/${reviewId}`)
         .then(x => x.json())
-        .then(data => setReviewDetails(data))
-        .catch(err => console.log(err))
+        .then(data => {
+            setIsLoading(false)
+            setReviewDetails(data)
+        })
+        .catch(err => {
+            console.log(err)
+            setIsLoading(false)    
+        })
     }, [])
 
     async function deleteHandler() {
-        const response = await deleteReview(reviewId)
+        await deleteReview(reviewId)
 
         navigate('/reviews')
     }
 
     return (
+        isLoading
+        ?
+        <Spinner/>
+        :    
         <section id="details" className="hidden detailsPage">
             <div className="detailsContainer">
                 <h2>{reviewDetails.title}</h2>
