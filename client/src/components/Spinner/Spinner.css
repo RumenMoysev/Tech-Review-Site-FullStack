@@ -16,12 +16,12 @@
     }
     100% {
         transform: rotate(360deg);
-        box-shadow: 1px 5px 2px rgb(255, 94, 0);
+        box-shadow: 1px 5px 2px rgb(255, 0, 179);
     }
 }
 
 @keyframes text {
-    70% {
+    50% {
         color: #24252afa
     }
 }
@@ -31,7 +31,8 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
+    min-height: 100vh;
+    animation: slideIn 150ms ease;
 }
 
 .ring {
