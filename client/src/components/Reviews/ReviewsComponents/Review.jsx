@@ -6,9 +6,7 @@ export default function Article(reviewData) {
             <h2>{reviewData.article.title}</h2>
             <div className="pImgContainer">
                 <p>{reviewData.article.summary}</p>
-                <button>
-                    <Link to={`${reviewData.article._id}`}>Details</Link>
-                </button>
+                <Link to={`${reviewData.article._id}`}><button>Details</button></Link>
             </div>
             <img
                 src={reviewData.article.imageUrl}
