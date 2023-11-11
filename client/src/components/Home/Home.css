@@ -3,6 +3,7 @@
 .homePage {
     /* margin-top: 300px; */
     margin: 200px 0 0 7vw;
+    min-height: 78vh;
 }
 
 .row {
