@@ -47,8 +47,6 @@ function App() {
                 <Route path="/reviews/:reviewId" element={<Details/>} />
                 <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
             </Routes>
-
-            <Spinner/>
         </>
     )
 }
