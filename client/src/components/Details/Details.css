@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     margin-top: 200px;
-    margin-bottom: 50px;
+    height: 73vh;
 }
 
 #details .detailsContainer {
@@ -12,7 +12,7 @@
     justify-content: center;
     flex-wrap: wrap;
     border: solid 1px var(--theme-color);
-    border-radius: 18%;
+    border-radius: 90px;
     width: 70vw;
     height: auto;
     background-color: #121213fa;
