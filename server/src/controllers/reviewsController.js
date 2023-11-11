@@ -5,7 +5,7 @@ const reviewManager = require('../managers/reviewsManager.js')
 router.get('/', async (req, res) => {
     const reviews = await reviewManager.getAllWithoutDescription()
 
-    res.json(reviews)
+    setTimeout(()=> res.json(reviews), 1000)
 })
 
 router.get('/last2', async (req, res) => {
