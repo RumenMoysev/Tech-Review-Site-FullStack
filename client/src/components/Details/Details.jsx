@@ -2,14 +2,18 @@ import { useState, useEffect } from 'react';
 
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
-import { deleteReview, getDetails } from '../../api/reviewsService.js';
+import { deleteReview, getDetails, likeReview } from '../../api/reviewsService.js';
 import './Details.css'
 import Spinner from '../Spinner/Spinner.jsx'
+import { getUserId } from '../../api/sessionStorageService.js';
 
 export default function Details({isAuth}) {
     const [reviewDetails, setReviewDetails] = useState('')
     const [isLoading, setIsLoading] = useState(true)
+    const [hasLiked, setHasLiked] = useState(false)
     const { reviewId } = useParams()
+
+    const userId = getUserId()
 
     const navigate = useNavigate()
 
@@ -19,6 +23,9 @@ export default function Details({isAuth}) {
             .then(data => {
                 setIsLoading(false)
                 setReviewDetails(data)
+                if(data.likes.includes(userId)) {
+                    setHasLiked(true)
+                }
             })
             .catch(err => {
                 console.log(err)
@@ -30,6 +37,17 @@ export default function Details({isAuth}) {
         await deleteReview(reviewId)
 
         navigate('/reviews')
+    }
+
+    async function likeHandler() {
+        await likeReview(reviewId)
+
+        setReviewDetails(reviewDetails => ({
+            ...reviewDetails,
+            likes: reviewDetails.likes + 1
+        }))
+
+        setHasLiked(true)
     }
 
     return (
@@ -57,15 +75,20 @@ export default function Details({isAuth}) {
                                     <button onClick={deleteHandler}>Delete</button>
                                 </>
                                 :
-                                <button>
-                                    <a href="/dada">Like</a>
-                                </button>
+                                hasLiked
+                                ?
+                                <a href=''>Thank you for liking!</a>
+                                :
+                                <button onClick={likeHandler}>Like</button>
                             }
                         </div>
                     }
                 </div>
-                
-                <p className="likes">No likes yet</p>
+
+                {reviewDetails.likes.length > 0
+                    ?   <p className="likes">{reviewDetails.likes.length} likes</p>
+                    :   <p className="likes">No likes yet</p>
+                }
             </div>
         </section>
     );
