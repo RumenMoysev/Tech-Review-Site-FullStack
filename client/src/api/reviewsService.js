@@ -71,6 +71,25 @@ export function deleteReview(reviewId) {
     return fetch(`${baseUrl}/data/reviews/${reviewId}`, settings)
 }
 
+export function getDetails(reviewId) {
+    const authToken = getAuth()
+
+    let settings = undefined
+
+    if(authToken) {
+        settings = {
+            method: "GET",
+            headers: { "X-Authorization": authToken }
+        }
+    } else {
+        settings = {
+            method: "GET",
+        }
+    }
+
+    return fetch(`${baseUrl}/data/reviews/${reviewId}`, settings)
+}
+
 function validateData(reviewData) {
     if (reviewData.title.length < titleLength) {
         return `Title should be at least ${titleLength} characters long`
