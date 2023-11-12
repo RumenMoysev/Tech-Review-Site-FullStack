@@ -26,7 +26,7 @@ exports.getAllWithoutDescription = () => Review.find({}, { title: 1, imageUrl: 1
 exports.getLast2 = async () => Review.find({}, { title: 1, imageUrl: 1, summary: 1 }).sort({$natural: -1}).limit(2)
 
 exports.getOneDetails = (reviewId) => {
-    const review = Review.findById(reviewId, { title: 1, imageUrl: 1, description: 1 })
+    const review = Review.findById(reviewId, { title: 1, imageUrl: 1, description: 1, owner: 1 }).lean()
 
     if(!review) {
         throw new Error('Review not found')
