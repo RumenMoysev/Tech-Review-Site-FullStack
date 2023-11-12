@@ -90,6 +90,20 @@ export function getDetails(reviewId) {
     return fetch(`${baseUrl}/data/reviews/${reviewId}`, settings)
 }
 
+export function likeReview(reviewId) {
+    const authToken = getAuth()
+
+    const settings = {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json',
+            'X-Authorization': authToken
+        },
+    }
+
+    return fetch(`${baseUrl}/data/reviews/${reviewId}/like`, settings)
+}
+
 function validateData(reviewData) {
     if (reviewData.title.length < titleLength) {
         return `Title should be at least ${titleLength} characters long`
