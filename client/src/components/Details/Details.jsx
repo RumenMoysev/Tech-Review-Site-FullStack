@@ -6,7 +6,7 @@ import { deleteReview, getDetails } from '../../api/reviewsService.js';
 import './Details.css'
 import Spinner from '../Spinner/Spinner.jsx'
 
-export default function Details() {
+export default function Details({isAuth}) {
     const [reviewDetails, setReviewDetails] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const { reviewId } = useParams()
@@ -48,24 +48,23 @@ export default function Details() {
                 <div className="pBtnContainer">
                     <p>{reviewDetails.description}</p>
 
-                    <div className="detailsBtns">
-                        {reviewDetails.isOwner
-                            ?
-                            <>
-                                <Link to="edit"><button>Edit</button></Link>
-                                <button onClick={deleteHandler}>Delete</button>
-                            </>
-                            
-                            :
-                            <button>
-                                <a href="/dada">Like</a>
-                            </button>
-                        }
-                        
-                        
-                    </div>
+                    {isAuth &&
+                        <div className="detailsBtns">
+                            {reviewDetails.isOwner
+                                ?
+                                <>
+                                    <Link to="edit"><button>Edit</button></Link>
+                                    <button onClick={deleteHandler}>Delete</button>
+                                </>
+                                :
+                                <button>
+                                    <a href="/dada">Like</a>
+                                </button>
+                            }
+                        </div>
+                    }
                 </div>
-
+                
                 <p className="likes">No likes yet</p>
             </div>
         </section>
