@@ -42,9 +42,10 @@ export default function Details({isAuth}) {
     async function likeHandler() {
         await likeReview(reviewId)
 
+        reviewDetails.likes.push(userId)
         setReviewDetails(reviewDetails => ({
             ...reviewDetails,
-            likes: reviewDetails.likes + 1
+            // likes: reviewDetails.likes.push(userId)
         }))
 
         setHasLiked(true)
