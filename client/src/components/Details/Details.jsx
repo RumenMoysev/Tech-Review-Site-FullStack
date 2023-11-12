@@ -53,10 +53,6 @@ export default function Details() {
                             ?
                             <>
                                 <Link to="edit"><button>Edit</button></Link>
-
-                                {/* <button>
-                                    <Link to="edit">Edit</Link>
-                                </button> */}
                                 <button onClick={deleteHandler}>Delete</button>
                             </>
                             
