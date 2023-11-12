@@ -39,6 +39,12 @@ router.get('/:reviewId', async (req, res) => {
 
     try {
         const review = await reviewManager.getOneDetails(reviewId)
+        
+        if(req.user?._id == review.owner) {
+            review.isOwner = true
+        } else {
+            review.isOwner = false
+        }
 
         res.status(201).json(review)
     } catch (err) {
