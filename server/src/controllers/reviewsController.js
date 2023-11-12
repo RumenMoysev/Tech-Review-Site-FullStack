@@ -54,6 +54,22 @@ router.get('/:reviewId', async (req, res) => {
     }
 })
 
+router.post('/:reviewId/like', async (req, res) => {
+    const reviewId = req.params.reviewId
+    const userId = req.user?._id
+    try {
+        if(userId) {
+            await reviewManager.likeReview(reviewId, userId)
+        }
+
+        res.end()
+    }catch(err) {
+        res.status(400).json({
+           message: err.message
+        })
+    }
+})
+
 router.get('/:reviewId/all-data', async (req, res) => {
     const reviewId = req.params.reviewId
 
