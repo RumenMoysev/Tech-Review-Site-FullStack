@@ -19,3 +19,7 @@ export function getUsername() {
 export function getAuth() {
     return sessionStorage.getItem('auth')
 }
+
+export function getUserId() {
+    return sessionStorage.getItem('userId')
+}
