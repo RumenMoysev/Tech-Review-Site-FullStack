@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { addReview } from '../../api/reviewsService.js';
 
 import './AddReview.css'
@@ -13,6 +15,7 @@ const addFormState = {
 export default function AddReview() {
     const [addFormValue, setAddFormValue] = useState(addFormState)
     const [error, setError] = useState(undefined)
+    const navigate = useNavigate()
 
     async function addFormHandler(e) {
         e.preventDefault()
@@ -27,6 +30,7 @@ export default function AddReview() {
                 setError(json.message)
             } else {
                 setError(undefined)
+                navigate('/reviews')
             }
         }
     }
