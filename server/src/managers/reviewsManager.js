@@ -75,4 +75,10 @@ exports.deleteReview = (reviewId) => {
     return review
 }
 
-exports.likeReview = (reviewId, userId) => Review.findByIdAndUpdate(reviewId, {$push: {likes: userId}})
+exports.likeReview = async (reviewId, userId) => {
+    const review = await Review.findById(reviewId, {likes: 1})
+
+    if(!review.likes.includes(userId)) {
+        return Review.findByIdAndUpdate(reviewId, { $push: { likes: userId } })
+    }
+}
