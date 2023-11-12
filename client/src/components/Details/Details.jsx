@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
-import { deleteReview } from '../../api/reviewsService.js';
+import { deleteReview, getDetails } from '../../api/reviewsService.js';
 import './Details.css'
 import Spinner from '../Spinner/Spinner.jsx'
 
@@ -14,16 +14,16 @@ export default function Details() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:3030/data/reviews/${reviewId}`)
-        .then(x => x.json())
-        .then(data => {
-            setIsLoading(false)
-            setReviewDetails(data)
-        })
-        .catch(err => {
-            console.log(err)
-            setIsLoading(false)    
-        })
+        getDetails(reviewId)
+            .then(x => x.json())
+            .then(data => {
+                setIsLoading(false)
+                setReviewDetails(data)
+            })
+            .catch(err => {
+                console.log(err)
+                setIsLoading(false)
+            })
     }, [])
 
     async function deleteHandler() {
@@ -49,15 +49,24 @@ export default function Details() {
                     <p>{reviewDetails.description}</p>
 
                     <div className="detailsBtns">
-                        <Link to="edit"><button>Edit</button></Link>
+                        {reviewDetails.isOwner
+                            ?
+                            <>
+                                <Link to="edit"><button>Edit</button></Link>
+
+                                {/* <button>
+                                    <Link to="edit">Edit</Link>
+                                </button> */}
+                                <button onClick={deleteHandler}>Delete</button>
+                            </>
+                            
+                            :
+                            <button>
+                                <a href="/dada">Like</a>
+                            </button>
+                        }
                         
-                        {/* <button>
-                            <Link to="edit">Edit</Link>
-                        </button> */}
-                        <button onClick={deleteHandler}>Delete</button>
-                        <button>
-                            <a href="/dada">Like</a>
-                        </button>
+                        
                     </div>
                 </div>
 
