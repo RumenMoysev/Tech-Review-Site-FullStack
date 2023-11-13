@@ -29,6 +29,7 @@ export default function Details({isAuth}) {
             })
             .catch(err => {
                 console.log(err)
+                navigate('/reviews')
                 setIsLoading(false)
             })
     }, [])
@@ -78,7 +79,7 @@ export default function Details({isAuth}) {
                                 :
                                 hasLiked
                                 ?
-                                <a href=''>Thank you for liking!</a>
+                                <a>Thank you for liking!</a>
                                 :
                                 <button onClick={likeHandler}>Like</button>
                             }
