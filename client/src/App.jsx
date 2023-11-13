@@ -10,6 +10,7 @@ import Register from "./components/Register/Register.jsx"
 import Edit from "./components/EditReview/EditReview.jsx"
 import AddReview from "./components/AddReview/AddReview.jsx"
 import Spinner from "./components/Spinner/Spinner.jsx"
+import Page404 from "./components/404/404.jsx"
 
 function App() {
     const [isAuth, setIsAuth] = useState(false)
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/add-review" element={<AddReview/>} />
                 <Route path="/reviews/:reviewId" element={<Details isAuth={isAuth} />} />
                 <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
+                <Route path="*" element={<Page404/>} />
             </Routes>
         </>
     )
