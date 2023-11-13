@@ -65,6 +65,12 @@
     letter-spacing: 0.5px;
 }
 
+.homePage .row .col button:active {
+    background-color: var(--button-active-color);
+    box-shadow: 0 0 35px var(--button-hover-color);
+    transform: scale(95%);
+}
+
 .homePage .row .notTouching {
     margin-left: 4vw;
     /* margin-top: 10%; */
@@ -112,6 +118,10 @@
     transition: all 0.5s ease;
     transform: translateY(-10px);
 
+}
+
+.homePage .row .col .card:active {
+    transform: scale(97%);
 }
 
 /* .homePage .row .col .card:nth-child(1) {
