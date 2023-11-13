@@ -80,10 +80,17 @@ export function getEditData(reviewId) {
 
 export function deleteReview(reviewId) {
     const authToken = getAuth()
+    let settings = undefined
 
-    const settings = {
-        method: "DELETE",
-        headers: { "X-Authorization": authToken }
+    if(authToken) {
+        settings = {
+            method: "DELETE",
+            headers: { "X-Authorization": authToken }
+        }
+    } else {
+        settings = {
+            method: 'DELETE'
+        }
     }
 
     return fetch(`${baseUrl}/data/reviews/${reviewId}`, settings)
