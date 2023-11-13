@@ -73,10 +73,20 @@ router.post('/:reviewId/like', async (req, res) => {
 router.get('/:reviewId/all-data', async (req, res) => {
     const reviewId = req.params.reviewId
 
-    try {
-        const review = await reviewManager.getOneAllData(reviewId)
+    const userId = req.user?._id
 
-        res.status(201).json(review)
+    try {
+        const reviewOwner = await reviewManager.getReviewOwner(reviewId)
+
+        if (reviewOwner.owner == userId) {
+            const review = await reviewManager.getOneAllData(reviewId)
+
+            res.status(201).json(review)
+        } else {
+            res.status(400).json({
+                message: 'You are not the owner'
+            })
+        }
     } catch (err) {
         res.status(400).json({
             message: err.message
@@ -93,14 +103,20 @@ router.put('/:reviewId', async (req, res) => {
     }
     const reviewId = req.params.reviewId
 
-    const userId = req.user._id
-
-    //Valide owner
+    const userId = req.user?._id
 
     try {
-        const updatedReview = await reviewManager.updateReview(reviewData, reviewId)
+        const reviewOwner = await reviewManager.getReviewOwner(reviewId)
 
-        res.status(201).json(updatedReview)
+        if(reviewOwner.owner == userId) {
+            const updatedReview = await reviewManager.updateReview(reviewData, reviewId)
+
+            res.status(201).json(updatedReview)
+        } else {
+            res.status(400).json({
+                message: 'You are not the owner'
+            })
+        }
     } catch (err) {
         res.status(400).json({
             message: err.message
@@ -110,11 +126,21 @@ router.put('/:reviewId', async (req, res) => {
 
 router.delete('/:reviewId', async (req, res) => {
     const reviewId = req.params.reviewId
+    
+    const userId = req.user?._id
 
     try {
-        await reviewManager.deleteReview(reviewId)
+        const reviewOwner = await reviewManager.getReviewOwner(reviewId)
 
-        res.status(200).end()
+        if (reviewOwner.owner == userId) {
+            await reviewManager.deleteReview(reviewId)
+
+            res.status(200).end()
+        } else {
+            res.status(400).json({
+                message: 'You are not the owner'
+            })
+        }
     } catch (error) {
         res.status(400).json({
             message: err.message
