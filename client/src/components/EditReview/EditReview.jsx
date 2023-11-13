@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { useNavigate, useParams } from "react-router-dom"
 
-import { editReview } from '../../api/reviewsService.js';
+import { editReview, getEditData } from '../../api/reviewsService.js';
 
 import './EditReview.css'
 
@@ -22,9 +22,16 @@ export default function Edit() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:3030/data/reviews/${reviewId}/all-data`)
+        getEditData(reviewId)
         .then(x => x.json())
-        .then(data => setEditFormValue(data))
+        .then(data => {
+            if (data.message === 'You are not the owner') {
+                setError(data.message)
+                setTimeout(() => navigate(`/reviews/${reviewId}`), 1200)
+            } else {
+                setEditFormValue(data)
+            }
+        })
         .catch(err => console.log(err))
     }, [])
 
@@ -41,8 +48,10 @@ export default function Edit() {
                 navigate(`/reviews/${reviewId}`)
             } else {
                 setError(json.message)
+                if(json.message === 'You are not the owner') {
+                    setTimeout(() => navigate(`/reviews/${reviewId}`), 1200)
+                }
             }
-            
         }
     }
 
