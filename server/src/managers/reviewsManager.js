@@ -78,9 +78,9 @@ exports.deleteReview = (reviewId) => {
 }
 
 exports.likeReview = async (reviewId, userId) => {
-    const review = await Review.findById(reviewId, {likes: 1})
+    const review = await Review.findById(reviewId, {likes: 1, owner: 1})
 
-    if(!review.likes.includes(userId)) {
+    if(!review.likes.includes(userId) && !review.owner == userId) {
         return Review.findByIdAndUpdate(reviewId, { $push: { likes: userId } })
     }
 }
