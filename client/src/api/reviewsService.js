@@ -60,6 +60,24 @@ export function editReview(reviewData, setError, reviewId) {
     return fetch(`${baseUrl}/data/reviews/${reviewId}`, settings)
 }
 
+export function getEditData(reviewId) {
+    const authToken = getAuth()
+    let settings = undefined
+
+    if (authToken) {
+        settings = {
+            method: "GET",
+            headers: {'X-Authorization': authToken}
+        }
+    } else {
+        settings = {
+            method: "GET"
+        }
+    }
+
+    return fetch(`http://localhost:3030/data/reviews/${reviewId}/all-data`, settings)
+}
+
 export function deleteReview(reviewId) {
     const authToken = getAuth()
 
