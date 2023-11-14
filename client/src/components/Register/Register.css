@@ -110,7 +110,9 @@
     letter-spacing: 0.05em;
     box-shadow: 0 0 20px var(--theme-color);
 }
-.form-container button:active {
+.registerPage .form-container button:active {
+    transform: scale(93%);
+    box-shadow: 0 0 20px var(--button-hover-color);
     background-color: var(--button-active-color);
 }
 
@@ -158,7 +160,7 @@
     display: flex;
     justify-content: center;
     animation: slideIn 700ms ease;
-    margin-top: 200px;
+    margin-top: 147px;
 }
 
 .registerForm {
