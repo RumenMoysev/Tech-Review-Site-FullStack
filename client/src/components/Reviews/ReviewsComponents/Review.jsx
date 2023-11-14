@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom"
 
-export default function Article(reviewData) {
+export default function Article({review}) {
     return (
         <article className="">
-            <h2>{reviewData.article.title}</h2>
+            <div className="headerDateArticle">
+                <h2>{review.title}</h2>
+                <h4>Created on: 21.31.3122</h4>
+            </div>
             <div className="pImgContainer">
-                <p>{reviewData.article.summary}</p>
-                <Link to={`${reviewData.article._id}`}><button>Details</button></Link>
+                <p>{review.summary}</p>
+                <Link to={`${review._id}`}><button>Details</button></Link>
             </div>
             <img
-                src={reviewData.article.imageUrl}
+                src={review.imageUrl}
                 alt="picture"
             />
         </article>

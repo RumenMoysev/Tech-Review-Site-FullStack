@@ -32,7 +32,7 @@ export default function Articles() {
                 articlesData
                     ?
                     articlesData.map(article => (
-                        <Review key={article._id} article={article} />
+                        <Review key={article._id} review={article} />
                     ))
                     :
                     <h2 className='hidden'>No reviews yet!</h2>
