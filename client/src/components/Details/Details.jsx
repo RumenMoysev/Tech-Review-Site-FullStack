@@ -32,7 +32,7 @@ export default function Details({isAuth}) {
                 navigate('/reviews')
                 setIsLoading(false)
             })
-    }, [])
+    }, [reviewId])
 
     async function deleteHandler() {
         await deleteReview(reviewId)
@@ -59,7 +59,10 @@ export default function Details({isAuth}) {
         :    
         <section id="details" className="hidden detailsPage">
             <div className="detailsContainer">
-                <h2>{reviewDetails.title}</h2>
+                <div className="headerDate">
+                    <h2>{reviewDetails.title}</h2>
+                    <h4>Created on: 23:11:2023</h4>
+                </div>
                 <img
                     src={reviewDetails.imageUrl}
                     alt="picture"
