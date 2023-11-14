@@ -121,7 +121,9 @@
     letter-spacing: 0.05em;
     box-shadow: 0 0 20px var(--theme-color);
 }
-.form-container button:active {
+.loginPage .form-container button:active {
+    transform: scale(93%);
+    box-shadow: 0 0 20px var(--button-hover-color);
     background-color: var(--button-active-color);
 }
 
