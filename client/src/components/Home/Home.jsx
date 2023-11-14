@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Home.css'
 import ReviewCard from './HomeComponents/ReviewCard.jsx';
@@ -7,6 +8,7 @@ import Spinner from '../Spinner/Spinner.jsx';
 export default function Home() {
     const [last2Reviews, setLast2Reviews] = useState(undefined)
     const [isLoading, setIsLoading] = useState(true)
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch('http://localhost:3030/data/reviews/last2')
@@ -23,6 +25,8 @@ export default function Home() {
         })
     }, [])
 
+    const onReviewsClickHandler = () => navigate('/reviews')
+
     return (
         isLoading 
         ?
@@ -36,7 +40,7 @@ export default function Home() {
                             This is the place where you can find all information
                             you're looking for in the latest tech word!
                         </p>
-                        <button>Reviews</button>
+                        <button onClick={onReviewsClickHandler}>Reviews</button>
                     </div >
                 <div className="col notTouching ">
                     {last2Reviews
