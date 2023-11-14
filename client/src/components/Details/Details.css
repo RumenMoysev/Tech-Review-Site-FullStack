@@ -21,7 +21,7 @@
     animation: slideIn 700ms ease;
 }
 
-#details .detailsContainer h2 {
+.detailsPage .detailsContainer .headerDate {
     font-family: "Montserrat", sans-serif;
     font-weight: 550;
     font-size: 25px;
@@ -32,7 +32,27 @@
     padding: 0% 10% 0% 10%;
     margin-top: 5%;
     border-bottom: 2px solid var(--theme-color);
+    overflow:auto;
     transition: all ease 700ms
+}
+
+.detailsPage .detailsContainer .headerDate h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 35px;
+}
+
+.detailsPage .detailsContainer .headerDate h4 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 30%;
 }
 
 #details .pBtnContainer {
@@ -93,7 +113,9 @@
 }
 
 #details .pBtnContainer .detailsBtns button:active {
+    transform: scale(93%);
     background-color: var(--button-active-color);
+    box-shadow: 0 0 20px var(--button-hover-color);
 }
 
 #details .likes {
