@@ -41,7 +41,7 @@
     /* transition-delay: 200ms; */
 }
 
-.articles article h2 {
+.articles article .headerDateArticle {
     font-family: "Montserrat", sans-serif;
     font-weight: 550;
     font-size: 25px;
@@ -53,7 +53,23 @@
     margin-top: 8%;
     padding-left: 2%;
     padding-right: 2%;
+    overflow: auto;
     transition: all 500ms ease-in-out;
+}
+
+.articles article .headerDateArticle h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 25px;
+}
+
+.articles article .headerDateArticle h4 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 13px;
+    text-align: end;
+    margin-top: 3%;
+    margin-right: 4%;
 }
 
 .articles article p {
@@ -108,10 +124,12 @@
 }
 
 .articles article button:active {
+    transform: scale(92%);
     background-color: var(--button-active-color);
+    box-shadow: 0 0 20px var(--button-hover-color);
 }
 
-.articles h2 {
+/* .articles h2 {
     font-family: "Montserrat", sans-serif;
     font-weight: 550;
     font-size: 50px;
@@ -123,4 +141,4 @@
     padding-left: 2%;
     padding-right: 2%;
     transition: all 500ms ease-in-out;
-}
+} */
