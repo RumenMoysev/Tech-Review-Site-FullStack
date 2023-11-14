@@ -116,7 +116,7 @@ export default function Edit() {
                         onChange={editValueHandler}
                         required
                     />
-                    <button type="submit">Confirm Edit</button>
+                    <button className='editBtn' type="submit">Confirm Edit</button>
                 </form>
             </div>
         </section>

@@ -161,6 +161,11 @@
     border-radius: 0.8rem;
 }
 
+.editPage .editBtn:active {
+    box-shadow: 0 0 20px var(--button-hover-color);
+    transform: scale(93%);
+}
+
 .good {
     border: solid var(--theme-color) 3px;
     transition: 300ms ease-in-out all;
