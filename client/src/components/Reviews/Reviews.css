@@ -129,7 +129,7 @@
     box-shadow: 0 0 20px var(--button-hover-color);
 }
 
-/* .articles h2 {
+.articles h2 {
     font-family: "Montserrat", sans-serif;
     font-weight: 550;
     font-size: 50px;
@@ -141,4 +141,5 @@
     padding-left: 2%;
     padding-right: 2%;
     transition: all 500ms ease-in-out;
-} */
+    animation: slideIn 200ms ease;
+}
