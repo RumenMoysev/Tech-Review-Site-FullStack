@@ -45,8 +45,6 @@ exports.register = async (userData, rePassword) => {
 
 exports.login = async (userData) => {
     try {
-        validate(userData)
-
         const user = await User.findOne({ email: userData.email })
 
         if (user) {
