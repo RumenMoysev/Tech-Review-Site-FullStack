@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import { useNavigate } from "react-router-dom"
 
@@ -16,9 +16,10 @@ const initialRegisterState = {
 
 //MOVE HANDLER TO FORM AND USE e.currentTarget
 //USE ONBLUR EVENT FOR WARNING
-export default function Register({setIsAuth}) {
+export default function Register({isAuth, setIsAuth}) {
     const [registerState, setRegisterState] = useState(initialRegisterState)
     const [error, setError] = useState(undefined)
+    const [invalidFields, setInvalidFields] = useState({})
 
     const navigate = useNavigate()
 
@@ -42,6 +43,8 @@ export default function Register({setIsAuth}) {
             saveUserData(json)
             setIsAuth(true)
             navigate('/')
+        } else {
+            setInvalidFields({...response});
         }
     }
 
@@ -66,7 +69,7 @@ export default function Register({setIsAuth}) {
                     <label htmlFor="emailInput">Email</label>
                     <input
                         id="emailInput"
-                        className="good emailInput"
+                        className={`good emailInput ${invalidFields.email && 'warning'}`}
                         placeholder="Example: monkey@banana.com"
                         name="email"
                         type="email"
@@ -77,7 +80,7 @@ export default function Register({setIsAuth}) {
                     <label htmlFor="usernameInput">Username</label>
                     <input
                         id="usernameInput"
-                        className="good usernameInput"
+                        className={`good usernameInput ${invalidFields.username && 'warning'}`}
                         placeholder="Example: KnightMaster4"
                         name="username"
                         value={registerState.username}
@@ -87,7 +90,7 @@ export default function Register({setIsAuth}) {
                     <label htmlFor="passwordInput">Password</label>
                     <input
                         id="passwordInput"
-                        className="good passwordInput"
+                        className={`good passwordInput ${invalidFields.password && 'warning'}`}
                         placeholder="Example: 123abc"
                         name="password"
                         type="password"
@@ -98,7 +101,7 @@ export default function Register({setIsAuth}) {
                     <label htmlFor="repeatPassword">Repeat Password</label>
                     <input
                         id="repeatPassword"
-                        className="good repeatPassword"
+                        className={`good repeatPassword ${invalidFields.repeatPassword && 'warning'}`}
                         placeholder="Repeat Your Password"
                         name="repeatPassword"
                         type="password"

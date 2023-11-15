@@ -5,16 +5,31 @@ const usernameLength = 5
 const passwordLength = 5
 
 export function registerService(userData, setError) {
+    let error = undefined
+    const invalidFields = {}
+
     if (userData.email.length < emailLength) {
-        return setError(`Email should be at least ${emailLength} characters long!`)
-    } else if (userData.username.length < usernameLength) {
-        return setError(`Username should be at least ${usernameLength} characters long!`)
-    } else if (userData.password.length < passwordLength) {
-        return setError(`Password should be at least ${passwordLength} characters long!`)
-    } else if (userData.password !== userData.repeatPassword) {
-        return setError("Passwords do not match!")
+        invalidFields.email = true
+        error = `Email should be at least ${emailLength} characters long!`
+    }
+    if (userData.username.length < usernameLength) {
+        invalidFields.username = true
+        error ?  null : error = `Username should be at least ${usernameLength} characters long!`
+    }
+    if (userData.password.length < passwordLength) {
+        invalidFields.password = true
+        error ? null : error = `Password should be at least ${passwordLength} characters long!`
+    }
+    if (userData.password !== userData.repeatPassword || userData.repeatPassword.length < passwordLength) {
+        invalidFields.repeatPassword = true
+        error ? null : error = "Passwords do not match!"
+    }
+
+    if(error) {
+        setError(error)
+        return invalidFields
     } else {
-        setError(undefined)
+        error = undefined
     }
 
     const settings = {
