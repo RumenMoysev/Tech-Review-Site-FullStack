@@ -40,7 +40,7 @@ export default function Themes({allThemes, defaultTheme, setDefaultTheme}) {
                 <li className="themePreview">
                     <img
                         id="green"
-                        src="images/colors/Green.webp"
+                        src="/images/colors/Green.webp"
                         alt="green"
                         onMouseEnter={hoverOnTheme}
                         onMouseLeave={unHoverTheme}
@@ -50,7 +50,7 @@ export default function Themes({allThemes, defaultTheme, setDefaultTheme}) {
                 <li className="themePreview">
                     <img
                         id="blue"
-                        src="images/colors/Solid_blue.svg.png"
+                        src="/images/colors/light_blue.png"
                         alt="blue"
                         onMouseEnter={hoverOnTheme}
                         onMouseLeave={unHoverTheme}
@@ -60,7 +60,7 @@ export default function Themes({allThemes, defaultTheme, setDefaultTheme}) {
                 <li className="themePreview">
                     <img
                         id="yellow"
-                        src="images/colors/naples-yellow-painted-swatch.jpg"
+                        src="/images/colors/naples-yellow-painted-swatch.jpg"
                         alt="yellow"
                         onMouseEnter={hoverOnTheme}
                         onMouseLeave={unHoverTheme}
@@ -70,7 +70,7 @@ export default function Themes({allThemes, defaultTheme, setDefaultTheme}) {
                 <li className="themePreview">
                     <img
                         id="red"
-                        src="images/colors/red-color-solid-background-1920x1080.png"
+                        src="/images/colors/red-color-solid-background-1920x1080.png"
                         alt="red"
                         onMouseEnter={hoverOnTheme}
                         onMouseLeave={unHoverTheme}
