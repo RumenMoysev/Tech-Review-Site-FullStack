@@ -38,6 +38,12 @@ export function addReview(reviewData, setError) {
 }
 
 export function editReview(reviewData, oldReviewData, setError, reviewId) {
+    const hasNotChanged = validateChange(reviewData, oldReviewData)
+
+    if(hasNotChanged) {
+        return setError('Please make a change')
+    }
+
     const error = validateData(reviewData)
 
     if (error) {
@@ -149,5 +155,16 @@ function validateData(reviewData) {
     }
     if (reviewData.description.length < descriptionLength) {
         return `Description should be at least ${descriptionLength} characters long`
+    }
+}
+
+function validateChange(editFormValue, oldReviewData) {
+    if (
+        editFormValue.title === oldReviewData.title &&
+        editFormValue.imageUrl === oldReviewData.imageUrl &&
+        editFormValue.summary === oldReviewData.summary &&
+        editFormValue.description === oldReviewData.description
+    ) {
+        return true
     }
 }
