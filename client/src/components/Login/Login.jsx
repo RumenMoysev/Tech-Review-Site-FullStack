@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom"
 
@@ -7,12 +7,19 @@ import { saveUserData } from "../../api/sessionStorageService.js";
 
 import "./Login.css"
 
-export default function Login({ setIsAuth }) {
+export default function Login({ isAuth, setIsAuth }) {
     const [emailValue, setEmailValue] = useState('')
     const [passwordValue, setPasswordValue] = useState('')
     const [error, setError] = useState(undefined)
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if(isAuth) {
+            setError('You are already logged in')
+            setTimeout(() => navigate('/'), 1500)
+        }
+    })
 
     async function loginHandler(e) {
         e.preventDefault()
