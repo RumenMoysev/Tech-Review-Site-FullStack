@@ -16,6 +16,7 @@ const editFormState = {
 export default function Edit() {
     const [editFormValue, setEditFormValue] = useState(editFormState)
     const [error, setError] = useState(undefined)
+    const [oldReviewData, setOldReviewData] = useState(undefined)
 
     const {reviewId} = useParams()
 
@@ -30,6 +31,7 @@ export default function Edit() {
                 setTimeout(() => navigate(`/reviews/${reviewId}`), 1200)
             } else {
                 setEditFormValue(data)
+                setOldReviewData(data)
             }
         })
         .catch(err => console.log(err))
@@ -37,8 +39,7 @@ export default function Edit() {
 
     async function editSubmitHandler(e) {
         e.preventDefault()
-
-        let response = editReview(editFormValue, setError, reviewId)
+        let response = editReview(editFormValue, oldReviewData, setError, reviewId)
 
         if(response instanceof Promise) {
             response = await response
