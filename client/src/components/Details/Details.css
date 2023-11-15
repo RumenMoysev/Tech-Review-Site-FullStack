@@ -30,7 +30,7 @@
     color: #edf0f1;
     text-align: center;
     padding: 0% 10% 0% 10%;
-    margin-top: 5%;
+    margin-top: 4%;
     border-bottom: 2px solid var(--theme-color);
     overflow:auto;
     transition: all ease 700ms
@@ -42,17 +42,26 @@
     font-family: "Montserrat", sans-serif;
     font-weight: 550;
     font-size: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 70%;
 }
 
-.detailsPage .detailsContainer .headerDate h4 {
+.detailsPage .detailsContainer .headerDate .timeContainer {
     font-family: "Montserrat", sans-serif;
     font-weight: 100;
     font-size: 15px;
     text-align: end;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: flex-end;
-    height: 30%;
+    /* height: 30%; */
+}
+
+.detailsPage .detailsContainer .headerDate .timeContainer h4 {
+    /* margin-left: 10px; */
+    font-weight: 100;
 }
 
 #details .pBtnContainer {
