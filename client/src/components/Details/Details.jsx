@@ -7,7 +7,7 @@ import './Details.css'
 import Spinner from '../Spinner/Spinner.jsx'
 import { getUserId } from '../../api/sessionStorageService.js';
 
-export default function Details({isAuth}) {
+export default function Details({ isAuth }) {
     const [reviewDetails, setReviewDetails] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const [hasLiked, setHasLiked] = useState(false)
@@ -23,7 +23,7 @@ export default function Details({isAuth}) {
             .then(data => {
                 setIsLoading(false)
                 setReviewDetails(data)
-                if(data.likes.includes(userId)) {
+                if (data.likes.includes(userId)) {
                     setHasLiked(true)
                 }
             })
@@ -43,7 +43,7 @@ export default function Details({isAuth}) {
     async function likeHandler() {
         await likeReview(reviewId)
 
-        reviewDetails.likes.push(userId)
+        reviewDetails.isOwner ? null : reviewDetails.likes.push(userId)
         setReviewDetails(reviewDetails => ({
             ...reviewDetails,
             // likes: reviewDetails.likes.push(userId)
@@ -54,47 +54,50 @@ export default function Details({isAuth}) {
 
     return (
         isLoading
-        ?
-        <Spinner/>
-        :    
-        <section id="details" className="hidden detailsPage">
-            <div className="detailsContainer">
-                <div className="headerDate">
-                    <h2>{reviewDetails.title}</h2>
-                    <h4>Created on: 23:11:2023</h4>
-                </div>
-                <img
-                    src={reviewDetails.imageUrl}
-                    alt="picture"
-                />
-
-                <div className="pBtnContainer">
-                    <p>{reviewDetails.description}</p>
-
-                    {isAuth &&
-                        <div className="detailsBtns">
-                            {reviewDetails.isOwner
-                                ?
-                                <>
-                                    <Link to="edit"><button>Edit</button></Link>
-                                    <button onClick={deleteHandler}>Delete</button>
-                                </>
-                                :
-                                hasLiked
-                                ?
-                                <a>Thank you for liking!</a>
-                                :
-                                <button onClick={likeHandler}>Like</button>
-                            }
+            ?
+            <Spinner />
+            :
+            <section id="details" className="hidden detailsPage">
+                <div className="detailsContainer">
+                    <div className="headerDate">
+                        <h2>{reviewDetails.title}</h2>
+                        <div className="timeContainer">
+                            <h4>Created on: {reviewDetails.createdAtTime}</h4>
+                            <h4>Last updated on: {reviewDetails.updatedAtTime}</h4>
                         </div>
+                    </div>
+                    <img
+                        src={reviewDetails.imageUrl}
+                        alt="picture"
+                    />
+
+                    <div className="pBtnContainer">
+                        <p>{reviewDetails.description}</p>
+
+                        {isAuth &&
+                            <div className="detailsBtns">
+                                {reviewDetails.isOwner
+                                    ?
+                                    <>
+                                        <Link to="edit"><button>Edit</button></Link>
+                                        <button onClick={deleteHandler}>Delete</button>
+                                    </>
+                                    :
+                                    hasLiked
+                                        ?
+                                        <a>Thank you for liking!</a>
+                                        :
+                                        <button onClick={likeHandler}>Like</button>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    {reviewDetails.likes.length > 0
+                        ? <p className="likes">{reviewDetails.likes.length} likes</p>
+                        : <p className="likes">No likes yet</p>
                     }
                 </div>
-
-                {reviewDetails.likes.length > 0
-                    ?   <p className="likes">{reviewDetails.likes.length} likes</p>
-                    :   <p className="likes">No likes yet</p>
-                }
-            </div>
-        </section>
+            </section>
     );
 }
