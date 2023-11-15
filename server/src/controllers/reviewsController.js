@@ -20,6 +20,7 @@ router.post('/', async (req, res) => {
         imageUrl: req.body.imageUrl,
         summary: req.body.summary,
         description: req.body.description,
+        createdAtTime: req.body.createdAtTime,
         owner: req.user._id
     }
 
@@ -57,6 +58,7 @@ router.get('/:reviewId', async (req, res) => {
 router.post('/:reviewId/like', async (req, res) => {
     const reviewId = req.params.reviewId
     const userId = req.user?._id
+
     try {
         if(userId) {
             await reviewManager.likeReview(reviewId, userId)
@@ -99,7 +101,8 @@ router.put('/:reviewId', async (req, res) => {
         title: req.body.title,
         imageUrl: req.body.imageUrl,
         summary: req.body.summary,
-        description: req.body.description
+        description: req.body.description,
+        updatedAtTime: req.body.updatedAtTime
     }
     const reviewId = req.params.reviewId
 
