@@ -41,8 +41,8 @@ function App() {
             
             <Routes>
                 <Route path="/" element={<Home/>} />
-                <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
-                <Route path="/register" element={<Register setIsAuth={setIsAuth} />} />
+                <Route path="/login" element={<Login isAuth={isAuth} setIsAuth={setIsAuth} />} />
+                <Route path="/register" element={<Register isAuth={isAuth} setIsAuth={setIsAuth} />} />
                 <Route path="/reviews" element={<Articles/>} />
                 <Route path="/add-review" element={<AddReview/>} />
                 <Route path="/reviews/:reviewId" element={<Details isAuth={isAuth} />} />
