@@ -64,7 +64,7 @@
 }
 
 .form-container .titleInput {
-    background:url(../images/information-outline.svg); 
+    background:url(/images/information-outline.svg); 
     background-repeat: no-repeat; 
     background-size: 28px;
     background-position: 98.5%; 
@@ -72,7 +72,7 @@
 }
 
 .form-container .imageInput {
-    background: url(../images/image-outline.svg);
+    background: url(/images/image-outline.svg);
     background-repeat: no-repeat;
     background-size: 28px;
     background-position: 98.5%;
@@ -80,7 +80,7 @@
 }
 
 .form-container .summaryInput {
-    background: url(../images/summary.svg);
+    background: url(/images/summary.svg);
     background-repeat: no-repeat;
     background-size: 28px;
     background-position: 98.5%;
@@ -88,7 +88,7 @@
 }
 
 .form-container .detailsInput {
-    background: url(../images/details.svg);
+    background: url(/images/details.svg);
     background-repeat: no-repeat;
     background-size: 28px;
     background-position: 98.5%;
