@@ -23,6 +23,13 @@ export default function Register({isAuth, setIsAuth}) {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        if (isAuth) {
+            setError('You are already logged in')
+            setTimeout(() => navigate('/'), 1500)
+        }
+    })
+
     async function registerHandler(e) {
         e.preventDefault()
 
