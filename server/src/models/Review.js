@@ -17,6 +17,13 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    createdAtTime: {
+        type: String,
+        required: true
+    },
+    updatedAtTime: {
+        type: String
+    },
     likes: [
         {
             type: mongoose.Types.ObjectId,
