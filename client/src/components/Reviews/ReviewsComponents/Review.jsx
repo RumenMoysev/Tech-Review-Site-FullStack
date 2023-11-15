@@ -5,7 +5,7 @@ export default function Article({review}) {
         <article className="">
             <div className="headerDateArticle">
                 <h2>{review.title}</h2>
-                <h4>Created on: 21.31.3122</h4>
+                <h4>Created on: {review.createdAtTime}</h4>
             </div>
             <div className="pImgContainer">
                 <p>{review.summary}</p>
