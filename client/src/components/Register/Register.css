@@ -64,7 +64,7 @@
 }
 
 .form-container .emailInput {
-    background:url(../images/mail-outline.svg); 
+    background:url(/images/mail-outline.svg); 
     background-repeat: no-repeat; 
     background-size: 28px;
     background-position: 98.5%; 
@@ -72,7 +72,7 @@
 }
 
 .form-container .passwordInput, .form-container .repeatPassword {
-    background: url(../images/lock-closed-outline.svg);
+    background: url(/images/lock-closed-outline.svg);
     background-repeat: no-repeat;
     background-size: 28px;
     background-position: 98.5%;
@@ -80,7 +80,7 @@
 }
 
 .form-container .usernameInput {
-    background: url(../images/person-outline.svg);
+    background: url(/images/person-outline.svg);
     background-repeat: no-repeat;
     background-size: 28px;
     background-position: 98.4%;
@@ -192,3 +192,11 @@
     border: 3px dashed red;
     transition: 300ms ease-in-out all;
 }
+
+/* ::-webkit-scrollbar {
+    background-color: var(--button-active-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--button-color);
+} */
