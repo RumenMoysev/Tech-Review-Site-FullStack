@@ -21,6 +21,10 @@ export function addReview(reviewData, setError) {
         return setError('You need to be logged in to add a review')
     }
 
+    const createdAtTime = new Date().toLocaleString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'shortOffset' })
+    
+    reviewData.createdAtTime = createdAtTime
+
     const settings = {
         method: "POST",
         headers: {
@@ -33,7 +37,7 @@ export function addReview(reviewData, setError) {
     return fetch(`${baseUrl}/data/reviews`, settings)
 }
 
-export function editReview(reviewData, setError, reviewId) {
+export function editReview(reviewData, oldReviewData, setError, reviewId) {
     const error = validateData(reviewData)
 
     if (error) {
@@ -46,7 +50,11 @@ export function editReview(reviewData, setError, reviewId) {
 
     if (!authToken) {
         return setError('You need to be logged in to edit a review')
-    } 
+    }
+
+    const updatedAtTime = new Date().toLocaleString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'shortOffset' })
+    
+    reviewData.updatedAtTime = updatedAtTime
 
     const settings = {
         method: "PUT",
