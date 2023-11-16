@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { addReview } from '../../api/reviewsService.js';
@@ -12,10 +12,17 @@ const addFormState = {
     description: ''
 }
 
-export default function AddReview() {
+export default function AddReview( {isAuth} ) {
     const [addFormValue, setAddFormValue] = useState(addFormState)
     const [error, setError] = useState(undefined)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if(isAuth === false) {
+            setError('You need to be logged in')
+            setTimeout(() => navigate('/'), 1500)
+        }
+    }, [isAuth])
 
     async function addFormHandler(e) {
         e.preventDefault()
