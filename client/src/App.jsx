@@ -13,7 +13,7 @@ import Spinner from "./components/Spinner/Spinner.jsx"
 import Page404 from "./components/404/404.jsx"
 
 function App() {
-    const [isAuth, setIsAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState(undefined)
 
     useEffect(() => {
         const options = {
@@ -44,7 +44,7 @@ function App() {
                 <Route path="/login" element={<Login isAuth={isAuth} setIsAuth={setIsAuth} />} />
                 <Route path="/register" element={<Register isAuth={isAuth} setIsAuth={setIsAuth} />} />
                 <Route path="/reviews" element={<Articles/>} />
-                <Route path="/add-review" element={<AddReview/>} />
+                <Route path="/add-review" element={<AddReview isAuth={isAuth} />} />
                 <Route path="/reviews/:reviewId" element={<Details isAuth={isAuth} />} />
                 <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
                 <Route path="*" element={<Page404/>} />
