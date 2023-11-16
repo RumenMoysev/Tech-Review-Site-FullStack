@@ -94,6 +94,7 @@
 }
 
 .homePage .row .col .card {
+    position: relative;
     width: 30vw;
     /* height: 33vh; */
     min-height: 33vh;
@@ -131,3 +132,34 @@
 .homePage .row .col .card:nth-child(2) {
     transition-delay: 0.8s;
 } */
+
+.likesCount {
+    /* height: 28vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; */
+    /* position: absolute;
+    bottom: 5%;
+    right: 5%; */
+}
+
+.likeContainer {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: 6%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.likeContainer img {
+    width: 80%;
+}
+
+.likesCount {
+    display: flex;
+    align-items: flex-end;
+    margin-left: 7px;
+    transform: translateY(2px);
+    text-shadow: 0 0 5px #000000;
+}
