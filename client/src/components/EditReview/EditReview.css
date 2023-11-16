@@ -63,8 +63,12 @@
     outline: none;
 }
 
+.form-container .detailsInput {
+    height: 7rem;
+}
+
 .form-container .titleInput {
-    background:url(/images/information-outline.svg); 
+    background: url(/images/information-outline.svg); 
     background-repeat: no-repeat; 
     background-size: 28px;
     background-position: 98.5%; 
