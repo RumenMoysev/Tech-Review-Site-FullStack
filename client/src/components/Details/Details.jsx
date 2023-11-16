@@ -63,7 +63,7 @@ export default function Details({ isAuth }) {
                         <h2>{reviewDetails.title}</h2>
                         <div className="timeContainer">
                             <h4>Created on: {reviewDetails.createdAtTime}</h4>
-                            <h4>Last updated on: {reviewDetails.updatedAtTime}</h4>
+                            {reviewDetails.updatedAtTime && <h4>Last updated on: {reviewDetails.updatedAtTime}</h4>}
                         </div>
                     </div>
                     <img
