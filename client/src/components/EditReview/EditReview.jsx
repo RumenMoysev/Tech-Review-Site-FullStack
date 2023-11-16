@@ -96,7 +96,7 @@ export default function Edit() {
                         required
                     />
                     <label htmlFor="summaryInput">Summary</label>
-                    <input
+                    <textarea
                         id="summaryInput"
                         className="good summaryInput"
                         placeholder="Example: 123abc"
@@ -107,7 +107,7 @@ export default function Edit() {
                         required
                     />
                     <label htmlFor="detailsInput">Description</label>
-                    <input
+                    <textarea
                         id="detailsInput"
                         className="good detailsInput"
                         placeholder="Description"
