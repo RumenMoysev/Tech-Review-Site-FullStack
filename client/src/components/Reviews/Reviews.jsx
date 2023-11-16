@@ -35,7 +35,7 @@ export default function Articles() {
                         <Review key={article._id} review={article} />
                     ))
                     :
-                    <h2 className='hidden'>No reviews yet!</h2>
+                    <h2 className='hidden noReviews'>No reviews yet!</h2>
             }
         </section >
     );
