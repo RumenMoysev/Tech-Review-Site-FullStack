@@ -61,6 +61,7 @@
     font-family: "Montserrat", sans-serif;
     font-weight: 550;
     font-size: 25px;
+    height: 50%;
 }
 
 .articles article .headerDateArticle h4 {
@@ -129,7 +130,7 @@
     box-shadow: 0 0 20px var(--button-hover-color);
 }
 
-.articles h2 {
+.articles .noReviews {
     font-family: "Montserrat", sans-serif;
     font-weight: 550;
     font-size: 50px;
