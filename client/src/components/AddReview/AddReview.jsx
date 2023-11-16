@@ -82,10 +82,10 @@ export default function AddReview( {isAuth} ) {
                         required
                     />
                     <label htmlFor="summaryInput">Summary</label>
-                    <input
+                    <textarea
                         id="summaryInput"
                         className="good summaryInput"
-                        placeholder="Example: 123abc"
+                        placeholder="Summary"
                         name="summary"
                         type="text"
                         value={addFormValue.summary}
@@ -93,7 +93,8 @@ export default function AddReview( {isAuth} ) {
                         required
                     />
                     <label htmlFor="descriptionInput">Description</label>
-                    <input
+                    {/* make this a text area */}
+                    <textarea
                         id="descriptionInput"
                         className="good descriptionInput"
                         placeholder="Description"
