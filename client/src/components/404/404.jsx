@@ -5,17 +5,19 @@ import "./404.css"
 
 export default function Page404() {
     useEffect(() => {
-        window.onmousemove = (e) => {
-            let x = e.clientX/6
-            let y = e.clientY/6
+        function moveBackground(e) {
+            let x = e.clientX / 6
+            let y = e.clientY / 6
 
             page404.style.backgroundPositionX = x + 'px'
             page404.style.backgroundPositionY = y + 'px'
         }
+
+        window.addEventListener('mousemove', moveBackground)
         
         //Fix the bug
         return () => {
-            window.removeEventListener('mousemove', listener)
+            window.removeEventListener('mousemove', moveBackground)
         }
     })
 
