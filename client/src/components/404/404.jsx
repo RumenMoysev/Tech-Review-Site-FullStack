@@ -12,6 +12,11 @@ export default function Page404() {
             page404.style.backgroundPositionX = x + 'px'
             page404.style.backgroundPositionY = y + 'px'
         }
+        
+        //Fix the bug
+        return () => {
+            window.removeEventListener('mousemove', listener)
+        }
     })
 
     return (
