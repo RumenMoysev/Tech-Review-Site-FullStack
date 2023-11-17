@@ -93,10 +93,13 @@ export default function Details({ isAuth }) {
                         }
                     </div>
 
-                    {reviewDetails.likes.length > 0
-                        ? <p className="likes">{reviewDetails.likes.length} likes</p>
-                        : <p className="likes">No likes yet</p>
-                    }
+                    <div className='likesCommentContainer'>
+                        {reviewDetails.likes.length > 0
+                            ? <p className="likes">{reviewDetails.likes.length} likes</p>
+                            : <p className="likes">No likes yet</p>
+                        }
+                        <button className='commentButton'>Show comments</button>
+                    </div>
                 </div>
             </section>
     );
