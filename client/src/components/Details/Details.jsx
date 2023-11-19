@@ -6,11 +6,13 @@ import { deleteReview, getDetails, likeReview } from '../../api/reviewsService.j
 import './Details.css'
 import Spinner from '../Spinner/Spinner.jsx'
 import { getUserId } from '../../api/sessionStorageService.js';
+import CommentSection from './DetailsComponents/CommentSection.jsx';
 
 export default function Details({ isAuth }) {
     const [reviewDetails, setReviewDetails] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const [hasLiked, setHasLiked] = useState(false)
+    const [showCommentSection, setShowCommentSection] = useState(false)
     const { reviewId } = useParams()
 
     const userId = getUserId()
@@ -98,34 +100,10 @@ export default function Details({ isAuth }) {
                             ? <p className="likes">{reviewDetails.likes.length} likes</p>
                             : <p className="likes">No likes yet</p>
                         }
-                        <button className='commentButton'>Show comments</button>
+                        <button className='commentButton' onClick={() => setShowCommentSection(state => !state)}>Show comments</button>
                     </div>
 
-                    <div className="commentContainer">
-                        <h3>Comments</h3>
-                        <div className='commentInputBox'>
-                            <input type='text' required="required"></input>
-                            <span>Comment</span>
-                            <button>Post</button>
-                        </div>
-                        <div className='comments'>
-                            <div className='comment'>
-                                <div className='commentData'>
-                                    <Link to="/userId/profile">Username:</Link>
-                                    <p>Some comment thast about this long</p>
-                                </div>
-                                <img src='/images/like.svg' />
-                            </div>
-                            <div className='comment'>
-                                <div className='commentData'>
-                                    <Link to="/userId/profile">Username:</Link>
-                                    <p>Some comment thast about this az sum niggaaaaaaaaaaaaaaa</p>
-                                </div>
-                                <img src='/images/like.svg' />
-                            </div>
-                        </div>
-                    </div>
-                    
+                    {showCommentSection && <CommentSection/>}
                 </div>
             </section>
     );
