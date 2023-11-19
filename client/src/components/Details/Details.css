@@ -200,7 +200,7 @@
     font-size: 1em;
     background: none;
     border: none;
-    width: 5%;
+    /* width: 5%; */
     color: #edf0f1;
     text-transform: uppercase;
     transition: 0.5s ease;
@@ -248,12 +248,20 @@
     border: 1px solid var(--button-color);
 }
 
+.commentContainer .comments {
+    /* display: flex;
+    flex-direction: column;
+    gap: 10px */
+    margin-bottom: 1%;
+}
+
 .commentContainer .comments .comment {
     display: flex;
     width: 90%;
     height: 4vh;
     margin: auto;
     justify-content: space-between;
+    /* background-color: black */
 }
 
 .commentContainer .comments a {
