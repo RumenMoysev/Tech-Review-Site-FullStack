@@ -6,6 +6,7 @@ import { registerService } from "../../api/userService.js"
 import { saveUserData } from "../../api/sessionStorageService.js"
 
 import "./Register.css"
+import { useForm } from "../../hooks/useForm.js"
 
 const initialRegisterState = {
     email: '',
@@ -17,7 +18,7 @@ const initialRegisterState = {
 //MOVE HANDLER TO FORM AND USE e.currentTarget
 //USE ONBLUR EVENT FOR WARNING
 export default function Register({isAuth, setIsAuth}) {
-    const [registerState, setRegisterState] = useState(initialRegisterState)
+    const [registerState, onChangeHandler] = useForm(initialRegisterState)
     const [error, setError] = useState(undefined)
     const [invalidFields, setInvalidFields] = useState({})
 
@@ -55,16 +56,6 @@ export default function Register({isAuth, setIsAuth}) {
         }
     }
 
-    function registerValueHandler(e) {
-        const name = e.target.name
-        const value = e.target.value
-
-        setRegisterState(state => ({
-            ...state,
-            [name]: value
-        }))
-    }
-
     return (
         <section id="registerPage" className="hidden registerPage">
             <div className="form-container">
@@ -81,7 +72,7 @@ export default function Register({isAuth, setIsAuth}) {
                         name="email"
                         type="email"
                         value={registerState.email}
-                        onChange={registerValueHandler}
+                        onChange={onChangeHandler}
                         required
                     />
                     <label htmlFor="usernameInput">Username</label>
@@ -91,7 +82,7 @@ export default function Register({isAuth, setIsAuth}) {
                         placeholder="Example: KnightMaster4"
                         name="username"
                         value={registerState.username}
-                        onChange={registerValueHandler}
+                        onChange={onChangeHandler}
                         required
                     />
                     <label htmlFor="passwordInput">Password</label>
@@ -102,7 +93,7 @@ export default function Register({isAuth, setIsAuth}) {
                         name="password"
                         type="password"
                         value={registerState.password}
-                        onChange={registerValueHandler}
+                        onChange={onChangeHandler}
                         required
                     />
                     <label htmlFor="repeatPassword">Repeat Password</label>
@@ -113,7 +104,7 @@ export default function Register({isAuth, setIsAuth}) {
                         name="repeatPassword"
                         type="password"
                         value={registerState.repeatPassword}
-                        onChange={registerValueHandler}
+                        onChange={onChangeHandler}
                         required
                     />
                     <div className="rememberMe-container">
