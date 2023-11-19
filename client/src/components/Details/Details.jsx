@@ -100,6 +100,32 @@ export default function Details({ isAuth }) {
                         }
                         <button className='commentButton'>Show comments</button>
                     </div>
+
+                    <div className="commentContainer">
+                        <h3>Comments</h3>
+                        <div className='commentInputBox'>
+                            <input type='text' required="required"></input>
+                            <span>Comment</span>
+                            <button>Post</button>
+                        </div>
+                        <div className='comments'>
+                            <div className='comment'>
+                                <div className='commentData'>
+                                    <Link to="/userId/profile">Username:</Link>
+                                    <p>Some comment thast about this long</p>
+                                </div>
+                                <img src='/images/like.svg' />
+                            </div>
+                            <div className='comment'>
+                                <div className='commentData'>
+                                    <Link to="/userId/profile">Username:</Link>
+                                    <p>Some comment thast about this az sum niggaaaaaaaaaaaaaaa</p>
+                                </div>
+                                <img src='/images/like.svg' />
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </section>
     );
