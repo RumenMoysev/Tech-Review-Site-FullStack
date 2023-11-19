@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     margin-top: 200px;
-    height: 73vh;
+    min-height: 73vh;
 }
 
 .detailsPage .detailsContainer {
@@ -12,9 +12,10 @@
     justify-content: center;
     flex-wrap: wrap;
     border: solid 1px var(--theme-color);
-    border-radius: 90px;
+    border-radius: 6%;
     width: 70vw;
     height: auto;
+    padding-bottom: 10px;
     background-color: #121213fa;
     box-shadow: 0 0 35px var(--theme-color);
     transition: all 800ms ease-in-out;
@@ -56,11 +57,9 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    /* height: 30%; */
 }
 
 .detailsPage .detailsContainer .headerDate .timeContainer h4 {
-    /* margin-left: 10px; */
     font-weight: 100;
 }
 
@@ -69,14 +68,15 @@
     margin: 5% 0 5% 5%
 }
 
-.detailsPage p {
+.detailsPage p:not(.username) {
     font-family: "Montserrat", sans-serif;
     font-weight: 550;
     font-size: 1rem;
     color: #edf0f1;
+    word-wrap: break-word;
 }
 
-.detailsPage .detailsContainer img {
+.detailsPage .detailsContainer img:not(.comment img) {
     width: 33%;
     height: max-content;
     min-height: 10%;
@@ -131,14 +131,13 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .detailsPage .likes {
-    /* width: 33%; */
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
     text-align: center; 
-    /* transform: translateX(-80%); */
     margin-bottom: 2%;
 }
 
@@ -169,4 +168,118 @@
     transform: scale(93%);
     background-color: var(--button-active-color);
     box-shadow: 0 0 20px var(--button-hover-color);
+}
+
+.commentContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px
+}
+
+.commentContainer h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 1rem;
+    color: #edf0f1;
+    text-align: center;
+}
+
+.commentContainer .commentInputBox {
+    position: relative;
+    width: 90%;
+    margin: auto;
+}
+
+.commentContainer .commentInputBox button {
+    font-family: "Montserrat", sans-serif;
+    position: absolute;
+    right: 0;
+    padding: 6px 10px 5px 0px;
+    cursor: pointer;
+    font-size: 1em;
+    background: none;
+    border: none;
+    width: 5%;
+    color: #edf0f1;
+    text-transform: uppercase;
+    transition: 0.5s ease;
+}
+
+.commentContainer .commentInputBox input {
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    margin: auto;
+    height: 30px;
+    padding: 5px 7% 5px 7px;
+    border: 1px solid rgba(2255, 255, 255, 0.25);
+    background: #121213fa;
+    border-radius: 5px;
+    outline: none;
+    color: #edf0f1;
+    font-size: 1em;
+}
+
+.commentContainer .commentInputBox span {
+    font-family: "Montserrat", sans-serif;
+    position: absolute;
+    left: 0;
+    padding: 5px 0px 5px 7px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(2255, 255, 255, 0.25);
+    transition: 0.5s ease;
+}
+
+.commentContainer .commentInputBox input:valid ~ span,
+.commentContainer .commentInputBox input:focus ~ span {
+    color: var(--button-color);
+    transform: translateX(10px) translateY(-10px);
+    font-size: 1em;
+    padding: 0px 10px 0px 10px;
+    background: #121213fa;
+    letter-spacing: 0.2em;
+    border-left: 1px solid var(--button-color);
+    border-right: 1px solid var(--button-color);
+}
+
+.commentContainer .commentInputBox input:valid,
+.commentContainer .commentInputBox input:focus {
+    border: 1px solid var(--button-color);
+}
+
+.commentContainer .comments .comment {
+    display: flex;
+    width: 90%;
+    height: 4vh;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.commentContainer .comments a {
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.commentContainer .comments p {
+    font-family: "Montserrat", sans-serif;
+    color: rgb(255, 255, 255);
+    width: 80%;
+    margin-left: 1%;
+    position: relative;
+    top: 5%;
+    word-wrap: break-word;
+}
+
+.commentContainer .comments .comment img {
+    width: 20px;
+    cursor: pointer;
+}
+
+.commentContainer .comments .commentData {
+    width: 90%;
+    display: flex;
 }
