@@ -41,7 +41,7 @@ function App() {
     }
 
     return (
-        <AuthContext.Provider value={{ isAuth, setIsAuthHandler }}>
+        <AuthContext.Provider value={{ isAuth, setIsAuth: setIsAuthHandler}}>
             <Header isAuth={isAuth} setIsAuth={setIsAuth}></Header>
             
             <Routes>
