@@ -257,10 +257,12 @@
 
 .commentContainer .comments .comment {
     display: flex;
-    width: 90%;
-    height: 4vh;
+    width: 92%;
+    min-height: 4vh;
     margin: auto;
+    margin-left: 5%;
     justify-content: space-between;
+    align-items: center;
     /* background-color: black */
 }
 
@@ -272,22 +274,35 @@
     font-size: 1.1rem;
 }
 
-.commentContainer .comments p {
+.commentContainer .comments p:not(.likeData p) {
     font-family: "Montserrat", sans-serif;
     color: rgb(255, 255, 255);
     width: 80%;
     margin-left: 1%;
-    position: relative;
-    top: 5%;
+    transform: translateY(2px);
+    /* position:fixed;
+    top: 100%; */
     word-wrap: break-word;
 }
 
 .commentContainer .comments .comment img {
     width: 20px;
     cursor: pointer;
+    /* transform: rotateX(180deg); */
 }
 
 .commentContainer .comments .commentData {
     width: 90%;
     display: flex;
+}
+
+.commentContainer .comments .likeData {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.commentContainer .comments .likeData p {
+    color: white;
+    font-size: 0.8rem;
 }
