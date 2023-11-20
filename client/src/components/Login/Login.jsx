@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { useNavigate } from "react-router-dom"
 
@@ -6,11 +6,13 @@ import { loginService } from "../../api/userService.js";
 import { saveUserData } from "../../api/sessionStorageService.js";
 
 import "./Login.css"
+import { AuthContext } from "../../contexts/AuthContext.js";
 
-export default function Login({ isAuth, setIsAuth }) {
+export default function Login() {
     const [emailValue, setEmailValue] = useState('')
     const [passwordValue, setPasswordValue] = useState('')
     const [error, setError] = useState(undefined)
+    const { isAuth, setIsAuth } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
