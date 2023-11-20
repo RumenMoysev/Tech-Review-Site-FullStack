@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { Routes, Route } from "react-router-dom"
 
+import { AuthContext } from "./contexts/AuthContext.js"
+
 import Articles from "./components/Reviews/Reviews.jsx"
 import Details from "./components/Details/Details.jsx"
 import Header from "./components/Header/Header.jsx"
@@ -9,7 +11,6 @@ import Login from "./components/Login/Login.jsx"
 import Register from "./components/Register/Register.jsx"
 import Edit from "./components/EditReview/EditReview.jsx"
 import AddReview from "./components/AddReview/AddReview.jsx"
-import Spinner from "./components/Spinner/Spinner.jsx"
 import Page404 from "./components/404/404.jsx"
 
 function App() {
@@ -35,8 +36,12 @@ function App() {
         hiddenElems.forEach((el) => observer.observe(el));
     })
 
+    function setIsAuthHandler(value) {
+        setIsAuth(value)
+    }
+
     return (
-        <>
+        <AuthContext.Provider value={{ isAuth, setIsAuthHandler }}>
             <Header isAuth={isAuth} setIsAuth={setIsAuth}></Header>
             
             <Routes>
@@ -49,7 +54,7 @@ function App() {
                 <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
                 <Route path="*" element={<Page404/>} />
             </Routes>
-        </>
+        </AuthContext.Provider>
     )
 }
 
