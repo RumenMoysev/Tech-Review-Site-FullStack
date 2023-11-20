@@ -1,6 +1,10 @@
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../../../contexts/AuthContext.js"
 
 export default function Comment() {
+    const {isAuth} = useContext(AuthContext)
+
     const onLikeClick = () => {
         console.log('Like clicked')
     }
@@ -13,7 +17,7 @@ export default function Comment() {
         </div>
         <div className="likeData">
             <p>2 likes</p>
-            <img src='/images/like.svg' onClick={onLikeClick}/>
+            {isAuth && <img src='/images/like.svg' onClick={onLikeClick} />}
         </div>
     </div>
     )
