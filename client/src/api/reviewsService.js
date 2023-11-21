@@ -135,6 +135,21 @@ export function getComments(reviewId) {
     return fetch(`${baseUrl}/data/reviews/${reviewId}/getComments`, settings)
 }
 
+export function sendComment(reviewId, comment) {
+    const authToken = getAuth()
+
+    const settings = {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/json",
+            "X-Authorization": authToken
+        },
+        body: JSON.stringify({comment})
+    }
+
+    return fetch(`${baseUrl}/data/reviews/${reviewId}/addComment`, settings)
+}
+
 export function likeReview(reviewId) {
     const authToken = getAuth()
 
