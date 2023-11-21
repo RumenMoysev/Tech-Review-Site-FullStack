@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import { deleteReview, getDetails, likeReview } from '../../api/reviewsService.js';
@@ -7,13 +6,16 @@ import './Details.css'
 import Spinner from '../Spinner/Spinner.jsx'
 import { getUserId } from '../../api/sessionStorageService.js';
 import CommentSection from './DetailsComponents/CommentSection.jsx';
+import { AuthContext } from '../../contexts/AuthContext.js';
 
-export default function Details({ isAuth }) {
+export default function Details() {
     const [reviewDetails, setReviewDetails] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const [hasLiked, setHasLiked] = useState(false)
     const [showCommentSection, setShowCommentSection] = useState(false)
+    
     const { reviewId } = useParams()
+    const { isAuth } = useContext(AuthContext)
 
     const userId = getUserId()
 
@@ -103,7 +105,7 @@ export default function Details({ isAuth }) {
                         <button className='commentButton' onClick={() => setShowCommentSection(state => !state)}>Show comments</button>
                     </div>
 
-                    {showCommentSection && <CommentSection/>}
+                    {showCommentSection && <CommentSection reviewId={reviewId} />}
                 </div>
             </section>
     );
