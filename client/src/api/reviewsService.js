@@ -129,6 +129,12 @@ export function getDetails(reviewId) {
     return fetch(`${baseUrl}/data/reviews/${reviewId}`, settings)
 }
 
+export function getComments(reviewId) {
+    const settings = { method: "GET" }
+
+    return fetch(`${baseUrl}/data/reviews/${reviewId}/getComments`, settings)
+}
+
 export function likeReview(reviewId) {
     const authToken = getAuth()
 
