@@ -14,7 +14,7 @@ import AddReview from "./components/AddReview/AddReview.jsx"
 import Page404 from "./components/404/404.jsx"
 
 function App() {
-    const [isAuth, setIsAuth] = useState(undefined)
+    const [isAuth, setIsAuth] = useState(false)
 
     useEffect(() => {
         const options = {
@@ -46,11 +46,11 @@ function App() {
             
             <Routes>
                 <Route path="/" element={<Home/>} />
-                <Route path="/login" element={<Login isAuth={isAuth} setIsAuth={setIsAuth} />} />
+                <Route path="/login" element={<Login/>} />
                 <Route path="/register" element={<Register isAuth={isAuth} setIsAuth={setIsAuth} />} />
                 <Route path="/reviews" element={<Articles/>} />
                 <Route path="/add-review" element={<AddReview isAuth={isAuth} />} />
-                <Route path="/reviews/:reviewId" element={<Details isAuth={isAuth} />} />
+                <Route path="/reviews/:reviewId" element={<Details/>} />
                 <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
                 <Route path="*" element={<Page404/>} />
             </Routes>
