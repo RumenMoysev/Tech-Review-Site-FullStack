@@ -37,6 +37,16 @@ exports.getOneDetails = (reviewId) => {
     return review
 }
 
+exports.getOneComments = (reviewId) => {
+    const review = Review.findById(reviewId, { comments: 1 })
+
+    if (!review) {
+        throw new Error('Review not found')
+    }
+
+    return review
+}
+
 exports.getOneAllData = (reviewId) => {
     const review = Review.findById(reviewId)
 
