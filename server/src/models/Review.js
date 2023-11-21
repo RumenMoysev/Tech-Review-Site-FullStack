@@ -29,6 +29,20 @@ const reviewSchema = new mongoose.Schema({
             type: mongoose.Types.ObjectId,
         }
     ],
+    comments: [
+        {
+            user: {
+                type: mongoose.Types.ObjectId,
+                ref: 'User'
+            },
+            comment: String,
+            likes: [
+                {
+                    type: mongoose.Types.ObjectId,
+                }
+            ]
+        }
+    ],
     owner: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
