@@ -31,7 +31,7 @@ const reviewSchema = new mongoose.Schema({
     ],
     comments: [
         {
-            user: {
+            owner: {
                 type: mongoose.Types.ObjectId,
                 ref: 'User'
             },
