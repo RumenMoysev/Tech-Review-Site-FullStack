@@ -55,6 +55,31 @@ router.get('/:reviewId', async (req, res) => {
     }
 })
 
+router.get('/:reviewId/getComments', async (req, res) => {
+    const reviewId = req.params.reviewId
+
+    try {
+        const review = await reviewManager.getOneComments(reviewId)
+        const comments = review.comments
+        
+        if(comments) {
+            for(const el of comments) {
+                if (req.user?._id == el.user) {
+                    el.isOwner = true
+                } else {
+                    el.isOwner = false
+                }
+            }
+        }
+        
+        res.status(201).json(comments)
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
 router.post('/:reviewId/like', async (req, res) => {
     const reviewId = req.params.reviewId
     const userId = req.user?._id
