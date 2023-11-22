@@ -94,3 +94,15 @@ exports.likeReview = async (reviewId, userId) => {
         return Review.findByIdAndUpdate(reviewId, { $push: { likes: userId } })
     }
 }
+
+exports.addComment = (reviewId, commentData) => Review.findByIdAndUpdate(reviewId, {$push: {comments: commentData}}, {returnDocument: 'after', projection: {comments: {$slice: -1}, fieldToReturn: 1}}).lean()
+.populate({path: 'comments.owner', select: 'username _id'})
+
+exports.getComment = async (reviewId, commentId) => {
+    let comments = await Review.findById(reviewId, {comments:1}).lean()
+    comments = comments.comments
+
+    return comments.find(comment => comment._id == commentId)
+}
+
+exports.deleteComment = (reviewId, commentId) => Review.findByIdAndUpdate(reviewId, {$pull: {comments: {_id: commentId}}})
