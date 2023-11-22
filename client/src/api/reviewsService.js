@@ -130,7 +130,20 @@ export function getDetails(reviewId) {
 }
 
 export function getComments(reviewId) {
-    const settings = { method: "GET" }
+    const authToken = getAuth()
+
+    let settings = undefined
+
+    if (authToken) {
+        settings = {
+            method: "GET",
+            headers: { "X-Authorization": authToken }
+        }
+    } else {
+        settings = {
+            method: "GET",
+        }
+    }
 
     return fetch(`${baseUrl}/data/reviews/${reviewId}/getComments`, settings)
 }
