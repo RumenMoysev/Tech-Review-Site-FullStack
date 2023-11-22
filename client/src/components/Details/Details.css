@@ -5,6 +5,7 @@
     justify-content: center;
     margin-top: 200px;
     min-height: 73vh;
+    margin-bottom: 2vh;
 }
 
 .detailsPage .detailsContainer {
@@ -270,7 +271,8 @@
     font-family: "Montserrat", sans-serif;
     text-decoration: none;
     color: rgb(255, 255, 255);
-    text-transform: uppercase;
+    border-bottom:1px solid rgba(255, 255, 255, 0.6);
+    /* text- */
     font-size: 1.1rem;
 }
 
