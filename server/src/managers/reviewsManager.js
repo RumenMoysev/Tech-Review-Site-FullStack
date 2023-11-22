@@ -38,7 +38,7 @@ exports.getOneDetails = (reviewId) => {
 }
 
 exports.getOneComments = (reviewId) => {
-    const review = Review.findById(reviewId, { comments: 1 })
+    const review = Review.findById(reviewId, { comments: 1 }).populate({ path: 'comments.owner', select: 'username _id' }).lean()
 
     if (!review) {
         throw new Error('Review not found')
