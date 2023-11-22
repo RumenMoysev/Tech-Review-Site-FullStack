@@ -163,6 +163,20 @@ export function sendComment(reviewId, comment) {
     return fetch(`${baseUrl}/data/reviews/${reviewId}/addComment`, settings)
 }
 
+export function deleteComment(reviewId, commentId) {
+    const authToken = getAuth()
+
+    const settings = {
+        method: 'DELETE',
+        headers: {
+            "Content-type": "application/json",
+            "X-Authorization": authToken
+        }
+    }
+
+    return fetch(`${baseUrl}/data/reviews/${reviewId}/deleteComment/${commentId}`, settings)
+}
+
 export function likeReview(reviewId) {
     const authToken = getAuth()
 
