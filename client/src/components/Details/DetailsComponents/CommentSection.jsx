@@ -2,10 +2,10 @@ import { useState, useEffect, useContext } from "react"
 import { AuthContext } from "../../../contexts/AuthContext.js"
 
 import Comment from "./Comment.jsx"
-import { getComments } from "../../../api/reviewsService.js"
+import { getComments, sendComment } from "../../../api/reviewsService.js"
 
 export default function CommentSection({ reviewId }) {
-    const [commentFormData, setCommentFormData] = useState('')
+    const [commentFormValue, setCommentFormValue] = useState('')
     const [comments, setComments] = useState([])
     const { isAuth } = useContext(AuthContext)
 
@@ -14,10 +14,25 @@ export default function CommentSection({ reviewId }) {
         .then(response => response.json())
         .then(data => setComments([...data]))
         .catch(error => console.log(error))
-    }, [comments])
+    }, [isAuth])
+
+    const setCommentStateHandler = (value) => {
+        setComments(value)
+    }
 
     const commentValueHandler = (e) => {
-        setCommentFormData(e.target.value)
+        setCommentFormValue(e.target.value)
+    }
+
+    const addComment = async () => {
+        if(commentFormValue.length < 0) {
+            //TODO MAKE ERROR HANDLING
+            return console.log('Comment should be at least 1 characters')
+        }
+
+        const commentData = await (await sendComment(reviewId, commentFormValue)).json()
+        setComments(state => [...state, commentData])
+        setCommentFormValue('')
     }
 
     return (
@@ -25,15 +40,15 @@ export default function CommentSection({ reviewId }) {
             <h3>Comments </h3>
             {isAuth && 
                 <div className='commentInputBox'>
-                    <input type='text' required="required" value={commentFormData} onChange={commentValueHandler}></input>
+                    <input type='text' required="required" value={commentFormValue} onChange={commentValueHandler}></input>
                     <span>Comment</span>
-                    <button>Post</button>
+                    <button onClick={addComment}>Post</button>
                 </div>
             }
             
             <div className='comments'>
                 {comments.length > 0
-                    ? comments.map(comment => <Comment commentData={comment} />)
+                    ? comments.map(comment => <Comment key={comment._id} commentData={comment} setComments={setCommentStateHandler} reviewId={reviewId}/>)
                     : <p style={{ display: 'flex', width: '100%', justifyContent: 'center' }}>No comments yet</p>
                 }
             </div>
