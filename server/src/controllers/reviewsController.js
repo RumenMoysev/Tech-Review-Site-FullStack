@@ -64,7 +64,8 @@ router.get('/:reviewId/getComments', async (req, res) => {
         
         if(comments) {
             for(const el of comments) {
-                if (req.user?._id == el.user) {
+                
+                if (req.user?._id == el.owner._id) {
                     el.isOwner = true
                 } else {
                     el.isOwner = false
@@ -72,7 +73,54 @@ router.get('/:reviewId/getComments', async (req, res) => {
             }
         }
         
-        res.status(201).json(comments)
+        res.status(200).json(comments)
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
+router.post('/:reviewId/addComment', async (req, res) => {
+    const reviewId = req.params.reviewId
+    const userId = req.user?._id
+
+    try {
+        if(userId && req.body.comment) {
+            const commentData = {
+                owner: userId,
+                comment: req.body.comment
+            }
+
+            const response = await reviewManager.addComment(reviewId, commentData)
+            const comment = response.comments[0]
+            comment.isOwner = true
+            res.json(comment)
+        } else {
+            throw new Error('Please provide userId and comment')
+        }
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
+router.delete('/:reviewId/deleteComment/:commentId', async (req, res) => {
+    const reviewId = req.params.reviewId
+    const commentId = req.params.commentId
+    const userId = req.user?._id
+
+    try {
+        const comment = await reviewManager.getComment(reviewId, commentId)
+
+        if(comment) {
+            userId == comment.owner && await reviewManager.deleteComment(reviewId, commentId)
+        } else {
+            throw new Error('Not authorized')
+        }
+
+        res.end()
     } catch (err) {
         res.status(400).json({
             message: err.message
