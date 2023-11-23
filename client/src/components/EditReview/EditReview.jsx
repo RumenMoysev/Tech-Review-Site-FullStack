@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from "react-router-dom"
 
+import AuthContext from '../../contexts/AuthContext.jsx';
 import { editReview, getEditData } from '../../api/reviewsService.js';
 
 import './EditReview.css'
@@ -17,13 +17,14 @@ export default function Edit() {
     const [editFormValue, setEditFormValue] = useState(editFormState)
     const [error, setError] = useState(undefined)
     const [oldReviewData, setOldReviewData] = useState(undefined)
+    const { auth } = useContext(AuthContext)
+    const { reviewId } = useParams()
 
-    const {reviewId} = useParams()
-
+    const authToken = auth.authToken
     const navigate = useNavigate()
 
     useEffect(() => {
-        getEditData(reviewId)
+        getEditData(reviewId, authToken)
         .then(x => x.json())
         .then(data => {
             if (data.message === 'You are not the owner') {
@@ -39,7 +40,7 @@ export default function Edit() {
 
     async function editSubmitHandler(e) {
         e.preventDefault()
-        let response = editReview(editFormValue, oldReviewData, setError, reviewId)
+        let response = editReview(editFormValue, oldReviewData, setError, reviewId, authToken)
 
         if(response instanceof Promise) {
             response = await response

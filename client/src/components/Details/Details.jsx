@@ -6,7 +6,7 @@ import './Details.css'
 import Spinner from '../Spinner/Spinner.jsx'
 import { getUserId } from '../../api/sessionStorageService.js';
 import CommentSection from './DetailsComponents/CommentSection.jsx';
-import { AuthContext } from '../../contexts/AuthContext.js';
+import AuthContext from '../../contexts/AuthContext.jsx';
 
 export default function Details() {
     const [reviewDetails, setReviewDetails] = useState('')
@@ -15,14 +15,15 @@ export default function Details() {
     const [showCommentSection, setShowCommentSection] = useState(false)
     
     const { reviewId } = useParams()
-    const { isAuth } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext)
+    const authToken = auth.authToken
 
-    const userId = getUserId()
+    const userId = auth.userId
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        getDetails(reviewId)
+        getDetails(reviewId, authToken)
             .then(x => x.json())
             .then(data => {
                 setIsLoading(false)
@@ -39,13 +40,13 @@ export default function Details() {
     }, [reviewId])
 
     async function deleteHandler() {
-        await deleteReview(reviewId)
+        await deleteReview(reviewId, authToken)
 
         navigate('/reviews')
     }
 
     async function likeHandler() {
-        await likeReview(reviewId)
+        await likeReview(reviewId, authToken)
 
         reviewDetails.isOwner ? null : reviewDetails.likes.push(userId)
         setReviewDetails(reviewDetails => ({
@@ -78,7 +79,7 @@ export default function Details() {
                     <div className="pBtnContainer">
                         <p>{reviewDetails.description}</p>
 
-                        {isAuth &&
+                        {authToken &&
                             <div className="detailsBtns">
                                 {reviewDetails.isOwner
                                     ?
