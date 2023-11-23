@@ -16,7 +16,7 @@ const initialRegisterState = {
 
 //MOVE HANDLER TO FORM AND USE e.currentTarget
 //USE ONBLUR EVENT FOR WARNING
-export default function Register({isAuth, setIsAuth}) {
+export default function Register() {
     const [registerState, onChangeHandler] = useForm(initialRegisterState)
     const [error, setError] = useState(undefined)
     const [invalidFields, setInvalidFields] = useState({})
