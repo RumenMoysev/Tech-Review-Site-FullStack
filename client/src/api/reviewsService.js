@@ -5,7 +5,7 @@ const titleLength = 6
 const summaryLength = 10
 const descriptionLength = 20
 
-export function addReview(reviewData, setError) {
+export function addReview(reviewData, setError, authToken) {
     const error = validateData(reviewData)
 
     if(error) {
@@ -13,8 +13,6 @@ export function addReview(reviewData, setError) {
     } else {
         setError(undefined)
     }
-
-    const authToken = getAuth()
 
     if(!authToken) {
         return setError('You need to be logged in to add a review')
@@ -27,7 +25,7 @@ export function addReview(reviewData, setError) {
     return internalFetch('POST', `data/reviews`, authToken, reviewData)
 }
 
-export function editReview(reviewData, oldReviewData, setError, reviewId) {
+export function editReview(reviewData, oldReviewData, setError, reviewId, authToken) {
     const hasNotChanged = validateChange(reviewData, oldReviewData)
 
     if(hasNotChanged) {
@@ -42,8 +40,6 @@ export function editReview(reviewData, oldReviewData, setError, reviewId) {
         setError(undefined)
     }
 
-    const authToken = getAuth()
-
     if (!authToken) {
         return setError('You need to be logged in to edit a review')
     }
@@ -55,47 +51,19 @@ export function editReview(reviewData, oldReviewData, setError, reviewId) {
     return internalFetch('PUT', `data/reviews/${reviewId}`, authToken, reviewData)
 }
 
-export function getEditData(reviewId) {
-    const authToken = getAuth()
+export const getEditData = (reviewId, authToken) => internalFetch('GET', `data/reviews/${reviewId}/all-data`, authToken)
 
-    return internalFetch('GET', `data/reviews/${reviewId}/all-data`, authToken)
-}
+export const deleteReview = (reviewId, authToken) => internalFetch('DELETE', `data/reviews/${reviewId}`, authToken)
 
-export function deleteReview(reviewId) {
-    const authToken = getAuth()
+export const getDetails = (reviewId, authToken) => internalFetch('GET', `data/reviews/${reviewId}`, authToken)
 
-    return internalFetch('DELETE', `data/reviews/${reviewId}`, authToken)
-}
+export const getComments = (reviewId, authToken) => internalFetch('GET', `data/reviews/${reviewId}/getComments`, authToken)
 
-export function getDetails(reviewId) {
-    const authToken = getAuth()
+export const sendComment = (reviewId, comment, authToken) => internalFetch('POST', `data/reviews/${reviewId}/addComment`, authToken, {comment})
 
-    return internalFetch('GET', `data/reviews/${reviewId}`, authToken)
-}
+export const deleteComment = (reviewId, commentId, authToken) => internalFetch('DELETE', `data/reviews/${reviewId}/deleteComment/${commentId}`, authToken)
 
-export function getComments(reviewId) {
-    const authToken = getAuth()
-
-    return internalFetch('GET', `data/reviews/${reviewId}/getComments`, authToken)
-}
-
-export function sendComment(reviewId, comment) {
-    const authToken = getAuth()
-
-    return internalFetch('POST', `data/reviews/${reviewId}/addComment`, authToken, {comment})
-}
-
-export function deleteComment(reviewId, commentId) {
-    const authToken = getAuth()
-
-    return internalFetch('DELETE', `data/reviews/${reviewId}/deleteComment/${commentId}`, authToken)
-}
-
-export function likeReview(reviewId) {
-    const authToken = getAuth()
-
-    return internalFetch('POST', `data/reviews/${reviewId}/like`, authToken)
-}
+export const likeReview = (reviewId, authToken) => internalFetch('POST', `data/reviews/${reviewId}/like`, authToken)
 
 function validateData(reviewData) {
     if (reviewData.title.length < titleLength) {
