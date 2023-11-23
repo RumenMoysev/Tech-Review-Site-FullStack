@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
-
+import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 
+import AuthContext from "../../contexts/AuthContext.jsx"
 import { registerService } from "../../api/userService.js"
-import { saveUserData } from "../../api/sessionStorageService.js"
 
 import "./Register.css"
 import { useForm } from "../../hooks/useForm.js"
@@ -21,15 +20,16 @@ export default function Register({isAuth, setIsAuth}) {
     const [registerState, onChangeHandler] = useForm(initialRegisterState)
     const [error, setError] = useState(undefined)
     const [invalidFields, setInvalidFields] = useState({})
+    const { auth, loginRegisterSetAuthHandler } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (isAuth) {
+        if (auth.authToken) {
             setError('You are already logged in')
             setTimeout(() => navigate('/'), 1500)
         }
-    })
+    }, [auth])
 
     async function registerHandler(e) {
         e.preventDefault()
@@ -48,8 +48,7 @@ export default function Register({isAuth, setIsAuth}) {
                 setError(undefined)
             }
 
-            saveUserData(json)
-            setIsAuth(true)
+            loginRegisterSetAuthHandler(json)
             navigate('/')
         } else {
             setInvalidFields({...response});

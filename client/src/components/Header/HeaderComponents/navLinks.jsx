@@ -29,7 +29,7 @@ export default function NavLinks() {
             <ul className="nav_links">
                 <li className="welcome"><p>Welcome, {username}</p></li>
 
-                {auth.isAuth
+                {auth.authToken
                 ?
                     <div id="userNavLinks">
                         <li><Link to="/reviews">Reviews</Link></li>

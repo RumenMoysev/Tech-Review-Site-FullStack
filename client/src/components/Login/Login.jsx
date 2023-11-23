@@ -12,15 +12,15 @@ export default function Login() {
     const [emailValue, setEmailValue] = useState('')
     const [passwordValue, setPasswordValue] = useState('')
     const [error, setError] = useState(undefined)
-    const { auth, loginSetAuthHandler } = useContext(AuthContext)
+    const { auth, loginRegisterSetAuthHandler } = useContext(AuthContext)
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(auth.isAuth == true) {
+        if(auth.authToken) {
             setError('You are already logged in')
             setTimeout(() => navigate('/'), 1500)
         }
-    })
+    }, [auth])
 
     async function loginHandler(e) {
         e.preventDefault()
@@ -39,8 +39,7 @@ export default function Login() {
             setError(undefined)
         }
 
-        json.isAuth = true
-        loginSetAuthHandler(json)
+        loginRegisterSetAuthHandler(json)
         navigate('/')
     }
 
