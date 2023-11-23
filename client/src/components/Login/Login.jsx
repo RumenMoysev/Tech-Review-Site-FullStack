@@ -6,18 +6,17 @@ import { loginService } from "../../api/userService.js";
 import { saveUserData } from "../../api/sessionStorageService.js";
 
 import "./Login.css"
-import { AuthContext } from "../../contexts/AuthContext.js";
+import AuthContext from "../../contexts/AuthContext.jsx";
 
 export default function Login() {
     const [emailValue, setEmailValue] = useState('')
     const [passwordValue, setPasswordValue] = useState('')
     const [error, setError] = useState(undefined)
-    const { isAuth, setIsAuth } = useContext(AuthContext)
-
+    const { auth, loginSetAuthHandler } = useContext(AuthContext)
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(isAuth) {
+        if(auth.isAuth == true) {
             setError('You are already logged in')
             setTimeout(() => navigate('/'), 1500)
         }
@@ -40,8 +39,8 @@ export default function Login() {
             setError(undefined)
         }
 
-        saveUserData(json)
-        setIsAuth(true)
+        json.isAuth = true
+        loginSetAuthHandler(json)
         navigate('/')
     }
 

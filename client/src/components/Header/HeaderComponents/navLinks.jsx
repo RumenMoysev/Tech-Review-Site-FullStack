@@ -1,29 +1,27 @@
-import { useEffect, useState } from "react"
-
+import { useEffect, useState, useContext } from "react"
 import { Link } from "react-router-dom"
 
-import { getUsername, removeUserData } from "../../../api/sessionStorageService.js"
+import AuthContext from "../../../contexts/AuthContext.jsx"
 
-export default function NavLinks({isAuth, setIsAuth}) {
+export default function NavLinks() {
     const [username, setUsername] = useState('guest')
+    const { auth, logoutSetAuthHandler } = useContext(AuthContext)
 
     useEffect(() => {
-        const username = getUsername()
+        const username = auth.username
 
         if(username) {
             setUsername(username)
         } else {
             setUsername('guest')
         }
-    }, [isAuth])
+    }, [auth])
 
     async function logoutHandler(e) {
         e.preventDefault()
         
         await fetch('http://localhost:3030/users/logout')
-        removeUserData()
-
-        setIsAuth(false)
+        logoutSetAuthHandler()
     }
 
     return (
@@ -31,7 +29,7 @@ export default function NavLinks({isAuth, setIsAuth}) {
             <ul className="nav_links">
                 <li className="welcome"><p>Welcome, {username}</p></li>
 
-                {isAuth
+                {auth.isAuth
                 ?
                     <div id="userNavLinks">
                         <li><Link to="/reviews">Reviews</Link></li>
