@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useForm } from '../../hooks/useForm.js';
+import AuthContext from '../../contexts/AuthContext.jsx';
 import { addReview } from '../../api/reviewsService.js';
 
 import './AddReview.css'
@@ -12,22 +14,26 @@ const addFormState = {
     description: ''
 }
 
-export default function AddReview( {isAuth} ) {
-    const [addFormValue, setAddFormValue] = useState(addFormState)
+export default function AddReview() {
+    const [addFormValue, addValueHandler] = useForm(addFormState)
     const [error, setError] = useState(undefined)
+
+    const { auth } = useContext(AuthContext)
+    const authToken = auth.authToken
+
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(isAuth === false) {
+        if (!authToken) {
             setError('You need to be logged in')
             setTimeout(() => navigate('/'), 1500)
         }
-    }, [isAuth])
+    }, [auth])
 
     async function addFormHandler(e) {
         e.preventDefault()
         
-        let response = addReview(addFormValue, setError)
+        let response = addReview(addFormValue, setError, authToken)
 
         if(response instanceof Promise) {
             response = await response
@@ -40,16 +46,6 @@ export default function AddReview( {isAuth} ) {
                 navigate('/reviews')
             }
         }
-    }
-
-    function addValueHandler(e) {
-        const name = e.target.name
-        const value = e.target.value
-
-        setAddFormValue(state => ({
-            ...state,
-            [name]: value
-        }))
     }
 
     return (
