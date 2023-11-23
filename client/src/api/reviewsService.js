@@ -1,6 +1,5 @@
+import internalFetch from "../lib/request.js"
 import { getAuth } from "./sessionStorageService.js"
-
-const baseUrl = 'http://localhost:3030'
 
 const titleLength = 6
 const summaryLength = 10
@@ -25,16 +24,7 @@ export function addReview(reviewData, setError) {
     
     reviewData.createdAtTime = createdAtTime
 
-    const settings = {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json",
-            "X-Authorization": authToken
-        },
-        body: JSON.stringify(reviewData)
-    }
-
-    return fetch(`${baseUrl}/data/reviews`, settings)
+    return internalFetch('POST', `data/reviews`, authToken, reviewData)
 }
 
 export function editReview(reviewData, oldReviewData, setError, reviewId) {
@@ -62,133 +52,49 @@ export function editReview(reviewData, oldReviewData, setError, reviewId) {
     
     reviewData.updatedAtTime = updatedAtTime
 
-    const settings = {
-        method: "PUT",
-        headers: {
-            "Content-type": "application/json",
-            "X-Authorization": authToken
-        },
-        body: JSON.stringify(reviewData)
-    }
-
-    return fetch(`${baseUrl}/data/reviews/${reviewId}`, settings)
+    return internalFetch('PUT', `data/reviews/${reviewId}`, authToken, reviewData)
 }
 
 export function getEditData(reviewId) {
     const authToken = getAuth()
-    let settings = undefined
 
-    if (authToken) {
-        settings = {
-            method: "GET",
-            headers: {'X-Authorization': authToken}
-        }
-    } else {
-        settings = {
-            method: "GET"
-        }
-    }
-
-    return fetch(`http://localhost:3030/data/reviews/${reviewId}/all-data`, settings)
+    return internalFetch('GET', `data/reviews/${reviewId}/all-data`, authToken)
 }
 
 export function deleteReview(reviewId) {
     const authToken = getAuth()
-    let settings = undefined
 
-    if(authToken) {
-        settings = {
-            method: "DELETE",
-            headers: { "X-Authorization": authToken }
-        }
-    } else {
-        settings = {
-            method: 'DELETE'
-        }
-    }
-
-    return fetch(`${baseUrl}/data/reviews/${reviewId}`, settings)
+    return internalFetch('DELETE', `data/reviews/${reviewId}`, authToken)
 }
 
 export function getDetails(reviewId) {
     const authToken = getAuth()
 
-    let settings = undefined
-
-    if(authToken) {
-        settings = {
-            method: "GET",
-            headers: { "X-Authorization": authToken }
-        }
-    } else {
-        settings = {
-            method: "GET",
-        }
-    }
-
-    return fetch(`${baseUrl}/data/reviews/${reviewId}`, settings)
+    return internalFetch('GET', `data/reviews/${reviewId}`, authToken)
 }
 
 export function getComments(reviewId) {
     const authToken = getAuth()
 
-    let settings = undefined
-
-    if (authToken) {
-        settings = {
-            method: "GET",
-            headers: { "X-Authorization": authToken }
-        }
-    } else {
-        settings = {
-            method: "GET",
-        }
-    }
-
-    return fetch(`${baseUrl}/data/reviews/${reviewId}/getComments`, settings)
+    return internalFetch('GET', `data/reviews/${reviewId}/getComments`, authToken)
 }
 
 export function sendComment(reviewId, comment) {
     const authToken = getAuth()
 
-    const settings = {
-        method: 'POST',
-        headers: {
-            "Content-type": "application/json",
-            "X-Authorization": authToken
-        },
-        body: JSON.stringify({comment})
-    }
-
-    return fetch(`${baseUrl}/data/reviews/${reviewId}/addComment`, settings)
+    return internalFetch('POST', `data/reviews/${reviewId}/addComment`, authToken, {comment})
 }
 
 export function deleteComment(reviewId, commentId) {
     const authToken = getAuth()
 
-    const settings = {
-        method: 'DELETE',
-        headers: {
-            "Content-type": "application/json",
-            "X-Authorization": authToken
-        }
-    }
-
-    return fetch(`${baseUrl}/data/reviews/${reviewId}/deleteComment/${commentId}`, settings)
+    return internalFetch('DELETE', `data/reviews/${reviewId}/deleteComment/${commentId}`, authToken)
 }
 
 export function likeReview(reviewId) {
     const authToken = getAuth()
 
-    const settings = {
-        method: "POST",
-        headers: {
-            'Content-type': 'application/json',
-            'X-Authorization': authToken
-        },
-    }
-
-    return fetch(`${baseUrl}/data/reviews/${reviewId}/like`, settings)
+    return internalFetch('POST', `data/reviews/${reviewId}/like`, authToken)
 }
 
 function validateData(reviewData) {
