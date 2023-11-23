@@ -48,10 +48,9 @@ export default function Details() {
     async function likeHandler() {
         await likeReview(reviewId, authToken)
 
-        reviewDetails.isOwner ? null : reviewDetails.likes.push(userId)
         setReviewDetails(reviewDetails => ({
             ...reviewDetails,
-            // likes: reviewDetails.likes.push(userId)
+            likes: reviewDetails.isOwner ? reviewDetails.likes : [...reviewDetails.likes, userId]
         }))
 
         setHasLiked(true)
