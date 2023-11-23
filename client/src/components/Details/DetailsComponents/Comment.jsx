@@ -1,10 +1,7 @@
-import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { AuthContext } from "../../../contexts/AuthContext.js"
 import { deleteComment } from "../../../api/reviewsService.js"
 
-export default function Comment({ commentData, setComments, reviewId }) {
-    const { isAuth } = useContext(AuthContext)
+export default function Comment({ commentData, setComments, reviewId, authToken }) {
 
     const onLikeClick = () => {
         console.log('Like clicked')
@@ -12,7 +9,7 @@ export default function Comment({ commentData, setComments, reviewId }) {
 
     const onDeleteClick = () => {
         setComments(state => state.filter(comment => comment._id !== commentData._id))
-        deleteComment(reviewId, commentData._id)
+        deleteComment(reviewId, commentData._id, authToken)
     }
 
     return (
@@ -23,8 +20,9 @@ export default function Comment({ commentData, setComments, reviewId }) {
         </div>
         <div className="likeData">
             {commentData.likes.length > 0 && <p>{commentData.likes.length} likes</p>}
-            {isAuth &&
+            {authToken ?
                 commentData.isOwner ? <img src="/images/bin.svg" style={{ width: '19.5px' }} onClick={onDeleteClick} /> : <img src='/images/like.png' style={{ width: '19px' }} onClick={onLikeClick} />
+                : null
             }
         </div>
     </div>
