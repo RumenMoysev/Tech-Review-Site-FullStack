@@ -7,7 +7,7 @@ const AuthContext = createContext()
 export const AuthProvider = ({children}) => {
     const [auth, setAuth] = usePersistedState('auth', {})
 
-    function loginSetAuthHandler(data) {
+    function loginRegisterSetAuthHandler(data) {
         setAuth(data)
     }
 
@@ -17,7 +17,7 @@ export const AuthProvider = ({children}) => {
 
     const values = {
         auth,
-        loginSetAuthHandler,
+        loginRegisterSetAuthHandler,
         logoutSetAuthHandler
     };
 
