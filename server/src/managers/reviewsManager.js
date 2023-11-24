@@ -106,3 +106,5 @@ exports.getComment = async (reviewId, commentId) => {
 }
 
 exports.deleteComment = (reviewId, commentId) => Review.findByIdAndUpdate(reviewId, {$pull: {comments: {_id: commentId}}})
+
+exports.likeComment = (reviewId, userId, commentId) => Review.updateOne({"_id": reviewId, "comments._id": commentId}, {$addToSet: {"comments.$.likes": userId}})
