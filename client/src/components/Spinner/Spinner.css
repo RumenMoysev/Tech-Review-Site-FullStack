@@ -18,6 +18,24 @@
         transform: rotate(360deg);
         box-shadow: 1px 5px 2px rgb(255, 0, 179);
     }
+
+    /* 0% {
+        transform: rotate(0deg);
+        box-shadow: 1px 5px 2px var(--theme-color);
+    }
+    50% {
+        transform: rotate(180deg);
+        box-shadow: 1px 5px 2px var(--theme-color);
+    }
+    80% {
+        transform: rotate(288deg);
+        box-shadow: 1px 5px 2px var(--theme-color);
+        
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 1px 5px 2px var(--theme-color);
+    } */
 }
 
 @keyframes text {
