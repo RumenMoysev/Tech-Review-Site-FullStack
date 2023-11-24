@@ -25,6 +25,8 @@ exports.getAllWithoutDescription = () => Review.find({}, { title: 1, imageUrl: 1
 
 exports.getLast2 = () => Review.find({}, { title: 1, imageUrl: 1, summary: 1, likes: 1 }).sort({$natural: -1}).limit(2)
 
+exports.getReviewsByTitle = (title) => Review.find({'title': new RegExp(`${title}`, 'i')})
+
 exports.getReviewOwner = (reviewId) => Review.findById(reviewId, { owner: 1 })
 
 exports.getOneDetails = (reviewId) => {
