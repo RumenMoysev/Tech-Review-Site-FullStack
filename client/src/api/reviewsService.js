@@ -1,5 +1,4 @@
 import internalFetch from "../lib/request.js"
-import { getAuth } from "./sessionStorageService.js"
 
 const titleLength = 6
 const summaryLength = 10

@@ -3,7 +3,6 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom"
 
 import { loginService } from "../../api/userService.js";
-import { saveUserData } from "../../api/sessionStorageService.js";
 
 import "./Login.css"
 import AuthContext from "../../contexts/AuthContext.jsx";
