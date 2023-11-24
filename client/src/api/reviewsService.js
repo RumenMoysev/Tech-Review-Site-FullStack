@@ -50,23 +50,23 @@ export function editReview(reviewData, oldReviewData, setError, reviewId, authTo
     return internalFetch('PUT', `data/reviews/${reviewId}`, authToken, reviewData)
 }
 
-export const getEditData = (reviewId, authToken) => internalFetch('GET', `data/reviews/${reviewId}/all-data`, authToken)
-
-export const deleteReview = (reviewId, authToken) => internalFetch('DELETE', `data/reviews/${reviewId}`, authToken)
-
 export const getDetails = (reviewId, authToken) => internalFetch('GET', `data/reviews/${reviewId}`, authToken)
 
 export const getComments = (reviewId, authToken) => internalFetch('GET', `data/reviews/${reviewId}/getComments`, authToken)
 
-export const sendComment = (reviewId, comment, authToken) => internalFetch('POST', `data/reviews/${reviewId}/addComment`, authToken, {comment})
+export const getEditData = (reviewId, authToken) => internalFetch('GET', `data/reviews/${reviewId}/all-data`, authToken)
 
-export const deleteComment = (reviewId, commentId, authToken) => internalFetch('DELETE', `data/reviews/${reviewId}/deleteComment/${commentId}`, authToken)
+export const searchReview = (title) => internalFetch('GET', `data/reviews/search?title=${title}`)
+
+export const sendComment = (reviewId, comment, authToken) => internalFetch('POST', `data/reviews/${reviewId}/addComment`, authToken, {comment})
 
 export const likeComment = (reviewId, commentId, authToken) => internalFetch('POST', `data/reviews/${reviewId}/likeComment/${commentId}`, authToken)
 
 export const likeReview = (reviewId, authToken) => internalFetch('POST', `data/reviews/${reviewId}/like`, authToken)
 
-export const searchReview = (title) => internalFetch('GET', `data/reviews/search?title=${title}`)
+export const deleteReview = (reviewId, authToken) => internalFetch('DELETE', `data/reviews/${reviewId}`, authToken)
+
+export const deleteComment = (reviewId, commentId, authToken) => internalFetch('DELETE', `data/reviews/${reviewId}/deleteComment/${commentId}`, authToken)
 
 function validateData(reviewData) {
     if (reviewData.title.length < titleLength) {
