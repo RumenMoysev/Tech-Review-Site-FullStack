@@ -128,6 +128,22 @@ router.delete('/:reviewId/deleteComment/:commentId', async (req, res) => {
     }
 })
 
+router.post('/:reviewId/likeComment/:commentId', async (req, res) => {
+    const { reviewId, commentId } = req.params
+    const userId = req.user?._id
+
+    try {
+        if(userId) {
+            await reviewManager.likeComment(reviewId, userId, commentId)
+            res.end()
+        }
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
 router.post('/:reviewId/like', async (req, res) => {
     const reviewId = req.params.reviewId
     const userId = req.user?._id
