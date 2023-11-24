@@ -63,6 +63,8 @@ export const sendComment = (reviewId, comment, authToken) => internalFetch('POST
 
 export const deleteComment = (reviewId, commentId, authToken) => internalFetch('DELETE', `data/reviews/${reviewId}/deleteComment/${commentId}`, authToken)
 
+export const likeComment = (reviewId, commentId, authToken) => internalFetch('POST', `data/reviews/${reviewId}/likeComment/${commentId}`, authToken)
+
 export const likeReview = (reviewId, authToken) => internalFetch('POST', `data/reviews/${reviewId}/like`, authToken)
 
 function validateData(reviewData) {
