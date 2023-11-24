@@ -1,30 +1,38 @@
+import { useEffect, useState } from "react"
+
 import { Link } from "react-router-dom"
-import { deleteComment } from "../../../api/reviewsService.js"
 
-export default function Comment({ commentData, setComments, reviewId, authToken }) {
+export default function Comment({ commentData, likeComment, deleteComment, authToken, userId }) {
+    const [hasLiked, setHasLiked] = useState(false)
 
-    const onLikeClick = () => {
-        console.log('Like clicked')
-    }
+    useEffect(() => {
+        if(commentData.likes.includes(userId)) {
+            setHasLiked(true)
+        }
+    })
 
-    const onDeleteClick = () => {
-        setComments(state => state.filter(comment => comment._id !== commentData._id))
-        deleteComment(reviewId, commentData._id, authToken)
-    }
+    const onLikeClick = () => likeComment(commentData._id)
+
+    const onDeleteClick = () => deleteComment(commentData._id)
 
     return (
-    <div className='comment'>
-        <div className='commentData'>
-            <Link to="/userId/profile">{commentData.owner.username}:</Link>
-            <p>{commentData.comment}</p>
+        <div className='comment'>
+            <div className='commentData'>
+                <Link to="/userId/profile">{commentData.owner.username}:</Link>
+                <p>{commentData.comment}</p>
+            </div>
+            <div className="likeData">
+                {commentData.likes.length == 1 && <p>{commentData.likes.length} like</p>}
+                {commentData.likes.length > 1 && <p>{commentData.likes.length} likes</p>}
+                {authToken
+                ? 
+                    commentData.isOwner
+                    ? <img src="/images/bin.svg" style={{ width: '19.5px' }} onClick={onDeleteClick} />
+                    : hasLiked ?  null : <img src='/images/like.png' style={{ width: '19px' }} onClick={onLikeClick} />
+                :
+                    null
+                }
+            </div>
         </div>
-        <div className="likeData">
-            {commentData.likes.length > 0 && <p>{commentData.likes.length} likes</p>}
-            {authToken ?
-                commentData.isOwner ? <img src="/images/bin.svg" style={{ width: '19.5px' }} onClick={onDeleteClick} /> : <img src='/images/like.png' style={{ width: '19px' }} onClick={onLikeClick} />
-                : null
-            }
-        </div>
-    </div>
     )
 }

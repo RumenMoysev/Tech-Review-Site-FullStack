@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import AuthContext from "../../../contexts/AuthContext.jsx"
 
 import Comment from "./Comment.jsx"
-import { getComments, sendComment } from "../../../api/reviewsService.js"
+import { getComments, sendComment, deleteComment, likeComment } from "../../../api/reviewsService.js"
 
 export default function CommentSection({ reviewId }) {
     const [commentFormValue, setCommentFormValue] = useState('')
@@ -10,6 +10,7 @@ export default function CommentSection({ reviewId }) {
     const { auth } = useContext(AuthContext)
 
     const authToken = auth.authToken
+    const userId = auth.userId
 
     useEffect(() => {
         getComments(reviewId, authToken)
@@ -18,8 +19,24 @@ export default function CommentSection({ reviewId }) {
         .catch(error => console.log(error))
     }, [auth])
 
-    const setCommentStateHandler = (value) => {
-        setComments(value)
+    const deleteCommentHandler = (commentId) => {
+        setComments(state => state.filter(comment => comment._id !== commentId))
+        deleteComment(reviewId, commentId, authToken)
+    }
+
+    const likeCommentHandler = (commentId) => {
+        likeComment(reviewId, commentId, authToken)
+
+        setComments(state => {
+            const comment = state.find(comment => comment._id === commentId)
+
+            if (!comment.likes.includes(userId)) {
+                comment.likes.push(userId)
+                // setHasLiked(true)
+            }
+
+            return [...state]
+        })
     }
 
     const commentValueHandler = (e) => {
@@ -27,7 +44,7 @@ export default function CommentSection({ reviewId }) {
     }
 
     const addComment = async () => {
-        if(commentFormValue.length < 0) {
+        if(commentFormValue.length === 0) {
             //TODO MAKE ERROR HANDLING
             return console.log('Comment should be at least 1 characters')
         }
@@ -50,7 +67,9 @@ export default function CommentSection({ reviewId }) {
             
             <div className='comments'>
                 {comments.length > 0
-                    ? comments.map(comment => <Comment key={comment._id} commentData={comment} setComments={setCommentStateHandler} reviewId={reviewId} authToken={authToken}/>)
+                    ? comments.map(comment => (
+                            <Comment key={comment._id} commentData={comment} likeComment={likeCommentHandler} deleteComment={deleteCommentHandler} authToken={authToken} userId={userId}/>
+                        ))
                     : <p style={{ display: 'flex', width: '100%', justifyContent: 'center' }}>No comments yet</p>
                 }
             </div>
