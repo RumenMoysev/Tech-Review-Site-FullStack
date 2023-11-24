@@ -204,7 +204,11 @@
     /* width: 5%; */
     color: #edf0f1;
     text-transform: uppercase;
-    transition: 0.5s ease;
+    transition: 0.2s ease;
+}
+
+.commentContainer .commentInputBox button:active {
+    color: var(--theme-color);
 }
 
 .commentContainer .commentInputBox input {
