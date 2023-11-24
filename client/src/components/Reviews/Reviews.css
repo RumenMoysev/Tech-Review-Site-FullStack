@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-top: 220px;
+    margin-top: 210px;
 }
 
 .articles article {
@@ -143,4 +143,42 @@
     padding-right: 2%;
     transition: all 500ms ease-in-out;
     animation: slideIn 200ms ease;
+}
+
+.searchBar {
+    width: 100%;
+    margin-bottom: 5vh;
+}
+
+.searchBar input {
+    position: relative;
+    width: 50%;
+    margin: 0 25% 0 25%;
+    padding-right: 3%;
+    padding-left: 1%;
+    font-family: "Montserrat", sans-serif;
+    min-height: 40px;
+    height: 5vh;
+    border: 2px solid rgba(255, 255, 255, 0.23);
+    background: #121213fa;
+    border-radius: 10px;
+    outline: none;
+    color: #edf0f1;
+    font-size: 1.1em;
+    transition: 0.2s ease-in-out;
+}
+
+.searchBar img {
+    width: 22px;
+    position: absolute;
+    right: 25%;
+    padding-top: 11px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.searchBar img:hover {
+    padding-top: 9px;
+    width: 27px;
 }
