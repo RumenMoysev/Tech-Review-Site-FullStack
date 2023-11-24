@@ -67,6 +67,8 @@ export const likeComment = (reviewId, commentId, authToken) => internalFetch('PO
 
 export const likeReview = (reviewId, authToken) => internalFetch('POST', `data/reviews/${reviewId}/like`, authToken)
 
+export const searchReview = (title) => internalFetch('GET', `data/reviews/search?title=${title}`)
+
 function validateData(reviewData) {
     if (reviewData.title.length < titleLength) {
         return `Title should be at least ${titleLength} characters long`
