@@ -28,6 +28,11 @@ export default function Articles() {
         <Spinner />
         :
         <section id="articles" className="articles ">
+            <div className='searchBar'>
+                <input type='text'></input>
+                <img src='/images/loupe.svg'></img>
+                
+            </div>
             {
                 articlesData
                     ?
