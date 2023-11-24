@@ -3,9 +3,15 @@ const router = require('express').Router()
 const reviewManager = require('../managers/reviewsManager.js')
 
 router.get('/', async (req, res) => {
-    const reviews = await reviewManager.getAllWithoutDescription()
+    try {
+        const reviews = await reviewManager.getAllWithoutDescription()
 
-    setTimeout(()=> res.json(reviews), 1000)
+        setTimeout(() => res.json(reviews), 1000)
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
 })
 
 router.get('/last2', async (req, res) => {
@@ -28,6 +34,20 @@ router.post('/', async (req, res) => {
         const review = await reviewManager.createReview(reviewData)
 
         res.status(201).json(review)
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
+router.get('/search', async (req, res) => {
+    const title = req.query.title
+
+    try {
+        const reviews = await reviewManager.getReviewsByTitle(title)
+
+        res.status(200).json(reviews)
     } catch (err) {
         res.status(400).json({
             message: err.message
