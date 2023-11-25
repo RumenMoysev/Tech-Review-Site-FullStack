@@ -34,7 +34,7 @@ export default function Home() {
         :
         <section id = "homePage" className = 'homePage' >
                 <div className = "row">
-                    <div className = "col hidden">
+                    <div className = "col websiteTitle">
                         <h1>Tech Review Site</h1>
                         <p>
                             This is the place where you can find all information
@@ -49,7 +49,7 @@ export default function Home() {
                             <ReviewCard key={review._id} reviewData={review} />
                         ))
                         :
-                        <h2 className='hidden'>No reviews yet!</h2>
+                        <h2>No reviews yet!</h2>
                     }
                 </div>
             </div >
