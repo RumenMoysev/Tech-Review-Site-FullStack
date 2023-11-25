@@ -44,7 +44,7 @@ export default function ThemesAndContact() {
                 )}
             </div>
             
-            <Link to="/contact">
+            <Link to="/contact" className="cta">
                 <button>Contact</button>
             </Link>   
         </div>
