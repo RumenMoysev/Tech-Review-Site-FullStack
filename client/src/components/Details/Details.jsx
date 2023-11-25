@@ -97,10 +97,11 @@ export default function Details() {
                     </div>
 
                     <div className='likesCommentContainer'>
-                        {reviewDetails.likes.length > 0
-                            ? <p className="likes">{reviewDetails.likes.length} likes</p>
-                            : <p className="likes">No likes yet</p>
-                        }
+                        {reviewDetails.likes.length === 1 && <p className="likes">{reviewDetails.likes.length} like</p>}
+                        {reviewDetails.likes.length > 1 && <p className="likes">{reviewDetails.likes.length} likes</p>}
+
+                        {reviewDetails.likes.length === 0 && <p className="likes">No likes yet</p>}
+                        
                         <button className='commentButton' onClick={() => setShowCommentSection(state => !state)}>Show comments</button>
                     </div>
 
