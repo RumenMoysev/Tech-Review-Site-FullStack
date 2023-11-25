@@ -1,6 +1,7 @@
 .searchBar {
     width: 100%;
     margin-bottom: 5vh;
+    animation: 1s slideIn ease;
 }
 
 .searchBar input {
