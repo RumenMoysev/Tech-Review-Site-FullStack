@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.userData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.userData h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 40px;
+    color: #edf0f1;
+}
+
+.userData h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 550;
+    font-size: 25px;
+    color: #edf0f1;
+    margin-top: 1%;
+}
+
+.profile {
+    margin-top: 2%;
+}
+
+.profileButtons {
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: -1%;
+}
+.profileButtons button {
+    position: relative;
+    font-family: "Montserrat", sans-serif;;
+    font-size: 16px;
+    height: 33px;
+    min-width: 5%;
+    /* border-radius: 0.7rem; */
+    border: none;
+    color:#edf0f1;
+    background: none;
+    cursor: pointer;
+    /* border-bottom: 2px solid var(--theme-color); */
+    transition: all 0.3s ease;
+}
+
+.profileButtons button::before {
+    content : "";
+    position: absolute;
+    left    : 25%;
+    bottom  : 0;
+    height  : 1px;
+    width   : 50%;
+    border-bottom: 2px solid var(--theme-color);
+    transition: all 0.3s ease ;
+}
+
+.profileButtons button:hover::before  {
+    left: 8%;
+    width: 84%;
+}
+
+.profileButtons button:hover  {
+    font-size: 18.5px;
+    height: 40px;
+    min-width: 6%;
+}
+
+.profileButtons button:active {
+    color: var(--theme-color);
+}
