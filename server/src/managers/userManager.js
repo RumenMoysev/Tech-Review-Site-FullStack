@@ -63,6 +63,17 @@ exports.login = async (userData) => {
     }
 }
 
+exports.addToCreated = (userId, reviewId) => User.findByIdAndUpdate(userId, { $push: { createdReviews: reviewId }})
+
+exports.addToLiked = async (userId, reviewId) => {
+    const user = await User.findById(userId)
+
+    if(!user.likedReviews.includes(reviewId)) {
+        user.likedReviews.push(reviewId)
+    }
+    return user.save()
+}
+
 async function getAuthResult(user) {
     const payload = {
         _id: user._id,
