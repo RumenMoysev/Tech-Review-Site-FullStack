@@ -1,6 +1,7 @@
 const router = require('express').Router()
 
 const reviewManager = require('../managers/reviewsManager.js')
+const userManager = require('../managers/userManager.js')
 
 router.get('/', async (req, res) => {
     try {
@@ -32,6 +33,7 @@ router.post('/', async (req, res) => {
 
     try {
         const review = await reviewManager.createReview(reviewData)
+        await userManager.addToCreated(req.user._id, review._id)
 
         res.status(201).json(review)
     } catch (err) {
@@ -171,6 +173,7 @@ router.post('/:reviewId/like', async (req, res) => {
     try {
         if(userId) {
             await reviewManager.likeReview(reviewId, userId)
+            await userManager.addToLiked(userId, reviewId)
         }
 
         res.end()
