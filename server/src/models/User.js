@@ -13,7 +13,19 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    createdReviews: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Review'
+        }
+    ],
+    likedReviews: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Review'
+        }
+    ]
 })
 
 const User = mongoose.model('User', userSchema)
