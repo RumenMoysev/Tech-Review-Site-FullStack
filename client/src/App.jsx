@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 
 import {AuthProvider} from "./contexts/AuthContext.jsx"
@@ -12,7 +12,7 @@ import Register from "./components/Register/Register.jsx"
 import Edit from "./components/EditReview/EditReview.jsx"
 import AddReview from "./components/AddReview/AddReview.jsx"
 import Page404 from "./components/404/404.jsx"
-import usePersistedState from "./hooks/userPersistedState.js"
+import Profile from "./components/Profile/Profile.jsx"
 
 function App() {
     useEffect(() => {
@@ -47,6 +47,8 @@ function App() {
                 <Route path="/add-review" element={<AddReview />} />
                 <Route path="/reviews/:reviewId" element={<Details/>} />
                 <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
+                <Route path="/myProfile" element={<Profile isOwnProfile={true}/>} />
+                <Route path="/userProfile/:userId" element={<Profile isOwnProfile={false}/>} />
                 <Route path="*" element={<Page404/>} />
             </Routes>
         </AuthProvider>
