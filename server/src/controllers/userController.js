@@ -17,6 +17,7 @@ router.post('/register', async (req, res) => {
         res.json({
             authToken: authToken,
             username: user.username,
+            email: user.email,
             userId: user._id
         })
 
@@ -40,6 +41,7 @@ router.post('/login', async (req, res) => {
         res.json({
             authToken: authToken,
             username: user.username,
+            email: user.email,
             userId: user._id
         })
 
