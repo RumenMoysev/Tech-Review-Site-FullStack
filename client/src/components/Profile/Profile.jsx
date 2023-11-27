@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import Spinner from '../Spinner/Spinner.jsx'
 import Review from '../Reviews/ReviewsComponents/Review.jsx'
@@ -6,14 +6,67 @@ import SearchBar from '../SearchBar/SearchBar.jsx';
 import AuthContext from '../../contexts/AuthContext.jsx';
 
 import './Profile.css'
+import { useNavigate, useParams } from 'react-router-dom';
+import { getUserData, getUserLikedPosts } from '../../api/userService.js';
+import { getUserCreatedPosts } from '../../api/userService.js';
 
-export default function Profile({isOwnProfile}) {
-    const [articlesData, setArticlesData] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+export default function Profile({ isMyProfile }) {
+    const [isOwnProfile, setIsOwnProfile] = useState(isMyProfile)
+
+    const [reviewsData, setReviewsData] = useState([])
+    const [reviewsToLoad, setReviewsToLoad] = useState({createdBy: true, likedBy: false})
+    const [isLoading, setIsLoading] = useState(true)
     const [notFoundSearch, setNotFoundSearch] = useState(false)
-    const [auth, setAuth] = useState(useContext(AuthContext).auth)
 
-    console.log(isOwnProfile)
+    const [auth, setAuth] = useState({})
+    const authContext = useContext(AuthContext).auth
+
+    const { currentUserId } = useParams()
+    
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(isMyProfile) {
+            setAuth(authContext)
+            setIsOwnProfile(true)
+        } else {
+            setIsOwnProfile(false)
+            getUserData(currentUserId)
+            .then(response => {
+                if(response.ok) {
+                    return response.json()
+                }
+                navigate('/404')
+            })
+            .then(userData => setAuth(userData))
+            .catch(err => navigate('/404'))
+        }
+        
+    }, [isMyProfile])
+
+    useEffect(() => {
+        const userId = isMyProfile ? auth.userId : currentUserId
+        if(userId) {
+            let requestForReviews
+            
+            if(reviewsToLoad.createdBy) {
+                requestForReviews = getUserCreatedPosts(userId)
+            } else {
+                requestForReviews = getUserLikedPosts(userId, auth.authToken)
+            }
+
+            requestForReviews
+                .then(response => response.json())
+                .then(data => setReviewsData(data))
+                .catch(err => console.log(err))
+        }
+
+        setIsLoading(false)
+    }, [auth, reviewsToLoad])
+
+    const postedClickHandler = () => setReviewsToLoad({createdBy:true, likedBy: false})
+
+    const likedClickHandler = () => setReviewsToLoad({createdBy:false, likedBy: true})
 
     return (
         isLoading
@@ -31,14 +84,13 @@ export default function Profile({isOwnProfile}) {
                 <section id="articles" className="articles profile">
                     <SearchBar/>
                     <div className='profileButtons'>
-                        <button>Posted</button>
-                        <button>Liked</button>
+                        <button onClick={postedClickHandler} className={reviewsToLoad.createdBy && 'selected'} >Posted</button>
                     </div>
                     {
-                        articlesData.length > 0
+                        reviewsData.length > 0
                             ?
-                            articlesData.map(article => (
-                                <Review key={article._id} review={article} />
+                            reviewsData.map(review => (
+                                <Review key={review._id} review={review} />
                             ))
                             :
                             notFoundSearch ? <h2 className='hidden noReviews'> No reviews found!</h2> : <h2 className='hidden noReviews'>No reviews yet!</h2>
