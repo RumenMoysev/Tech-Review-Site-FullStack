@@ -74,4 +74,36 @@ router.get('/:userId', async (req, res) => {
     }
 })
 
+router.get('/:userId/getCreatedReviews', async (req, res) => {
+    const userId = req.params.userId
+
+    try {
+        const reviews = await userManager.getCreatedReviews(userId)
+
+        res.json(reviews.createdReviews)
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
+router.get('/:userId/getLikedReviews', async (req, res) => {
+    const userId = req.params.userId
+
+    try {
+        if(req.user._id === userId) {
+            const reviews = await userManager.getLikedReviews(userId)
+
+            res.json(reviews.likedReviews)
+        } else {
+            throw new Error('You are not authorized!')
+        }
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
 module.exports = router
