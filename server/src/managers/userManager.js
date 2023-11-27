@@ -74,6 +74,12 @@ exports.addToLiked = async (userId, reviewId) => {
     return user.save()
 }
 
+exports.getUserData = (userId) => User.findById(userId, {username: 1, email: 1})
+
+exports.getCreatedReviews = (userId) => User.findById(userId, {createdReviews: 1}).populate('createdReviews')
+
+exports.getLikedReviews = (userId) => User.findById(userId, {likedReviews: 1}).populate('likedReviews')
+
 async function getAuthResult(user) {
     const payload = {
         _id: user._id,
