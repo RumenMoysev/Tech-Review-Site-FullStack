@@ -9,7 +9,7 @@ export default function Article({review}) {
             </div>
             <div className="pImgContainer">
                 <p>{review.summary}</p>
-                <Link to={`${review._id}`}><button>Details</button></Link>
+                <Link to={`/reviews/${review._id}`}><button>Details</button></Link>
             </div>
             <img
                 src={review.imageUrl}
