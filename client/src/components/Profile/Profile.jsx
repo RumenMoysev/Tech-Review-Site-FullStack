@@ -85,6 +85,7 @@ export default function Profile({ isMyProfile }) {
                     <SearchBar/>
                     <div className='profileButtons'>
                         <button onClick={postedClickHandler} className={reviewsToLoad.createdBy && 'selected'} >Posted</button>
+                        {isOwnProfile && <button onClick={likedClickHandler} className={reviewsToLoad.likedBy && 'selected'} >Liked</button>}
                     </div>
                     {
                         reviewsData.length > 0
