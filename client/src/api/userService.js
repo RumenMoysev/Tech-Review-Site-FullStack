@@ -1,3 +1,5 @@
+import internalFetch from "../lib/request.js"
+
 const baseUrl = 'http://localhost:3030/users'
 
 const emailLength = 7
@@ -50,3 +52,9 @@ export function loginService(userData) {
 
     return fetch(`${baseUrl}/login`, settings)
 }
+
+export const getUserData = (userId) => internalFetch('GET', `users/${userId}`)
+
+export const getUserCreatedPosts = (userId) => internalFetch('GET', `users/${userId}/getCreatedReviews`)
+
+export const getUserLikedPosts = (userId, authToken) => internalFetch('GET', `users/${userId}/getLikedReviews`, authToken)
