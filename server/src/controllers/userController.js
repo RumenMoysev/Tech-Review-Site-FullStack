@@ -56,4 +56,22 @@ router.get('/logout', (req, res) => {
     res.end()
 })
 
+router.get('/:userId', async (req, res) => {
+    const userId = req.params.userId
+
+    try {
+        const userData = await userManager.getUserData(userId)
+        
+        res.json({
+            username: userData.username,
+            email: userData.email
+        })
+
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
 module.exports = router
