@@ -47,8 +47,8 @@ function App() {
                 <Route path="/add-review" element={<AddReview />} />
                 <Route path="/reviews/:reviewId" element={<Details/>} />
                 <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
-                <Route path="/myProfile" element={<Profile isOwnProfile={true}/>} />
-                <Route path="/userProfile/:userId" element={<Profile isOwnProfile={false}/>} />
+                <Route path="/myProfile" element={<Profile isMyProfile={true}/>} />
+                <Route path="/userProfile/:currentUserId" element={<Profile isMyProfile={false}/>} />
                 <Route path="*" element={<Page404/>} />
             </Routes>
         </AuthProvider>
