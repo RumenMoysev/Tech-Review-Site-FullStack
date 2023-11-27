@@ -27,7 +27,7 @@ export default function NavLinks() {
     return (
         <nav id="navBar">
             <ul className="nav_links">
-                <li className="welcome"><p>Welcome, <Link to='myProfile'>{username} </Link></p> </li>
+                <li className="welcome"><p>Welcome, {username !== 'guest' ? <Link to='myProfile'>{username} </Link> : username}</p> </li>
 
                 {auth.authToken
                 ?
