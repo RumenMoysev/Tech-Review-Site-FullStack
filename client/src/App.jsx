@@ -13,6 +13,7 @@ import Edit from "./components/EditReview/EditReview.jsx"
 import AddReview from "./components/AddReview/AddReview.jsx"
 import Page404 from "./components/404/404.jsx"
 import Profile from "./components/Profile/Profile.jsx"
+import AuthGuard from "./components/guards/AuthGuard.jsx"
 
 function App() {
     useEffect(() => {
@@ -37,19 +38,22 @@ function App() {
 
     return (
         <AuthProvider>
-            <Header></Header>
+            <Header/>
             
             <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="/login" element={<Login/>} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/register" element={<Register/>} />
                 <Route path="/reviews" element={<Articles/>} />
-                <Route path="/add-review" element={<AddReview />} />
                 <Route path="/reviews/:reviewId" element={<Details/>} />
-                <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
-                <Route path="/myProfile" element={<Profile isMyProfile={true}/>} />
                 <Route path="/userProfile/:currentUserId" element={<Profile isMyProfile={false}/>} />
                 <Route path="*" element={<Page404/>} />
+
+                <Route element={<AuthGuard/>}>
+                    <Route path="/add-review" element={<AddReview/>} />
+                    <Route path="/reviews/:reviewId/edit" element={<Edit/>} />
+                    <Route path="/myProfile" element={<Profile isMyProfile={true}/>} />
+                </Route>
             </Routes>
         </AuthProvider>
     )
