@@ -24,9 +24,11 @@ export default function Profile({ isMyProfile }) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(isMyProfile) {
-            setAuth(authContext)
-        } else {
+        setAuth(authContext)
+        
+        if(!isMyProfile)  {
+            auth.userId === currentUserId && navigate('/myProfile')
+
             getUserData(currentUserId)
             .then(response => {
                 if(response.ok) {
@@ -37,7 +39,7 @@ export default function Profile({ isMyProfile }) {
             .then(userData => setAuth(userData))
             .catch(err => navigate('/404'))
         }
-    }, [isMyProfile])
+    }, [isMyProfile, auth])
 
     useEffect(() => {
         const userId = isMyProfile ? auth.userId : currentUserId
