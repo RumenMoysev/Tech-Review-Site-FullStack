@@ -19,7 +19,6 @@ export default function Profile({ isMyProfile }) {
     const authContext = useContext(AuthContext).auth
     const { currentUserId } = useParams()
 
-    const [notFoundSearch, setNotFoundSearch] = useState(false)
     const [reviewDataForSearch, setReviewDataForSearch] = useState([])
 
     const navigate = useNavigate()
