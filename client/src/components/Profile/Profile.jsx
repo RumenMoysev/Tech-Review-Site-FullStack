@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Spinner from '../Spinner/Spinner.jsx'
 import Review from '../Reviews/ReviewsComponents/Review.jsx'
 import SearchBar from '../SearchBar/SearchBar.jsx';
 import AuthContext from '../../contexts/AuthContext.jsx';
-
 import './Profile.css'
-import { useNavigate, useParams } from 'react-router-dom';
+
 import { getUserData, getUserLikedPosts } from '../../api/userService.js';
 import { getUserCreatedPosts } from '../../api/userService.js';
 
@@ -25,7 +25,7 @@ export default function Profile({ isMyProfile }) {
 
     useEffect(() => {
         setAuth(authContext)
-        
+
         if(!isMyProfile)  {
             auth.userId === currentUserId && navigate('/myProfile')
 
