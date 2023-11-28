@@ -47,13 +47,7 @@ export default function Profile({ isMyProfile }) {
     useEffect(() => {
         const userId = isMyProfile ? auth.userId : currentUserId
         if(userId) {
-            let requestForReviews
-            
-            if(reviewsToLoad.createdBy) {
-                requestForReviews = getUserCreatedPosts(userId)
-            } else {
-                requestForReviews = getUserLikedPosts(userId, auth.authToken)
-            }
+            const requestForReviews = reviewsToLoad.createdBy ? getUserCreatedPosts(userId) : getUserLikedPosts(userId, auth.authToken)
 
             requestForReviews
                 .then(response => response.json())
