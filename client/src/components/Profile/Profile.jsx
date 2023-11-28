@@ -14,13 +14,14 @@ export default function Profile({ isMyProfile }) {
     const [reviewsData, setReviewsData] = useState([])
     const [reviewsToLoad, setReviewsToLoad] = useState({createdBy: true, likedBy: false})
     const [isLoading, setIsLoading] = useState(true)
-    const [notFoundSearch, setNotFoundSearch] = useState(false)
 
     const [auth, setAuth] = useState({})
     const authContext = useContext(AuthContext).auth
-
     const { currentUserId } = useParams()
-    
+
+    const [notFoundSearch, setNotFoundSearch] = useState(false)
+    const [reviewDataForSearch, setReviewDataForSearch] = useState([])
+
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -46,7 +47,10 @@ export default function Profile({ isMyProfile }) {
 
             requestForReviews
                 .then(response => response.json())
-                .then(data => setReviewsData(data))
+                .then(data => {
+                    setReviewsData(data)
+                    setReviewDataForSearch(data)
+                })
                 .catch(err => console.log(err))
         }
 
@@ -56,6 +60,12 @@ export default function Profile({ isMyProfile }) {
     const postedClickHandler = () => setReviewsToLoad({createdBy:true, likedBy: false})
 
     const likedClickHandler = () => setReviewsToLoad({createdBy:false, likedBy: true})
+
+    const searchHandler = (searchParams) => {
+        const foundReviews = reviewDataForSearch.filter(review => review.title.toLowerCase().includes(searchParams.toLowerCase()))
+
+        foundReviews.length > 0 ? setReviewsData(foundReviews) : setReviewsData([])
+    }
 
     return (
         isLoading
@@ -71,7 +81,7 @@ export default function Profile({ isMyProfile }) {
                 </div>
                     
                 <section id="articles" className="articles profile">
-                    <SearchBar/>
+                    <SearchBar searchHandler={searchHandler}/>
                     <div className='profileButtons'>
                         <button onClick={postedClickHandler} className={reviewsToLoad.createdBy ? 'selected' : undefined} >Posted</button>
                         {isMyProfile && <button onClick={likedClickHandler} className={reviewsToLoad.likedBy ? 'selected' : undefined} >Liked</button>}
@@ -83,7 +93,7 @@ export default function Profile({ isMyProfile }) {
                                 <Review key={review._id} review={review} />
                             ))
                             :
-                            notFoundSearch ? <h2 className='hidden noReviews'> No reviews found!</h2> : <h2 className='hidden noReviews'>No reviews yet!</h2>
+                            reviewDataForSearch.length === 0 ? <h2 className='hidden noReviews'> No reviews found!</h2> : <h2 className='hidden noReviews'>No posted reviews yet!</h2>
                     }
                 </section>
             </>
