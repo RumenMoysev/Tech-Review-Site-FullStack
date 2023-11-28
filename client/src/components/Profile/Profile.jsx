@@ -11,8 +11,6 @@ import { getUserData, getUserLikedPosts } from '../../api/userService.js';
 import { getUserCreatedPosts } from '../../api/userService.js';
 
 export default function Profile({ isMyProfile }) {
-    const [isOwnProfile, setIsOwnProfile] = useState(isMyProfile)
-
     const [reviewsData, setReviewsData] = useState([])
     const [reviewsToLoad, setReviewsToLoad] = useState({createdBy: true, likedBy: false})
     const [isLoading, setIsLoading] = useState(true)
@@ -28,9 +26,7 @@ export default function Profile({ isMyProfile }) {
     useEffect(() => {
         if(isMyProfile) {
             setAuth(authContext)
-            setIsOwnProfile(true)
         } else {
-            setIsOwnProfile(false)
             getUserData(currentUserId)
             .then(response => {
                 if(response.ok) {
@@ -41,7 +37,6 @@ export default function Profile({ isMyProfile }) {
             .then(userData => setAuth(userData))
             .catch(err => navigate('/404'))
         }
-        
     }, [isMyProfile])
 
     useEffect(() => {
@@ -78,8 +73,8 @@ export default function Profile({ isMyProfile }) {
                 <section id="articles" className="articles profile">
                     <SearchBar/>
                     <div className='profileButtons'>
-                        <button onClick={postedClickHandler} className={reviewsToLoad.createdBy && 'selected'} >Posted</button>
-                        {isOwnProfile && <button onClick={likedClickHandler} className={reviewsToLoad.likedBy && 'selected'} >Liked</button>}
+                        <button onClick={postedClickHandler} className={reviewsToLoad.createdBy ? 'selected' : undefined} >Posted</button>
+                        {isMyProfile && <button onClick={likedClickHandler} className={reviewsToLoad.likedBy ? 'selected' : undefined} >Liked</button>}
                     </div>
                     {
                         reviewsData.length > 0
