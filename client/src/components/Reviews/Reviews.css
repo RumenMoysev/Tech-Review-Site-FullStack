@@ -5,6 +5,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 210px;
+    margin-bottom: 50px;
 }
 
 .articles article {

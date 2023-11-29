@@ -142,6 +142,7 @@
     justify-content: center;
     animation: slideIn 700ms ease;
     margin-top: 170px;
+    margin-bottom: 50px;
 }
 
 .editForm {
