@@ -33,6 +33,7 @@ footer {
     width: 100px;
     margin-bottom: 30px;
     border-radius: 23%;
+    animation: breathe 3s linear infinite;
 }
 
 .footerCol h3 {
@@ -131,7 +132,17 @@ hr{
     }
 }
 
-
+@keyframes breathe {
+    0% {
+        box-shadow: 0 0 5px 2px var(--theme-color);
+    }
+    50% {
+        box-shadow: 0 0 15px 3px var(--theme-color);
+    }
+    100% {
+        box-shadow: 0 0 5px 2px var(--theme-color);
+    }
+}
 
 @media (max-width: 960px) {
     footer {
