@@ -156,3 +156,19 @@
     transform: translateY(2px);
     text-shadow: 0 0 5px #000000;
 }
+
+@media (max-width: 960px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .homePage .row .col .card {
+        width: 40vw;
+        min-height: 30vh;
+        height: auto;
+    }
+
+    .homePage .row .notTouching {
+        margin: 10px 0 0 0 ;
+    }
+}
