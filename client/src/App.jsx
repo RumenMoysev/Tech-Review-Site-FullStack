@@ -14,6 +14,7 @@ import AddReview from "./components/AddReview/AddReview.jsx"
 import Page404 from "./components/404/404.jsx"
 import Profile from "./components/Profile/Profile.jsx"
 import AuthGuard from "./components/guards/AuthGuard.jsx"
+import Footer from "./components/Footer/Footer.jsx"
 
 function App() {
     useEffect(() => {
@@ -55,6 +56,8 @@ function App() {
                     <Route path="/myProfile" element={<Profile isMyProfile={true}/>} />
                 </Route>
             </Routes>
+            
+            <Footer />
         </AuthProvider>
     )
 }
