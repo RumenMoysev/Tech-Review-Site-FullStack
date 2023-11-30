@@ -1,0 +1,39 @@
+/* .hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-50%);
+    transition: all 1s ease;
+    
+} */
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+body {
+    background-color: #24252afa;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(29, 27, 27);
+}
+
+::-webkit-scrollbar-thumb {
+    /* background-color: var(--button-hover-color); */
+    background-color: rgb(77, 70, 70);
+    border-radius: 20px;
+    box-shadow: 0 0 15px 10px var(--theme-color);
+}
+
+::-webkit-scrollbar-thumb:active {
+    /* background-color: var(--button-active-color); */
+    background-color: rgb(56, 52, 52);
+}
+
+::-webkit-scrollbar-button {
+    background-color: var(--button-active-color);
+    border-radius: 20px;
+}
