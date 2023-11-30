@@ -13,8 +13,8 @@ export default function Footer() {
                 <div className="footerCol">
                     <h3>Office <div className='underline'><span></span></div> </h3>
                     <p>NQKUDE si</p>
-                    <p>Niggalandiq</p>
-                    <p>sofiq, nqkude u vas</p>
+                    <p>България</p>
+                    <p>sofiq, nqkoq ulica</p>
                     <p className='email-id'>rumenmoysev@gmail.com</p>
                     <h4>+359 87777878</h4>
                 </div>
