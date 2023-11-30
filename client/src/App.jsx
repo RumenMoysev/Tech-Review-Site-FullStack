@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 
-import {AuthProvider} from "./contexts/AuthContext.jsx"
+import { AuthProvider } from "./contexts/AuthContext.jsx"
 
 import Articles from "./components/Reviews/Reviews.jsx"
 import Details from "./components/Details/Details.jsx"
@@ -15,6 +15,8 @@ import Page404 from "./components/404/404.jsx"
 import Profile from "./components/Profile/Profile.jsx"
 import AuthGuard from "./components/guards/AuthGuard.jsx"
 import Footer from "./components/Footer/Footer.jsx"
+
+import './App.css'
 
 function App() {
     useEffect(() => {
