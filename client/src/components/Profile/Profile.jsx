@@ -24,10 +24,10 @@ export default function Profile({ isMyProfile }) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        setAuth(authContext)
-
-        if(!isMyProfile)  {
-            auth.userId === currentUserId && navigate('/myProfile')
+        if(isMyProfile) {
+            setAuth(authContext)
+        } else if (!isMyProfile) {
+            authContext.userId === currentUserId && navigate('/myProfile')
 
             getUserData(currentUserId)
             .then(response => {
@@ -39,7 +39,7 @@ export default function Profile({ isMyProfile }) {
             .then(userData => setAuth(userData))
             .catch(err => navigate('/404'))
         }
-    }, [isMyProfile, auth])
+    }, [isMyProfile])
 
     useEffect(() => {
         const userId = isMyProfile ? auth.userId : currentUserId
@@ -94,7 +94,7 @@ export default function Profile({ isMyProfile }) {
                                 <Review key={review._id} review={review} />
                             ))
                             :
-                            reviewDataForSearch.length === 0 ? <h2 className='hidden noReviews'> No reviews found!</h2> : <h2 className='hidden noReviews'>No posted reviews yet!</h2>
+                            <h2 className='hidden noReviews'> No reviews found!</h2>
                     }
                 </section>
             </>
