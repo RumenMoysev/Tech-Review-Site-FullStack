@@ -21,19 +21,19 @@ export default function Footer() {
                 <div className="footerCol">
                     <h3>Links <div className='underline'><span></span></div> </h3>
                     <ul>
-                        <li><Link to={'/test'}>Home</Link></li>
-                        <li><Link to={'/test'}>Services</Link></li>
-                        <li><Link to={'/test'}>About</Link></li>
-                        <li><Link to={'/test'}>Contacts</Link></li>
+                        <li><Link to={'/'}>Home</Link></li>
+                        <li><Link to={'/reviews'}>Reviews</Link></li>
+                        <li><Link to={'/about'}>About</Link></li>
+                        <li><Link to={'/contacts'}>Contacts</Link></li>
                     </ul>
                 </div>
                 <div className="footerCol">
                     <h3>Socials <div className='underline'><span></span></div> </h3>
                     <div className='socialIcons'>
-                        <img src='/images/logo-facebook.svg' className='socialIcon'/>
-                        <img src='/images/logo-instagram.svg' className='socialIcon' />
-                        <img src='/images/logo-github.svg' className='socialIcon' />
-                        <img src='/images/logo-twitter.svg' className='socialIcon' />
+                        <Link to={'https://www.facebook.com/rumen.moysev/'}><img src='/images/logo-facebook.svg' className='socialIcon'/></Link>
+                        <Link to={'https://www.instagram.com/rumen_moysev/'}><img src='/images/logo-instagram.svg' className='socialIcon' /></Link>
+                        <Link to={'https://github.com/RumenMoysev'}><img src='/images/logo-github.svg' className='socialIcon' /></Link>
+                        <Link to={'https://twitter.com/RMoysev'}><img src='/images/logo-twitter.svg' className='socialIcon' /></Link>
                     </div>
                 </div>
             </div>
