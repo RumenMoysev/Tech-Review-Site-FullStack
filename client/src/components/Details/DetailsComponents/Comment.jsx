@@ -18,7 +18,8 @@ export default function Comment({ commentData, likeComment, deleteComment, authT
     return (
         <div className='comment'>
             <div className='commentData'>
-                <Link to={`/userProfile/${commentData.owner._id}`}>{commentData.owner.username}:</Link>
+                {authToken ? <Link to={`/userProfile/${commentData.owner._id}`}>{commentData.owner.username}: </Link> : <Link style={{borderBottom:'none', cursor:'default'}}>{commentData.owner.username}: </Link>}
+                
                 <p>{commentData.comment}</p>
             </div>
             <div className="likeData">
