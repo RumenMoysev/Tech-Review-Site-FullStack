@@ -12,9 +12,10 @@ export default function Footer() {
                 </div>
                 <div className="footerCol">
                     <h3>Office <div className='underline'><span></span></div> </h3>
-                    <p>NQKUDE si</p>
+                    {/* <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1036.6487422982257!2d23.35143489804782!3d42.70191200451514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sbg!2sbg!4v1701873701863!5m2!1sbg!2sbg" width="200" height="100"  allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe> */}
                     <p>България</p>
-                    <p>sofiq, nqkoq ulica</p>
+                    <p>София</p>
+                    <p>ул. Незнам коя 21</p>
                     <p className='email-id'>rumenmoysev@gmail.com</p>
                     <h4>+359 87777878</h4>
                 </div>
