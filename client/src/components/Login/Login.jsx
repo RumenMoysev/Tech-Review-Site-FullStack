@@ -80,14 +80,14 @@ export default function Login() {
                         onChange={passwordValueHandler}
                         required
                     />
-                    <div className="rememberMe-container">
+                    {/* <div className="rememberMe-container">
                         <label
                             htmlFor="logRegCheckbox"
                             className="logRegCheckbox1">
                             Remember me?
                         </label>
                         <input type="checkbox" id="logRegCheckbox" className="logRegCheckbox" />
-                    </div>
+                    </div> */}
                     <button type="submit" id="buttons" onClick={loginHandler}>
                         Login
                     </button>
