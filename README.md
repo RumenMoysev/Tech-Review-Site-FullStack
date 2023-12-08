@@ -7,28 +7,6 @@
 This repository is my project with ReactJS called Tech Review Site. It's a fullstack application.
 ## Overview
 This website is a platform for all the tech enthusiasts who want to share information with each other, write reviews or rate products. The project utilizes various technologies including RESTful APIs powered by Express for the backend, user authentication with JWT (JSON Web Tokens), React for the frontend, and MongoDB with Mongoose for data storage.
-## Installation
-Clone or download (and extract) the ZIP file of this repository
-```bash
-cd client 
-npm i
-cd ../
-cd server
-npm i
-```
-
-## Usage
-### Open two terminals from the root project directory
-In the first one enter the server folder and start the server
-```bash
-cd server
-npm run start
-```
-In the second one enter the client folder and start the client
-```bash
-cd client
-npm run dev
-```
 
 ## Functionality
 
@@ -55,6 +33,30 @@ npm run dev
 - **View Others' Profile:** Users can view other users' profiles with only created posts.
 - **Security:** Access to edit or delete reviews is restricted to the review owner.
 
+## Installation
+Clone or download (and extract) the ZIP file of this repository
+```bash
+cd client 
+npm i
+cd ../
+cd server
+npm i
+```
+
+## Usage
+### Open two terminals from the root project directory
+In the first one enter the server folder and start the server
+```bash
+cd server
+npm run start
+```
+In the second one enter the client folder and start the client
+```bash
+cd client
+npm run dev
+```
+
+
 ## Technologies Used
 
 - **Express:** A fast, unopinionated, minimalist web framework for Node.js.
@@ -62,3 +64,4 @@ npm run dev
 - **Bcrypt:** A library for hashing passwords.
 - **JWT (JSON Web Tokens):** A compact, URL-safe means of representing claims to be transferred between two parties.
 - **ReactJS:** A JavaScript library for building user interfaces.
+
