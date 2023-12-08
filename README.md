@@ -31,7 +31,6 @@ This website is a platform for all the tech enthusiasts who want to share inform
 
 - **View Profile:** Users can view their own profile with created and liked posts.
 - **View Others' Profile:** Users can view other users' profiles with only created posts.
-- **Security:** Access to edit or delete reviews is restricted to the review owner.
 
 ## Installation
 Clone or download (and extract) the ZIP file of this repository
