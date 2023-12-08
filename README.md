@@ -58,9 +58,8 @@ npm run dev
 
 ## Technologies Used
 
+- **ReactJS:** A JavaScript library for building user interfaces.
 - **Express:** A fast, unopinionated, minimalist web framework for Node.js.
 - **MongoDB (Mongoose):** A schema-based MongoDB object modeling tool.
 - **Bcrypt:** A library for hashing passwords.
 - **JWT (JSON Web Tokens):** A compact, URL-safe means of representing claims to be transferred between two parties.
-- **ReactJS:** A JavaScript library for building user interfaces.
-
