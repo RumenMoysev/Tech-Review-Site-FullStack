@@ -18,10 +18,18 @@ This website is a platform for all the tech enthusiasts who want to share inform
 ### Reviews
 
 - **View Reviews:** Users can browse and view existing reviews.
+- **Create Reviews:** Authenticated users can create new reviews.
 - **Edit and Delete Reviews:** Review owners can edit and delete their own reviews.
 - **Like Reviews:** Users can like reviews.
-- **Comment on Reviews:** Users can leave comments on reviews.
-- **Create Reviews:** Authenticated users can create new reviews.
+#### Comments
+- **Add Comments:**
+  - Authenticated users can add comments to reviews.
+
+- **Like Comments:**
+  - Users can like comments.
+
+- **Delete Comments:**
+- Owners of the comment can delete comments.
 
 ### Search Functionality
 
@@ -59,6 +67,7 @@ npm run dev
 
 - **Frontend:**
   - ReactJS: A JavaScript library for building user interfaces.
+  - React Router: A standard library for routing in React applications.
   - Vite: A build tool that aims to provide a faster and more efficient development experience.
 
 - **Backend:**
