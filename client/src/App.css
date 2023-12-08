@@ -25,7 +25,7 @@ body {
     /* background-color: var(--button-hover-color); */
     background-color: rgb(77, 70, 70);
     border-radius: 20px;
-    box-shadow: 0 0 15px 10px var(--theme-color);
+    box-shadow: 0 0 10px 5px var(--theme-color);
 }
 
 ::-webkit-scrollbar-thumb:active {
@@ -33,7 +33,7 @@ body {
     background-color: rgb(56, 52, 52);
 }
 
-::-webkit-scrollbar-button {
+/* ::-webkit-scrollbar-button {
     background-color: var(--button-active-color);
     border-radius: 20px;
-}
+} */
