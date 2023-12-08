@@ -21,13 +21,10 @@ This website is a platform for all the tech enthusiasts who want to share inform
 - **Create Reviews:** Authenticated users can create new reviews.
 - **Edit and Delete Reviews:** Review owners can edit and delete their own reviews.
 - **Like Reviews:** Users can like reviews.
-#### Comments
 - **Add Comments:**
   - Authenticated users can add comments to reviews.
-
 - **Like Comments:**
   - Users can like comments.
-
 - **Delete Comments:**
 - Owners of the comment can delete comments.
 
