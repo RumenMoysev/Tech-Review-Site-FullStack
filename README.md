@@ -18,7 +18,7 @@ npm i
 ```
 
 ## Usage
-### Open two terminals from the root directory
+### Open two terminals from the root project directory
 In the first one enter the server folder and start the server
 ```bash
 cd server
@@ -29,3 +29,36 @@ In the second one enter the client folder and start the client
 cd client
 npm run dev
 ```
+
+## Functionality
+
+### User Authentication
+
+- **Login:** Users can authenticate by providing their credentials.
+- **Register:** New users can create an account by providing necessary information.
+
+### Reviews
+
+- **View Reviews:** Users can browse and view existing reviews.
+- **Edit and Delete Reviews:** Review owners can edit and delete their own reviews.
+- **Like Reviews:** Users can like reviews.
+- **Comment on Reviews:** Users can leave comments on reviews.
+- **Create Reviews:** Authenticated users can create new reviews.
+
+### Search Functionality
+
+- **Search:** Users can search for specific reviews or topics.
+
+### Profile Page
+
+- **View Profile:** Users can view their own profile with created and liked posts.
+- **View Others' Profile:** Users can view other users' profiles with only created posts.
+- **Security:** Access to edit or delete reviews is restricted to the review owner.
+
+## Technologies Used
+
+- **Express:** A fast, unopinionated, minimalist web framework for Node.js.
+- **MongoDB (Mongoose):** A schema-based MongoDB object modeling tool.
+- **Bcrypt:** A library for hashing passwords.
+- **JWT (JSON Web Tokens):** A compact, URL-safe means of representing claims to be transferred between two parties.
+- **ReactJS:** A JavaScript library for building user interfaces.
