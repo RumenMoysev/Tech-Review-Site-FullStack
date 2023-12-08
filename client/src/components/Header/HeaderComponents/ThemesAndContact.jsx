@@ -44,9 +44,9 @@ export default function ThemesAndContact() {
                 )}
             </div>
             
-            <Link to="/contact" className="cta">
+            {/* <Link to="/contact" className="cta">
                 <button>Contact</button>
-            </Link>   
+            </Link> */}
         </div>
     );
 };
