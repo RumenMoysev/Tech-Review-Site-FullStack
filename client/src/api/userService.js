@@ -9,10 +9,11 @@ const passwordLength = 5
 export function registerService(userData, setError) {
     let error = undefined
     const invalidFields = {}
+    const regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/
 
-    if (userData.email.length < emailLength) {
+    if (userData.email.length < emailLength || !regex.test(userData.email)) {
         invalidFields.email = true
-        error = `Email should be at least ${emailLength} characters long!`
+        error = `Email should be valid and at least ${emailLength} characters long!`
     }
     if (userData.username.length < usernameLength) {
         invalidFields.username = true
