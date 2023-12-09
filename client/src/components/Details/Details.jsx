@@ -39,9 +39,11 @@ export default function Details() {
     }, [reviewId])
 
     async function deleteHandler() {
-        await deleteReview(reviewId, authToken)
+        if(confirm('Are you sure you want to delete this review?')) {
+            await deleteReview(reviewId, authToken)
 
-        navigate('/reviews')
+            navigate('/reviews')
+        }
     }
 
     async function likeHandler() {
