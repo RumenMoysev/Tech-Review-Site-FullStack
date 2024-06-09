@@ -69,3 +69,126 @@ npm run dev
   - MongoDB (Mongoose): A MongoDB object modeling tool designed to work in an asynchronous environment.
   - Bcrypt: A library for hashing passwords.
   - JWT (JSON Web Tokens): A compact, URL-safe means of representing claims to be transferred between two parties.
+
+## Screenshots
+
+### Desktop view
+- **Home page**
+  - Blue
+    <p align='center'>
+        <img src='./client/Screenshots/Desktop/Home-blue.png' alt='logo'>
+    </p>
+  - Green
+    <p align='center'>
+        <img src='./client/Screenshots/Desktop/Home-green.png' alt='logo'>
+    </p>
+  - Red
+    <p align='center'>
+        <img src='./client/Screenshots/Desktop/Home-red.png' alt='logo'>
+    </p>
+  - Yellow
+    <p align='center'>
+        <img src='./client/Screenshots/Desktop/Home-yellow.png' alt='logo'>
+    </p>
+
+- **Reviews**
+  - No search
+    <p align='center'>
+        <img src='./client/screenshots/desktop/Reviews.png' alt='logo'>
+    </p>
+  - Search
+    <p align='center'>
+        <img src='./client/Screenshots/Desktop/Reviews-search.png' alt='logo'>
+    </p>
+
+- **Details page**
+  - Owner
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Details-owner.png' alt='logo'>
+    </p>
+  - User (not liked)
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Details-user.png' alt='logo'>
+    </p>
+  - User (liked)
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Details-user1.png' alt='logo'>
+    </p>
+  - User (comments)
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Details-user-comments.png' alt='logo'>
+    </p>
+  - User (writing comment)
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Details-user-comment-post.png' alt='logo'>
+    </p>
+  - User (posted comment)
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Details-user-comment-posted.png' alt='logo'>
+    </p>
+  - Guest
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Details-guest.png' alt='logo'>
+    </p>
+  - Guest (comments)
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Details-guest-comments.png' alt='logo'>
+    </p>
+
+- **Login**
+  - No error
+    <p align='center'>
+        <img src='./client/screenshots/desktop/Login.png' alt='logo'>
+    </p>
+  - Error
+    <p align='center'>
+        <img src='./client/screenshots/desktop/Login1.png' alt='logo'>
+    </p>
+
+- **Register**
+  - No error
+    <p align='center'>
+        <img src='./client/screenshots/desktop/Register.png' alt='logo'>
+    </p>
+  - Error
+  <p align='center'>
+        <img src='./client/screenshots/desktop/Register1.png' alt='logo'>
+  </p>
+
+- **Edit**
+<p align='center'>
+    <img src='./client/screenshots/desktop/Edit.png' alt='logo'>
+</p>
+
+- **Add Review**
+<p align='center'>
+    <img src='./client/screenshots/desktop/Add-Review.png' alt='logo'>
+</p>
+
+- **Profile page**
+  - Owner (posted reviews)
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Profile-posted.png' alt='logo'>
+    </p>
+  - Owner (liked reviews)
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Profile-liked.png' alt='logo'>
+    </p>
+  - Owner (liked reviews (search))
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Profile-liked-search.png' alt='logo'>
+    </p>
+  - Another user
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Another-user-profile.png' alt='logo'>
+    </p>
+
+- **Navbar**
+  - User
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Navbar-user.png' alt='logo'>
+    </p>
+  - Guest
+    <p align='center'>
+      <img src='./client/screenshots/desktop/Navbar-guest.png' alt='logo'>
+    </p>
