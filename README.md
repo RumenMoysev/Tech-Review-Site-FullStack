@@ -76,15 +76,15 @@ npm run dev
 - **Home page**
   - Blue
     <p align='center'>
-        <img src='./client/Screenshots/Desktop/Home-blue.png' alt='logo'>
+        <img src='./client/screenshots/desktop//Home-blue.png' alt='logo'>
     </p>
   - Green
     <p align='center'>
-        <img src='./client/Screenshots/Desktop/Home-green.png' alt='logo'>
+        <img src='./client/screenshots/desktop//Home-green.png' alt='logo'>
     </p>
   - Red
     <p align='center'>
-        <img src='./client/Screenshots/Desktop/Home-red.png' alt='logo'>
+        <img src='./client/screenshots/desktop//Home-red.png' alt='logo'>
     </p>
   - Yellow
     <p align='center'>
