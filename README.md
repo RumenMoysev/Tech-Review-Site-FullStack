@@ -162,7 +162,7 @@ npm run dev
 
 - **Add Review**
 <p align='center'>
-    <img src='./client/screenshots/desktop/Add-Review.png' alt='logo'>
+    <img src='./client/screenshots/desktop/Add-review.png' alt='logo'>
 </p>
 
 - **Profile page**
