@@ -104,7 +104,9 @@ export default function Details() {
 
                         {reviewDetails.likes.length === 0 && <p className="likes">No likes yet</p>}
                         
-                        <button className='commentButton' onClick={() => setShowCommentSection(state => !state)}>Show comments</button>
+                        <button className='commentButton' onClick={() => setShowCommentSection(state => !state)}>
+                            {showCommentSection ? 'Hide' : 'Show'} comments
+                        </button>
                     </div>
 
                     {showCommentSection && <CommentSection reviewId={reviewId} />}
