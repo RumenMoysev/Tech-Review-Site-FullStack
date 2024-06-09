@@ -88,7 +88,7 @@ npm run dev
     </p>
   - Yellow
     <p align='center'>
-        <img src='./client/Screenshots/Desktop/Home-yellow.png' alt='logo'>
+        <img src='./client/screenshots/desktop/Home-yellow.png' alt='logo'>
     </p>
 
 - **Reviews**
@@ -98,7 +98,7 @@ npm run dev
     </p>
   - Search
     <p align='center'>
-        <img src='./client/Screenshots/Desktop/Reviews-search.png' alt='logo'>
+        <img src='./client/screenshots/desktop/Reviews-search.png' alt='logo'>
     </p>
 
 - **Details page**
